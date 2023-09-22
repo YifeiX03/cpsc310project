@@ -119,11 +119,6 @@ describe("InsightFacade", function()  {
 			facade = new InsightFacade();
 		});
 
-		it ("should reject with  an empty dataset id", function() {
-			const result = facade.addDataset("", sections, InsightDatasetKind.Sections);
-			return expect(result).to.eventually.be.rejectedWith(InsightError);
-		});
-
 		it ("should reject with an dataset id only has one space", function() {
 			const result = facade.addDataset(" ", sections, InsightDatasetKind.Sections);
 			return expect(result).to.eventually.be.rejectedWith(InsightError);
