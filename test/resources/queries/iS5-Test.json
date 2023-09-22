@@ -1,0 +1,130 @@
+{
+	"title": "IS5-test",
+	"input": {
+		"WHERE": {
+			"IS": {
+				"sections_title": "comp materials"
+			}
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_title",
+				"sections_id",
+				"sections_dept",
+				"sections_avg"
+			],
+			"ORDER": "sections_avg"
+		}
+	},
+	"errorExpected": false,
+	"expected": [
+		{
+			"sections_title": "comp materials",
+			"sections_id": "494",
+			"sections_dept": "mtrl",
+			"sections_avg": 57.4
+		},
+		{
+			"sections_title": "comp materials",
+			"sections_id": "494",
+			"sections_dept": "mtrl",
+			"sections_avg": 57.4
+		},
+		{
+			"sections_title": "comp materials",
+			"sections_id": "494",
+			"sections_dept": "mtrl",
+			"sections_avg": 69.71
+		},
+		{
+			"sections_title": "comp materials",
+			"sections_id": "494",
+			"sections_dept": "mtrl",
+			"sections_avg": 69.71
+		},
+		{
+			"sections_title": "comp materials",
+			"sections_id": "494",
+			"sections_dept": "mtrl",
+			"sections_avg": 72.95
+		},
+		{
+			"sections_title": "comp materials",
+			"sections_id": "494",
+			"sections_dept": "mtrl",
+			"sections_avg": 72.95
+		},
+		{
+			"sections_title": "comp materials",
+			"sections_id": "494",
+			"sections_dept": "mtrl",
+			"sections_avg": 73.63
+		},
+		{
+			"sections_title": "comp materials",
+			"sections_id": "494",
+			"sections_dept": "mtrl",
+			"sections_avg": 73.63
+		},
+		{
+			"sections_title": "comp materials",
+			"sections_id": "494",
+			"sections_dept": "mtrl",
+			"sections_avg": 75.12
+		},
+		{
+			"sections_title": "comp materials",
+			"sections_id": "494",
+			"sections_dept": "mtrl",
+			"sections_avg": 75.12
+		},
+		{
+			"sections_title": "comp materials",
+			"sections_id": "494",
+			"sections_dept": "mtrl",
+			"sections_avg": 77.25
+		},
+		{
+			"sections_title": "comp materials",
+			"sections_id": "494",
+			"sections_dept": "mtrl",
+			"sections_avg": 77.25
+		},
+		{
+			"sections_title": "comp materials",
+			"sections_id": "494",
+			"sections_dept": "mtrl",
+			"sections_avg": 77.62
+		},
+		{
+			"sections_title": "comp materials",
+			"sections_id": "494",
+			"sections_dept": "mtrl",
+			"sections_avg": 77.62
+		},
+		{
+			"sections_title": "comp materials",
+			"sections_id": "494",
+			"sections_dept": "mtrl",
+			"sections_avg": 78.58
+		},
+		{
+			"sections_title": "comp materials",
+			"sections_id": "494",
+			"sections_dept": "mtrl",
+			"sections_avg": 79.4
+		},
+		{
+			"sections_title": "comp materials",
+			"sections_id": "494",
+			"sections_dept": "mtrl",
+			"sections_avg": 82.13
+		},
+		{
+			"sections_title": "comp materials",
+			"sections_id": "494",
+			"sections_dept": "mtrl",
+			"sections_avg": 82.13
+		}
+	]
+}

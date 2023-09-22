@@ -1,0 +1,1558 @@
+{
+	"title": "IS2-test",
+	"input": {
+		"WHERE": {
+			"IS": {
+				"sections_title": "*sci"
+			}
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_title",
+				"sections_id",
+				"sections_dept",
+				"sections_avg"
+			],
+			"ORDER": "sections_avg"
+		}
+	},
+	"errorExpected": false,
+	"expected": [
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 67
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 67.22
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 67.58
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 68.51
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 68.69
+		},
+		{
+			"sections_title": "prin frst sci",
+			"sections_id": "303",
+			"sections_dept": "frst",
+			"sections_avg": 69.44
+		},
+		{
+			"sections_title": "prin frst sci",
+			"sections_id": "303",
+			"sections_dept": "frst",
+			"sections_avg": 69.44
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 69.8
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 70.05
+		},
+		{
+			"sections_title": "drg&behav nrosci",
+			"sections_id": "462",
+			"sections_dept": "psyc",
+			"sections_avg": 70.22
+		},
+		{
+			"sections_title": "drg&behav nrosci",
+			"sections_id": "462",
+			"sections_dept": "psyc",
+			"sections_avg": 70.22
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 70.39
+		},
+		{
+			"sections_title": "drg&behav nrosci",
+			"sections_id": "462",
+			"sections_dept": "psyc",
+			"sections_avg": 70.79
+		},
+		{
+			"sections_title": "drg&behav nrosci",
+			"sections_id": "462",
+			"sections_dept": "psyc",
+			"sections_avg": 70.79
+		},
+		{
+			"sections_title": "comptng life sci",
+			"sections_id": "301",
+			"sections_dept": "cpsc",
+			"sections_avg": 71
+		},
+		{
+			"sections_title": "comptng life sci",
+			"sections_id": "301",
+			"sections_dept": "cpsc",
+			"sections_avg": 71
+		},
+		{
+			"sections_title": "prin frst sci",
+			"sections_id": "303",
+			"sections_dept": "frst",
+			"sections_avg": 71.26
+		},
+		{
+			"sections_title": "prin frst sci",
+			"sections_id": "303",
+			"sections_dept": "frst",
+			"sections_avg": 71.26
+		},
+		{
+			"sections_title": "drg&behav nrosci",
+			"sections_id": "462",
+			"sections_dept": "psyc",
+			"sections_avg": 71.27
+		},
+		{
+			"sections_title": "drg&behav nrosci",
+			"sections_id": "462",
+			"sections_dept": "psyc",
+			"sections_avg": 71.27
+		},
+		{
+			"sections_title": "drg&behav nrosci",
+			"sections_id": "462",
+			"sections_dept": "psyc",
+			"sections_avg": 71.43
+		},
+		{
+			"sections_title": "drg&behav nrosci",
+			"sections_id": "462",
+			"sections_dept": "psyc",
+			"sections_avg": 71.43
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 71.56
+		},
+		{
+			"sections_title": "drg&behav nrosci",
+			"sections_id": "462",
+			"sections_dept": "psyc",
+			"sections_avg": 71.62
+		},
+		{
+			"sections_title": "drg&behav nrosci",
+			"sections_id": "462",
+			"sections_dept": "psyc",
+			"sections_avg": 71.62
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 71.82
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 71.99
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 72.1
+		},
+		{
+			"sections_title": "prin frst sci",
+			"sections_id": "303",
+			"sections_dept": "frst",
+			"sections_avg": 72.21
+		},
+		{
+			"sections_title": "prin frst sci",
+			"sections_id": "303",
+			"sections_dept": "frst",
+			"sections_avg": 72.21
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 72.43
+		},
+		{
+			"sections_title": "lab soil sci",
+			"sections_id": "403",
+			"sections_dept": "apbi",
+			"sections_avg": 72.5
+		},
+		{
+			"sections_title": "lab soil sci",
+			"sections_id": "403",
+			"sections_dept": "apbi",
+			"sections_avg": 72.5
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 72.57
+		},
+		{
+			"sections_title": "drg&behav nrosci",
+			"sections_id": "462",
+			"sections_dept": "psyc",
+			"sections_avg": 72.94
+		},
+		{
+			"sections_title": "drg&behav nrosci",
+			"sections_id": "462",
+			"sections_dept": "psyc",
+			"sections_avg": 72.94
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 73.05
+		},
+		{
+			"sections_title": "math modl in sci",
+			"sections_id": "360",
+			"sections_dept": "math",
+			"sections_avg": 73.16
+		},
+		{
+			"sections_title": "math modl in sci",
+			"sections_id": "360",
+			"sections_dept": "math",
+			"sections_avg": 73.16
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 73.3
+		},
+		{
+			"sections_title": "drg&behav nrosci",
+			"sections_id": "462",
+			"sections_dept": "psyc",
+			"sections_avg": 73.42
+		},
+		{
+			"sections_title": "drg&behav nrosci",
+			"sections_id": "462",
+			"sections_dept": "psyc",
+			"sections_avg": 73.42
+		},
+		{
+			"sections_title": "earth&planet sci",
+			"sections_id": "212",
+			"sections_dept": "eosc",
+			"sections_avg": 73.58
+		},
+		{
+			"sections_title": "earth&planet sci",
+			"sections_id": "212",
+			"sections_dept": "eosc",
+			"sections_avg": 73.58
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 73.7
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 73.7
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 73.72
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 73.78
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 74.2
+		},
+		{
+			"sections_title": "prin frst sci",
+			"sections_id": "303",
+			"sections_dept": "frst",
+			"sections_avg": 74.78
+		},
+		{
+			"sections_title": "prin frst sci",
+			"sections_id": "303",
+			"sections_dept": "frst",
+			"sections_avg": 74.78
+		},
+		{
+			"sections_title": "drg&behav nrosci",
+			"sections_id": "462",
+			"sections_dept": "psyc",
+			"sections_avg": 75
+		},
+		{
+			"sections_title": "drg&behav nrosci",
+			"sections_id": "462",
+			"sections_dept": "psyc",
+			"sections_avg": 75
+		},
+		{
+			"sections_title": "earth&planet sci",
+			"sections_id": "212",
+			"sections_dept": "eosc",
+			"sections_avg": 75.02
+		},
+		{
+			"sections_title": "earth&planet sci",
+			"sections_id": "212",
+			"sections_dept": "eosc",
+			"sections_avg": 75.02
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 75.05
+		},
+		{
+			"sections_title": "intr envrmnt sci",
+			"sections_id": "200",
+			"sections_dept": "envr",
+			"sections_avg": 75.23
+		},
+		{
+			"sections_title": "issues arts&sci",
+			"sections_id": "200",
+			"sections_dept": "asic",
+			"sections_avg": 75.4
+		},
+		{
+			"sections_title": "issues arts&sci",
+			"sections_id": "200",
+			"sections_dept": "asic",
+			"sections_avg": 75.4
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 75.42
+		},
+		{
+			"sections_title": "intr envrmnt sci",
+			"sections_id": "200",
+			"sections_dept": "envr",
+			"sections_avg": 75.96
+		},
+		{
+			"sections_title": "lab soil sci",
+			"sections_id": "403",
+			"sections_dept": "apbi",
+			"sections_avg": 76.19
+		},
+		{
+			"sections_title": "lab soil sci",
+			"sections_id": "403",
+			"sections_dept": "apbi",
+			"sections_avg": 76.19
+		},
+		{
+			"sections_title": "intr envrmnt sci",
+			"sections_id": "200",
+			"sections_dept": "envr",
+			"sections_avg": 76.28
+		},
+		{
+			"sections_title": "intr envrmnt sci",
+			"sections_id": "200",
+			"sections_dept": "envr",
+			"sections_avg": 76.32
+		},
+		{
+			"sections_title": "lab soil sci",
+			"sections_id": "403",
+			"sections_dept": "apbi",
+			"sections_avg": 76.43
+		},
+		{
+			"sections_title": "lab soil sci",
+			"sections_id": "403",
+			"sections_dept": "apbi",
+			"sections_avg": 76.43
+		},
+		{
+			"sections_title": "earth&planet sci",
+			"sections_id": "212",
+			"sections_dept": "eosc",
+			"sections_avg": 76.44
+		},
+		{
+			"sections_title": "earth&planet sci",
+			"sections_id": "212",
+			"sections_dept": "eosc",
+			"sections_avg": 76.44
+		},
+		{
+			"sections_title": "issues arts&sci",
+			"sections_id": "200",
+			"sections_dept": "asic",
+			"sections_avg": 76.6
+		},
+		{
+			"sections_title": "prin frst sci",
+			"sections_id": "303",
+			"sections_dept": "frst",
+			"sections_avg": 76.63
+		},
+		{
+			"sections_title": "prin frst sci",
+			"sections_id": "303",
+			"sections_dept": "frst",
+			"sections_avg": 76.63
+		},
+		{
+			"sections_title": "issues arts&sci",
+			"sections_id": "200",
+			"sections_dept": "asic",
+			"sections_avg": 76.95
+		},
+		{
+			"sections_title": "issues arts&sci",
+			"sections_id": "200",
+			"sections_dept": "asic",
+			"sections_avg": 76.95
+		},
+		{
+			"sections_title": "issues arts&sci",
+			"sections_id": "200",
+			"sections_dept": "asic",
+			"sections_avg": 77.1
+		},
+		{
+			"sections_title": "issues arts&sci",
+			"sections_id": "200",
+			"sections_dept": "asic",
+			"sections_avg": 77.14
+		},
+		{
+			"sections_title": "intr envrmnt sci",
+			"sections_id": "200",
+			"sections_dept": "envr",
+			"sections_avg": 77.14
+		},
+		{
+			"sections_title": "math modl in sci",
+			"sections_id": "360",
+			"sections_dept": "math",
+			"sections_avg": 77.23
+		},
+		{
+			"sections_title": "math modl in sci",
+			"sections_id": "360",
+			"sections_dept": "math",
+			"sections_avg": 77.23
+		},
+		{
+			"sections_title": "issues arts&sci",
+			"sections_id": "200",
+			"sections_dept": "asic",
+			"sections_avg": 77.36
+		},
+		{
+			"sections_title": "issues arts&sci",
+			"sections_id": "200",
+			"sections_dept": "asic",
+			"sections_avg": 77.36
+		},
+		{
+			"sections_title": "intr envrmnt sci",
+			"sections_id": "200",
+			"sections_dept": "envr",
+			"sections_avg": 77.38
+		},
+		{
+			"sections_title": "earth&planet sci",
+			"sections_id": "212",
+			"sections_dept": "eosc",
+			"sections_avg": 77.73
+		},
+		{
+			"sections_title": "earth&planet sci",
+			"sections_id": "212",
+			"sections_dept": "eosc",
+			"sections_avg": 77.73
+		},
+		{
+			"sections_title": "issues arts&sci",
+			"sections_id": "200",
+			"sections_dept": "asic",
+			"sections_avg": 77.84
+		},
+		{
+			"sections_title": "issues arts&sci",
+			"sections_id": "200",
+			"sections_dept": "asic",
+			"sections_avg": 77.84
+		},
+		{
+			"sections_title": "intr envrmnt sci",
+			"sections_id": "200",
+			"sections_dept": "envr",
+			"sections_avg": 77.98
+		},
+		{
+			"sections_title": "advances fd sci",
+			"sections_id": "510",
+			"sections_dept": "food",
+			"sections_avg": 78
+		},
+		{
+			"sections_title": "advances fd sci",
+			"sections_id": "510",
+			"sections_dept": "food",
+			"sections_avg": 78
+		},
+		{
+			"sections_title": "advances fd sci",
+			"sections_id": "510",
+			"sections_dept": "food",
+			"sections_avg": 78.43
+		},
+		{
+			"sections_title": "advances fd sci",
+			"sections_id": "510",
+			"sections_dept": "food",
+			"sections_avg": 78.43
+		},
+		{
+			"sections_title": "intr envrmnt sci",
+			"sections_id": "200",
+			"sections_dept": "envr",
+			"sections_avg": 78.52
+		},
+		{
+			"sections_title": "advances fd sci",
+			"sections_id": "510",
+			"sections_dept": "food",
+			"sections_avg": 78.55
+		},
+		{
+			"sections_title": "advances fd sci",
+			"sections_id": "510",
+			"sections_dept": "food",
+			"sections_avg": 78.55
+		},
+		{
+			"sections_title": "intr envrmnt sci",
+			"sections_id": "200",
+			"sections_dept": "envr",
+			"sections_avg": 78.76
+		},
+		{
+			"sections_title": "intr envrmnt sci",
+			"sections_id": "200",
+			"sections_dept": "envr",
+			"sections_avg": 78.79
+		},
+		{
+			"sections_title": "earth&planet sci",
+			"sections_id": "212",
+			"sections_dept": "eosc",
+			"sections_avg": 78.81
+		},
+		{
+			"sections_title": "earth&planet sci",
+			"sections_id": "212",
+			"sections_dept": "eosc",
+			"sections_avg": 78.81
+		},
+		{
+			"sections_title": "intr envrmnt sci",
+			"sections_id": "200",
+			"sections_dept": "envr",
+			"sections_avg": 78.82
+		},
+		{
+			"sections_title": "issues arts&sci",
+			"sections_id": "200",
+			"sections_dept": "asic",
+			"sections_avg": 78.9
+		},
+		{
+			"sections_title": "issues arts&sci",
+			"sections_id": "200",
+			"sections_dept": "asic",
+			"sections_avg": 78.9
+		},
+		{
+			"sections_title": "intr envrmnt sci",
+			"sections_id": "200",
+			"sections_dept": "envr",
+			"sections_avg": 78.9
+		},
+		{
+			"sections_title": "earth&planet sci",
+			"sections_id": "212",
+			"sections_dept": "eosc",
+			"sections_avg": 78.98
+		},
+		{
+			"sections_title": "earth&planet sci",
+			"sections_id": "212",
+			"sections_dept": "eosc",
+			"sections_avg": 78.98
+		},
+		{
+			"sections_title": "intr envrmnt sci",
+			"sections_id": "200",
+			"sections_dept": "envr",
+			"sections_avg": 79.06
+		},
+		{
+			"sections_title": "advances fd sci",
+			"sections_id": "510",
+			"sections_dept": "food",
+			"sections_avg": 79.35
+		},
+		{
+			"sections_title": "advances fd sci",
+			"sections_id": "510",
+			"sections_dept": "food",
+			"sections_avg": 79.35
+		},
+		{
+			"sections_title": "int res envr sci",
+			"sections_id": "300",
+			"sections_dept": "envr",
+			"sections_avg": 79.42
+		},
+		{
+			"sections_title": "int res envr sci",
+			"sections_id": "300",
+			"sections_dept": "envr",
+			"sections_avg": 79.42
+		},
+		{
+			"sections_title": "prin frst sci",
+			"sections_id": "303",
+			"sections_dept": "frst",
+			"sections_avg": 79.61
+		},
+		{
+			"sections_title": "prin frst sci",
+			"sections_id": "303",
+			"sections_dept": "frst",
+			"sections_avg": 79.61
+		},
+		{
+			"sections_title": "intr envrmnt sci",
+			"sections_id": "200",
+			"sections_dept": "envr",
+			"sections_avg": 79.94
+		},
+		{
+			"sections_title": "comptng life sci",
+			"sections_id": "301",
+			"sections_dept": "cpsc",
+			"sections_avg": 80.09
+		},
+		{
+			"sections_title": "comptng life sci",
+			"sections_id": "301",
+			"sections_dept": "cpsc",
+			"sections_avg": 80.09
+		},
+		{
+			"sections_title": "intr envrmnt sci",
+			"sections_id": "200",
+			"sections_dept": "envr",
+			"sections_avg": 80.38
+		},
+		{
+			"sections_title": "intr envrmnt sci",
+			"sections_id": "200",
+			"sections_dept": "envr",
+			"sections_avg": 80.4
+		},
+		{
+			"sections_title": "advances fd sci",
+			"sections_id": "510",
+			"sections_dept": "food",
+			"sections_avg": 80.5
+		},
+		{
+			"sections_title": "advances fd sci",
+			"sections_id": "510",
+			"sections_dept": "food",
+			"sections_avg": 80.5
+		},
+		{
+			"sections_title": "advances fd sci",
+			"sections_id": "510",
+			"sections_dept": "food",
+			"sections_avg": 80.53
+		},
+		{
+			"sections_title": "advances fd sci",
+			"sections_id": "510",
+			"sections_dept": "food",
+			"sections_avg": 80.53
+		},
+		{
+			"sections_title": "math modl in sci",
+			"sections_id": "360",
+			"sections_dept": "math",
+			"sections_avg": 80.73
+		},
+		{
+			"sections_title": "math modl in sci",
+			"sections_id": "360",
+			"sections_dept": "math",
+			"sections_avg": 80.73
+		},
+		{
+			"sections_title": "issues arts&sci",
+			"sections_id": "200",
+			"sections_dept": "asic",
+			"sections_avg": 80.79
+		},
+		{
+			"sections_title": "issues arts&sci",
+			"sections_id": "200",
+			"sections_dept": "asic",
+			"sections_avg": 80.79
+		},
+		{
+			"sections_title": "int res envr sci",
+			"sections_id": "300",
+			"sections_dept": "envr",
+			"sections_avg": 80.83
+		},
+		{
+			"sections_title": "int res envr sci",
+			"sections_id": "300",
+			"sections_dept": "envr",
+			"sections_avg": 80.83
+		},
+		{
+			"sections_title": "earth&planet sci",
+			"sections_id": "212",
+			"sections_dept": "eosc",
+			"sections_avg": 80.86
+		},
+		{
+			"sections_title": "earth&planet sci",
+			"sections_id": "212",
+			"sections_dept": "eosc",
+			"sections_avg": 80.86
+		},
+		{
+			"sections_title": "earth&planet sci",
+			"sections_id": "212",
+			"sections_dept": "eosc",
+			"sections_avg": 80.88
+		},
+		{
+			"sections_title": "earth&planet sci",
+			"sections_id": "212",
+			"sections_dept": "eosc",
+			"sections_avg": 80.88
+		},
+		{
+			"sections_title": "meths nurs sci",
+			"sections_id": "552",
+			"sections_dept": "nurs",
+			"sections_avg": 80.92
+		},
+		{
+			"sections_title": "meths nurs sci",
+			"sections_id": "552",
+			"sections_dept": "nurs",
+			"sections_avg": 80.92
+		},
+		{
+			"sections_title": "int res envr sci",
+			"sections_id": "300",
+			"sections_dept": "envr",
+			"sections_avg": 80.98
+		},
+		{
+			"sections_title": "int res envr sci",
+			"sections_id": "300",
+			"sections_dept": "envr",
+			"sections_avg": 80.98
+		},
+		{
+			"sections_title": "advances fd sci",
+			"sections_id": "510",
+			"sections_dept": "food",
+			"sections_avg": 81.2
+		},
+		{
+			"sections_title": "advances fd sci",
+			"sections_id": "510",
+			"sections_dept": "food",
+			"sections_avg": 81.2
+		},
+		{
+			"sections_title": "prin frst sci",
+			"sections_id": "303",
+			"sections_dept": "frst",
+			"sections_avg": 81.59
+		},
+		{
+			"sections_title": "prin frst sci",
+			"sections_id": "303",
+			"sections_dept": "frst",
+			"sections_avg": 81.59
+		},
+		{
+			"sections_title": "adv rsr beh sci",
+			"sections_id": "359",
+			"sections_dept": "psyc",
+			"sections_avg": 81.64
+		},
+		{
+			"sections_title": "adv rsr beh sci",
+			"sections_id": "359",
+			"sections_dept": "psyc",
+			"sections_avg": 81.64
+		},
+		{
+			"sections_title": "intr envrmnt sci",
+			"sections_id": "200",
+			"sections_dept": "envr",
+			"sections_avg": 81.65
+		},
+		{
+			"sections_title": "intr envrmnt sci",
+			"sections_id": "200",
+			"sections_dept": "envr",
+			"sections_avg": 81.65
+		},
+		{
+			"sections_title": "int res envr sci",
+			"sections_id": "300",
+			"sections_dept": "envr",
+			"sections_avg": 81.65
+		},
+		{
+			"sections_title": "int res envr sci",
+			"sections_id": "300",
+			"sections_dept": "envr",
+			"sections_avg": 81.65
+		},
+		{
+			"sections_title": "math modl in sci",
+			"sections_id": "360",
+			"sections_dept": "math",
+			"sections_avg": 81.67
+		},
+		{
+			"sections_title": "math modl in sci",
+			"sections_id": "360",
+			"sections_dept": "math",
+			"sections_avg": 81.67
+		},
+		{
+			"sections_title": "meths nurs sci",
+			"sections_id": "552",
+			"sections_dept": "nurs",
+			"sections_avg": 81.7
+		},
+		{
+			"sections_title": "tech math sci",
+			"sections_id": "533",
+			"sections_dept": "etec",
+			"sections_avg": 81.83
+		},
+		{
+			"sections_title": "tech math sci",
+			"sections_id": "533",
+			"sections_dept": "etec",
+			"sections_avg": 81.88
+		},
+		{
+			"sections_title": "tech math sci",
+			"sections_id": "533",
+			"sections_dept": "etec",
+			"sections_avg": 81.88
+		},
+		{
+			"sections_title": "tech math sci",
+			"sections_id": "533",
+			"sections_dept": "etec",
+			"sections_avg": 82.03
+		},
+		{
+			"sections_title": "comptng life sci",
+			"sections_id": "301",
+			"sections_dept": "cpsc",
+			"sections_avg": 82.05
+		},
+		{
+			"sections_title": "comptng life sci",
+			"sections_id": "301",
+			"sections_dept": "cpsc",
+			"sections_avg": 82.05
+		},
+		{
+			"sections_title": "advances fd sci",
+			"sections_id": "510",
+			"sections_dept": "food",
+			"sections_avg": 82.07
+		},
+		{
+			"sections_title": "advances fd sci",
+			"sections_id": "510",
+			"sections_dept": "food",
+			"sections_avg": 82.07
+		},
+		{
+			"sections_title": "intr envrmnt sci",
+			"sections_id": "200",
+			"sections_dept": "envr",
+			"sections_avg": 82.18
+		},
+		{
+			"sections_title": "tech math sci",
+			"sections_id": "533",
+			"sections_dept": "etec",
+			"sections_avg": 82.22
+		},
+		{
+			"sections_title": "comptng life sci",
+			"sections_id": "301",
+			"sections_dept": "cpsc",
+			"sections_avg": 82.39
+		},
+		{
+			"sections_title": "comptng life sci",
+			"sections_id": "301",
+			"sections_dept": "cpsc",
+			"sections_avg": 82.39
+		},
+		{
+			"sections_title": "teach life sci",
+			"sections_id": "535",
+			"sections_dept": "biol",
+			"sections_avg": 82.43
+		},
+		{
+			"sections_title": "teach life sci",
+			"sections_id": "535",
+			"sections_dept": "biol",
+			"sections_avg": 82.43
+		},
+		{
+			"sections_title": "adv rsr beh sci",
+			"sections_id": "359",
+			"sections_dept": "psyc",
+			"sections_avg": 82.57
+		},
+		{
+			"sections_title": "adv rsr beh sci",
+			"sections_id": "359",
+			"sections_dept": "psyc",
+			"sections_avg": 82.57
+		},
+		{
+			"sections_title": "meths nurs sci",
+			"sections_id": "552",
+			"sections_dept": "nurs",
+			"sections_avg": 82.67
+		},
+		{
+			"sections_title": "adv rsr beh sci",
+			"sections_id": "359",
+			"sections_dept": "psyc",
+			"sections_avg": 82.75
+		},
+		{
+			"sections_title": "adv rsr beh sci",
+			"sections_id": "359",
+			"sections_dept": "psyc",
+			"sections_avg": 82.75
+		},
+		{
+			"sections_title": "cmnty pr env sci",
+			"sections_id": "400",
+			"sections_dept": "envr",
+			"sections_avg": 82.88
+		},
+		{
+			"sections_title": "cmnty pr env sci",
+			"sections_id": "400",
+			"sections_dept": "envr",
+			"sections_avg": 82.88
+		},
+		{
+			"sections_title": "int res envr sci",
+			"sections_id": "300",
+			"sections_dept": "envr",
+			"sections_avg": 82.93
+		},
+		{
+			"sections_title": "int res envr sci",
+			"sections_id": "300",
+			"sections_dept": "envr",
+			"sections_avg": 82.93
+		},
+		{
+			"sections_title": "meths nurs sci",
+			"sections_id": "552",
+			"sections_dept": "nurs",
+			"sections_avg": 82.94
+		},
+		{
+			"sections_title": "comptng life sci",
+			"sections_id": "301",
+			"sections_dept": "cpsc",
+			"sections_avg": 82.99
+		},
+		{
+			"sections_title": "comptng life sci",
+			"sections_id": "301",
+			"sections_dept": "cpsc",
+			"sections_avg": 82.99
+		},
+		{
+			"sections_title": "cmnty pr env sci",
+			"sections_id": "400",
+			"sections_dept": "envr",
+			"sections_avg": 83.03
+		},
+		{
+			"sections_title": "cmnty pr env sci",
+			"sections_id": "400",
+			"sections_dept": "envr",
+			"sections_avg": 83.03
+		},
+		{
+			"sections_title": "meths nurs sci",
+			"sections_id": "552",
+			"sections_dept": "nurs",
+			"sections_avg": 83.04
+		},
+		{
+			"sections_title": "advances fd sci",
+			"sections_id": "510",
+			"sections_dept": "food",
+			"sections_avg": 83.11
+		},
+		{
+			"sections_title": "advances fd sci",
+			"sections_id": "510",
+			"sections_dept": "food",
+			"sections_avg": 83.11
+		},
+		{
+			"sections_title": "earth&planet sci",
+			"sections_id": "212",
+			"sections_dept": "eosc",
+			"sections_avg": 83.21
+		},
+		{
+			"sections_title": "earth&planet sci",
+			"sections_id": "212",
+			"sections_dept": "eosc",
+			"sections_avg": 83.21
+		},
+		{
+			"sections_title": "tech math sci",
+			"sections_id": "533",
+			"sections_dept": "etec",
+			"sections_avg": 83.24
+		},
+		{
+			"sections_title": "tech math sci",
+			"sections_id": "533",
+			"sections_dept": "etec",
+			"sections_avg": 83.24
+		},
+		{
+			"sections_title": "meths nurs sci",
+			"sections_id": "552",
+			"sections_dept": "nurs",
+			"sections_avg": 83.37
+		},
+		{
+			"sections_title": "meths nurs sci",
+			"sections_id": "552",
+			"sections_dept": "nurs",
+			"sections_avg": 83.68
+		},
+		{
+			"sections_title": "meths nurs sci",
+			"sections_id": "552",
+			"sections_dept": "nurs",
+			"sections_avg": 83.75
+		},
+		{
+			"sections_title": "meths nurs sci",
+			"sections_id": "552",
+			"sections_dept": "nurs",
+			"sections_avg": 83.75
+		},
+		{
+			"sections_title": "meths nurs sci",
+			"sections_id": "552",
+			"sections_dept": "nurs",
+			"sections_avg": 83.75
+		},
+		{
+			"sections_title": "adv rsr beh sci",
+			"sections_id": "359",
+			"sections_dept": "psyc",
+			"sections_avg": 83.75
+		},
+		{
+			"sections_title": "adv rsr beh sci",
+			"sections_id": "359",
+			"sections_dept": "psyc",
+			"sections_avg": 83.75
+		},
+		{
+			"sections_title": "intr envrmnt sci",
+			"sections_id": "200",
+			"sections_dept": "envr",
+			"sections_avg": 83.88
+		},
+		{
+			"sections_title": "teach life sci",
+			"sections_id": "535",
+			"sections_dept": "biol",
+			"sections_avg": 83.89
+		},
+		{
+			"sections_title": "teach life sci",
+			"sections_id": "535",
+			"sections_dept": "biol",
+			"sections_avg": 83.89
+		},
+		{
+			"sections_title": "int res envr sci",
+			"sections_id": "300",
+			"sections_dept": "envr",
+			"sections_avg": 83.93
+		},
+		{
+			"sections_title": "int res envr sci",
+			"sections_id": "300",
+			"sections_dept": "envr",
+			"sections_avg": 83.93
+		},
+		{
+			"sections_title": "earth&planet sci",
+			"sections_id": "212",
+			"sections_dept": "eosc",
+			"sections_avg": 83.93
+		},
+		{
+			"sections_title": "earth&planet sci",
+			"sections_id": "212",
+			"sections_dept": "eosc",
+			"sections_avg": 83.93
+		},
+		{
+			"sections_title": "meths nurs sci",
+			"sections_id": "552",
+			"sections_dept": "nurs",
+			"sections_avg": 83.93
+		},
+		{
+			"sections_title": "teach life sci",
+			"sections_id": "535",
+			"sections_dept": "biol",
+			"sections_avg": 84
+		},
+		{
+			"sections_title": "teach life sci",
+			"sections_id": "535",
+			"sections_dept": "biol",
+			"sections_avg": 84
+		},
+		{
+			"sections_title": "meths nurs sci",
+			"sections_id": "552",
+			"sections_dept": "nurs",
+			"sections_avg": 84.16
+		},
+		{
+			"sections_title": "meths nurs sci",
+			"sections_id": "552",
+			"sections_dept": "nurs",
+			"sections_avg": 84.32
+		},
+		{
+			"sections_title": "rsrc prj env sci",
+			"sections_id": "400",
+			"sections_dept": "envr",
+			"sections_avg": 84.52
+		},
+		{
+			"sections_title": "rsrc prj env sci",
+			"sections_id": "400",
+			"sections_dept": "envr",
+			"sections_avg": 84.52
+		},
+		{
+			"sections_title": "meths nurs sci",
+			"sections_id": "552",
+			"sections_dept": "nurs",
+			"sections_avg": 84.53
+		},
+		{
+			"sections_title": "adv fld&soil sci",
+			"sections_id": "503",
+			"sections_dept": "soil",
+			"sections_avg": 84.57
+		},
+		{
+			"sections_title": "adv fld&soil sci",
+			"sections_id": "503",
+			"sections_dept": "soil",
+			"sections_avg": 84.57
+		},
+		{
+			"sections_title": "prin frst sci",
+			"sections_id": "303",
+			"sections_dept": "frst",
+			"sections_avg": 84.7
+		},
+		{
+			"sections_title": "prin frst sci",
+			"sections_id": "303",
+			"sections_dept": "frst",
+			"sections_avg": 84.7
+		},
+		{
+			"sections_title": "rsrc prj env sci",
+			"sections_id": "400",
+			"sections_dept": "envr",
+			"sections_avg": 84.95
+		},
+		{
+			"sections_title": "rsrc prj env sci",
+			"sections_id": "400",
+			"sections_dept": "envr",
+			"sections_avg": 84.95
+		},
+		{
+			"sections_title": "meths nurs sci",
+			"sections_id": "552",
+			"sections_dept": "nurs",
+			"sections_avg": 85.03
+		},
+		{
+			"sections_title": "solid earth sci",
+			"sections_id": "543",
+			"sections_dept": "eosc",
+			"sections_avg": 85.1
+		},
+		{
+			"sections_title": "solid earth sci",
+			"sections_id": "543",
+			"sections_dept": "eosc",
+			"sections_avg": 85.1
+		},
+		{
+			"sections_title": "meths nurs sci",
+			"sections_id": "552",
+			"sections_dept": "nurs",
+			"sections_avg": 85.15
+		},
+		{
+			"sections_title": "meths nurs sci",
+			"sections_id": "552",
+			"sections_dept": "nurs",
+			"sections_avg": 85.18
+		},
+		{
+			"sections_title": "meths nurs sci",
+			"sections_id": "552",
+			"sections_dept": "nurs",
+			"sections_avg": 85.31
+		},
+		{
+			"sections_title": "meths nurs sci",
+			"sections_id": "552",
+			"sections_dept": "nurs",
+			"sections_avg": 85.31
+		},
+		{
+			"sections_title": "tech math sci",
+			"sections_id": "533",
+			"sections_dept": "etec",
+			"sections_avg": 85.52
+		},
+		{
+			"sections_title": "tech math sci",
+			"sections_id": "533",
+			"sections_dept": "etec",
+			"sections_avg": 85.52
+		},
+		{
+			"sections_title": "teach life sci",
+			"sections_id": "535",
+			"sections_dept": "biol",
+			"sections_avg": 86
+		},
+		{
+			"sections_title": "teach life sci",
+			"sections_id": "535",
+			"sections_dept": "biol",
+			"sections_avg": 86
+		},
+		{
+			"sections_title": "rsrc prj env sci",
+			"sections_id": "400",
+			"sections_dept": "envr",
+			"sections_avg": 86
+		},
+		{
+			"sections_title": "rsrc prj env sci",
+			"sections_id": "400",
+			"sections_dept": "envr",
+			"sections_avg": 86
+		},
+		{
+			"sections_title": "adv rsr beh sci",
+			"sections_id": "359",
+			"sections_dept": "psyc",
+			"sections_avg": 86.12
+		},
+		{
+			"sections_title": "adv rsr beh sci",
+			"sections_id": "359",
+			"sections_dept": "psyc",
+			"sections_avg": 86.12
+		},
+		{
+			"sections_title": "meths nurs sci",
+			"sections_id": "552",
+			"sections_dept": "nurs",
+			"sections_avg": 86.17
+		},
+		{
+			"sections_title": "adv rsr beh sci",
+			"sections_id": "359",
+			"sections_dept": "psyc",
+			"sections_avg": 86.2
+		},
+		{
+			"sections_title": "adv rsr beh sci",
+			"sections_id": "359",
+			"sections_dept": "psyc",
+			"sections_avg": 86.2
+		},
+		{
+			"sections_title": "adv rsr beh sci",
+			"sections_id": "359",
+			"sections_dept": "psyc",
+			"sections_avg": 86.23
+		},
+		{
+			"sections_title": "adv rsr beh sci",
+			"sections_id": "359",
+			"sections_dept": "psyc",
+			"sections_avg": 86.23
+		},
+		{
+			"sections_title": "comptng life sci",
+			"sections_id": "301",
+			"sections_dept": "cpsc",
+			"sections_avg": 86.34
+		},
+		{
+			"sections_title": "comptng life sci",
+			"sections_id": "301",
+			"sections_dept": "cpsc",
+			"sections_avg": 86.34
+		},
+		{
+			"sections_title": "adv rsr beh sci",
+			"sections_id": "359",
+			"sections_dept": "psyc",
+			"sections_avg": 86.65
+		},
+		{
+			"sections_title": "adv rsr beh sci",
+			"sections_id": "359",
+			"sections_dept": "psyc",
+			"sections_avg": 86.65
+		},
+		{
+			"sections_title": "teach life sci",
+			"sections_id": "535",
+			"sections_dept": "biol",
+			"sections_avg": 86.75
+		},
+		{
+			"sections_title": "teach life sci",
+			"sections_id": "535",
+			"sections_dept": "biol",
+			"sections_avg": 86.75
+		},
+		{
+			"sections_title": "adv rsr beh sci",
+			"sections_id": "359",
+			"sections_dept": "psyc",
+			"sections_avg": 87.03
+		},
+		{
+			"sections_title": "adv rsr beh sci",
+			"sections_id": "359",
+			"sections_dept": "psyc",
+			"sections_avg": 87.03
+		},
+		{
+			"sections_title": "rsrc prj env sci",
+			"sections_id": "400",
+			"sections_dept": "envr",
+			"sections_avg": 87.29
+		},
+		{
+			"sections_title": "rsrc prj env sci",
+			"sections_id": "400",
+			"sections_dept": "envr",
+			"sections_avg": 87.29
+		},
+		{
+			"sections_title": "comptng life sci",
+			"sections_id": "301",
+			"sections_dept": "cpsc",
+			"sections_avg": 88
+		},
+		{
+			"sections_title": "comptng life sci",
+			"sections_id": "301",
+			"sections_dept": "cpsc",
+			"sections_avg": 88
+		},
+		{
+			"sections_title": "teach life sci",
+			"sections_id": "535",
+			"sections_dept": "biol",
+			"sections_avg": 88.83
+		},
+		{
+			"sections_title": "teach life sci",
+			"sections_id": "535",
+			"sections_dept": "biol",
+			"sections_avg": 88.83
+		},
+		{
+			"sections_title": "adv fld&soil sci",
+			"sections_id": "503",
+			"sections_dept": "soil",
+			"sections_avg": 89.67
+		},
+		{
+			"sections_title": "adv fld&soil sci",
+			"sections_id": "503",
+			"sections_dept": "soil",
+			"sections_avg": 89.67
+		},
+		{
+			"sections_title": "tech math sci",
+			"sections_id": "533",
+			"sections_dept": "etec",
+			"sections_avg": 91.74
+		},
+		{
+			"sections_title": "tech math sci",
+			"sections_id": "533",
+			"sections_dept": "etec",
+			"sections_avg": 91.74
+		},
+		{
+			"sections_title": "solid earth sci",
+			"sections_id": "543",
+			"sections_dept": "eosc",
+			"sections_avg": 92.5
+		},
+		{
+			"sections_title": "solid earth sci",
+			"sections_id": "543",
+			"sections_dept": "eosc",
+			"sections_avg": 92.5
+		},
+		{
+			"sections_title": "tech math sci",
+			"sections_id": "533",
+			"sections_dept": "etec",
+			"sections_avg": 93.95
+		},
+		{
+			"sections_title": "tech math sci",
+			"sections_id": "533",
+			"sections_dept": "etec",
+			"sections_avg": 93.95
+		},
+		{
+			"sections_title": "tech math sci",
+			"sections_id": "533",
+			"sections_dept": "etec",
+			"sections_avg": 95.19
+		},
+		{
+			"sections_title": "tech math sci",
+			"sections_id": "533",
+			"sections_dept": "etec",
+			"sections_avg": 95.19
+		},
+		{
+			"sections_title": "tech math sci",
+			"sections_id": "533",
+			"sections_dept": "etec",
+			"sections_avg": 95.96
+		},
+		{
+			"sections_title": "tech math sci",
+			"sections_id": "533",
+			"sections_dept": "etec",
+			"sections_avg": 95.96
+		}
+	]
+}
