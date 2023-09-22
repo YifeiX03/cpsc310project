@@ -1,0 +1,19 @@
+{
+	"title": "should fail 19",
+	"input": {
+		"WHERE": {
+			"OR": [
+				1,
+				2
+			]
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_dept"
+			],
+			"ORDER": "sections_dept"
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

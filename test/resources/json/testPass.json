@@ -1,0 +1,1176 @@
+{
+	"title": "test pass",
+	"input": {
+		"WHERE": {
+			"EQ": {
+				"sections_pass": 90
+			}
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_dept",
+				"sections_avg",
+				"sections_uuid",
+				"sections_title",
+				"sections_instructor",
+				"sections_id"
+			],
+			"ORDER": "sections_avg"
+		}
+	},
+	"errorExpected": false,
+	"expected": [
+		{
+			"sections_dept": "chem",
+			"sections_avg": 55.31,
+			"sections_uuid": "64829",
+			"sections_title": "intr quantm mech",
+			"sections_instructor": "wang, yan",
+			"sections_id": "312"
+		},
+		{
+			"sections_dept": "chem",
+			"sections_avg": 55.31,
+			"sections_uuid": "64830",
+			"sections_title": "intr quantm mech",
+			"sections_instructor": "",
+			"sections_id": "312"
+		},
+		{
+			"sections_dept": "math",
+			"sections_avg": 64.11,
+			"sections_uuid": "29728",
+			"sections_title": "int calc ap lf s",
+			"sections_instructor": "",
+			"sections_id": "103"
+		},
+		{
+			"sections_dept": "chem",
+			"sections_avg": 64.45,
+			"sections_uuid": "64811",
+			"sections_title": "org chem engneer",
+			"sections_instructor": "tanner, martin",
+			"sections_id": "260"
+		},
+		{
+			"sections_dept": "chem",
+			"sections_avg": 64.45,
+			"sections_uuid": "64812",
+			"sections_title": "org chem engneer",
+			"sections_instructor": "",
+			"sections_id": "260"
+		},
+		{
+			"sections_dept": "chem",
+			"sections_avg": 65.75,
+			"sections_uuid": "82175",
+			"sections_title": "intr quantm mech",
+			"sections_instructor": "burnell, e elliott",
+			"sections_id": "312"
+		},
+		{
+			"sections_dept": "chem",
+			"sections_avg": 65.75,
+			"sections_uuid": "82176",
+			"sections_title": "intr quantm mech",
+			"sections_instructor": "",
+			"sections_id": "312"
+		},
+		{
+			"sections_dept": "psyc",
+			"sections_avg": 65.97,
+			"sections_uuid": "89735",
+			"sections_title": "cultural psych",
+			"sections_instructor": "heine, steven",
+			"sections_id": "307"
+		},
+		{
+			"sections_dept": "phil",
+			"sections_avg": 66.01,
+			"sections_uuid": "49156",
+			"sections_title": "intro philosophy",
+			"sections_instructor": "margolis, eric",
+			"sections_id": "101"
+		},
+		{
+			"sections_dept": "asia",
+			"sections_avg": 66.38,
+			"sections_uuid": "4467",
+			"sections_title": "chinese cinema",
+			"sections_instructor": "rea, christopher",
+			"sections_id": "355"
+		},
+		{
+			"sections_dept": "frst",
+			"sections_avg": 66.42,
+			"sections_uuid": "89532",
+			"sections_title": "for plant bio i",
+			"sections_instructor": "aitken, sally;guy, robert",
+			"sections_id": "200"
+		},
+		{
+			"sections_dept": "frst",
+			"sections_avg": 66.42,
+			"sections_uuid": "89533",
+			"sections_title": "for plant bio i",
+			"sections_instructor": "",
+			"sections_id": "200"
+		},
+		{
+			"sections_dept": "math",
+			"sections_avg": 67.06,
+			"sections_uuid": "5247",
+			"sections_title": "diff equations",
+			"sections_instructor": "frigaard, ian",
+			"sections_id": "256"
+		},
+		{
+			"sections_dept": "frst",
+			"sections_avg": 67.48,
+			"sections_uuid": "34868",
+			"sections_title": "for plant bio i",
+			"sections_instructor": "guy, robert",
+			"sections_id": "200"
+		},
+		{
+			"sections_dept": "frst",
+			"sections_avg": 67.48,
+			"sections_uuid": "34869",
+			"sections_title": "for plant bio i",
+			"sections_instructor": "",
+			"sections_id": "200"
+		},
+		{
+			"sections_dept": "psyc",
+			"sections_avg": 67.66,
+			"sections_uuid": "54747",
+			"sections_title": "childhood & adol",
+			"sections_instructor": "baron, andrew",
+			"sections_id": "315"
+		},
+		{
+			"sections_dept": "math",
+			"sections_avg": 68.03,
+			"sections_uuid": "73017",
+			"sections_title": "multivrbl calc",
+			"sections_instructor": "loewen, philip",
+			"sections_id": "253"
+		},
+		{
+			"sections_dept": "psyc",
+			"sections_avg": 68.03,
+			"sections_uuid": "89697",
+			"sections_title": "analys beh data",
+			"sections_instructor": "hall, david geoffrey",
+			"sections_id": "218"
+		},
+		{
+			"sections_dept": "civl",
+			"sections_avg": 68.04,
+			"sections_uuid": "10731",
+			"sections_title": "soil mech i",
+			"sections_instructor": "fannin, r jonathan;taiebat, mahdi",
+			"sections_id": "210"
+		},
+		{
+			"sections_dept": "psyc",
+			"sections_avg": 68.35,
+			"sections_uuid": "89694",
+			"sections_title": "analys beh data",
+			"sections_instructor": "scratchley, linda",
+			"sections_id": "218"
+		},
+		{
+			"sections_dept": "psyc",
+			"sections_avg": 68.57,
+			"sections_uuid": "78100",
+			"sections_title": "analys beh data",
+			"sections_instructor": "chen, frances",
+			"sections_id": "218"
+		},
+		{
+			"sections_dept": "eosc",
+			"sections_avg": 68.85,
+			"sections_uuid": "82846",
+			"sections_title": "intro petrology",
+			"sections_instructor": "",
+			"sections_id": "221"
+		},
+		{
+			"sections_dept": "eosc",
+			"sections_avg": 68.85,
+			"sections_uuid": "82847",
+			"sections_title": "intro petrology",
+			"sections_instructor": "",
+			"sections_id": "221"
+		},
+		{
+			"sections_dept": "biol",
+			"sections_avg": 69.04,
+			"sections_uuid": "87835",
+			"sections_title": "molecular gen",
+			"sections_instructor": "berezowsky, craig m s",
+			"sections_id": "335"
+		},
+		{
+			"sections_dept": "biol",
+			"sections_avg": 69.04,
+			"sections_uuid": "87836",
+			"sections_title": "molecular gen",
+			"sections_instructor": "",
+			"sections_id": "335"
+		},
+		{
+			"sections_dept": "busi",
+			"sections_avg": 69.15,
+			"sections_uuid": "16815",
+			"sections_title": "mic fnd rl es ec",
+			"sections_instructor": "",
+			"sections_id": "100"
+		},
+		{
+			"sections_dept": "math",
+			"sections_avg": 69.21,
+			"sections_uuid": "29723",
+			"sections_title": "int calc ap lf s",
+			"sections_instructor": "",
+			"sections_id": "103"
+		},
+		{
+			"sections_dept": "phil",
+			"sections_avg": 69.28,
+			"sections_uuid": "43689",
+			"sections_title": "intro to phil",
+			"sections_instructor": "abaci, uygar",
+			"sections_id": "100"
+		},
+		{
+			"sections_dept": "econ",
+			"sections_avg": 69.39,
+			"sections_uuid": "19543",
+			"sections_title": "econ of envirnmt",
+			"sections_instructor": "",
+			"sections_id": "371"
+		},
+		{
+			"sections_dept": "econ",
+			"sections_avg": 69.39,
+			"sections_uuid": "19544",
+			"sections_title": "econ of envirnmt",
+			"sections_instructor": "",
+			"sections_id": "371"
+		},
+		{
+			"sections_dept": "cpsc",
+			"sections_avg": 69.6,
+			"sections_uuid": "61095",
+			"sections_title": "sftwr constructn",
+			"sections_instructor": "murphy, gail",
+			"sections_id": "210"
+		},
+		{
+			"sections_dept": "math",
+			"sections_avg": 69.6,
+			"sections_uuid": "34104",
+			"sections_title": "intr stoch proc",
+			"sections_instructor": "brydges, david",
+			"sections_id": "303"
+		},
+		{
+			"sections_dept": "math",
+			"sections_avg": 69.6,
+			"sections_uuid": "34105",
+			"sections_title": "intr stoch proc",
+			"sections_instructor": "",
+			"sections_id": "303"
+		},
+		{
+			"sections_dept": "psyc",
+			"sections_avg": 69.68,
+			"sections_uuid": "66508",
+			"sections_title": "childhood & adol",
+			"sections_instructor": "",
+			"sections_id": "315"
+		},
+		{
+			"sections_dept": "math",
+			"sections_avg": 69.76,
+			"sections_uuid": "29832",
+			"sections_title": "matrix algebra",
+			"sections_instructor": "",
+			"sections_id": "221"
+		},
+		{
+			"sections_dept": "econ",
+			"sections_avg": 69.86,
+			"sections_uuid": "21894",
+			"sections_title": "prncpls micrecon",
+			"sections_instructor": "mcintyre, gerald",
+			"sections_id": "101"
+		},
+		{
+			"sections_dept": "busi",
+			"sections_avg": 69.88,
+			"sections_uuid": "50655",
+			"sections_title": "intr busnss law",
+			"sections_instructor": "meredith, deborah",
+			"sections_id": "393"
+		},
+		{
+			"sections_dept": "geob",
+			"sections_avg": 70.32,
+			"sections_uuid": "65339",
+			"sections_title": "atmos environs",
+			"sections_instructor": "hamdan, khaled;mckendry, ian",
+			"sections_id": "200"
+		},
+		{
+			"sections_dept": "geob",
+			"sections_avg": 70.32,
+			"sections_uuid": "65340",
+			"sections_title": "atmos environs",
+			"sections_instructor": "",
+			"sections_id": "200"
+		},
+		{
+			"sections_dept": "psyc",
+			"sections_avg": 70.34,
+			"sections_uuid": "25654",
+			"sections_title": "soci:media cont",
+			"sections_instructor": "macbeth, tannis",
+			"sections_id": "325"
+		},
+		{
+			"sections_dept": "mech",
+			"sections_avg": 70.49,
+			"sections_uuid": "9717",
+			"sections_title": "mech of material",
+			"sections_instructor": "saunders, james edward",
+			"sections_id": "260"
+		},
+		{
+			"sections_dept": "psyc",
+			"sections_avg": 70.55,
+			"sections_uuid": "31487",
+			"sections_title": "childhood & adol",
+			"sections_instructor": "king, mary ann",
+			"sections_id": "315"
+		},
+		{
+			"sections_dept": "psyc",
+			"sections_avg": 70.64,
+			"sections_uuid": "54679",
+			"sections_title": "rsrch mthds",
+			"sections_instructor": "mikami, amori",
+			"sections_id": "217"
+		},
+		{
+			"sections_dept": "psyc",
+			"sections_avg": 70.8,
+			"sections_uuid": "25633",
+			"sections_title": "health psycholgy",
+			"sections_instructor": "preece, melady",
+			"sections_id": "314"
+		},
+		{
+			"sections_dept": "comm",
+			"sections_avg": 70.84,
+			"sections_uuid": "47794",
+			"sections_title": "financial acctng",
+			"sections_instructor": "sinclair, scott",
+			"sections_id": "293"
+		},
+		{
+			"sections_dept": "comm",
+			"sections_avg": 70.84,
+			"sections_uuid": "47795",
+			"sections_title": "financial acctng",
+			"sections_instructor": "",
+			"sections_id": "293"
+		},
+		{
+			"sections_dept": "ital",
+			"sections_avg": 70.87,
+			"sections_uuid": "5092",
+			"sections_title": "1st yr ital ii",
+			"sections_instructor": "",
+			"sections_id": "102"
+		},
+		{
+			"sections_dept": "psyc",
+			"sections_avg": 70.9,
+			"sections_uuid": "27827",
+			"sections_title": "rsrch mthds",
+			"sections_instructor": "savalei, victoria",
+			"sections_id": "217"
+		},
+		{
+			"sections_dept": "math",
+			"sections_avg": 71.02,
+			"sections_uuid": "5223",
+			"sections_title": "matrix algebra",
+			"sections_instructor": "vatsal, vinayak",
+			"sections_id": "221"
+		},
+		{
+			"sections_dept": "eosc",
+			"sections_avg": 71.07,
+			"sections_uuid": "17735",
+			"sections_title": "erth&life th tme",
+			"sections_instructor": "longridge, louise",
+			"sections_id": "326"
+		},
+		{
+			"sections_dept": "comm",
+			"sections_avg": 71.19,
+			"sections_uuid": "96385",
+			"sections_title": "intro to finance",
+			"sections_instructor": "freedman, ruth;graham, brian",
+			"sections_id": "298"
+		},
+		{
+			"sections_dept": "comm",
+			"sections_avg": 71.24,
+			"sections_uuid": "71222",
+			"sections_title": "managerial econ",
+			"sections_instructor": "thiele, veikko",
+			"sections_id": "295"
+		},
+		{
+			"sections_dept": "psyc",
+			"sections_avg": 71.24,
+			"sections_uuid": "25655",
+			"sections_title": "soci:media cont",
+			"sections_instructor": "macbeth, tannis",
+			"sections_id": "325"
+		},
+		{
+			"sections_dept": "hist",
+			"sections_avg": 71.39,
+			"sections_uuid": "38394",
+			"sections_title": "int rel grt pwrs",
+			"sections_instructor": "",
+			"sections_id": "432"
+		},
+		{
+			"sections_dept": "eosc",
+			"sections_avg": 71.48,
+			"sections_uuid": "2404",
+			"sections_title": "ocean environmnt",
+			"sections_instructor": "ver, leah may",
+			"sections_id": "314"
+		},
+		{
+			"sections_dept": "biol",
+			"sections_avg": 71.59,
+			"sections_uuid": "87151",
+			"sections_title": "fund cell bio",
+			"sections_instructor": "young, robin",
+			"sections_id": "200"
+		},
+		{
+			"sections_dept": "math",
+			"sections_avg": 71.61,
+			"sections_uuid": "72937",
+			"sections_title": "int calc ap c&ss",
+			"sections_instructor": "guigue, alexis",
+			"sections_id": "105"
+		},
+		{
+			"sections_dept": "geob",
+			"sections_avg": 71.74,
+			"sections_uuid": "44637",
+			"sections_title": "atmos environs",
+			"sections_instructor": "mckendry, ian",
+			"sections_id": "200"
+		},
+		{
+			"sections_dept": "geob",
+			"sections_avg": 71.74,
+			"sections_uuid": "44638",
+			"sections_title": "atmos environs",
+			"sections_instructor": "",
+			"sections_id": "200"
+		},
+		{
+			"sections_dept": "cpsc",
+			"sections_avg": 71.97,
+			"sections_uuid": "61154",
+			"sections_title": "adv rel databse",
+			"sections_instructor": "",
+			"sections_id": "404"
+		},
+		{
+			"sections_dept": "phil",
+			"sections_avg": 72.21,
+			"sections_uuid": "33170",
+			"sections_title": "intro to phil",
+			"sections_instructor": "irvine, andrew",
+			"sections_id": "100"
+		},
+		{
+			"sections_dept": "phys",
+			"sections_avg": 72.28,
+			"sections_uuid": "82044",
+			"sections_title": "elec light & rad",
+			"sections_instructor": "",
+			"sections_id": "102"
+		},
+		{
+			"sections_dept": "phys",
+			"sections_avg": 72.28,
+			"sections_uuid": "82045",
+			"sections_title": "elec light & rad",
+			"sections_instructor": "",
+			"sections_id": "102"
+		},
+		{
+			"sections_dept": "fnh",
+			"sections_avg": 72.29,
+			"sections_uuid": "11716",
+			"sections_title": "nutr conc & cont",
+			"sections_instructor": "",
+			"sections_id": "250"
+		},
+		{
+			"sections_dept": "kin",
+			"sections_avg": 72.33,
+			"sections_uuid": "3065",
+			"sections_title": "intr stats kin",
+			"sections_instructor": "",
+			"sections_id": "371"
+		},
+		{
+			"sections_dept": "comm",
+			"sections_avg": 72.34,
+			"sections_uuid": "699",
+			"sections_title": "busn fundamental",
+			"sections_instructor": "cubbon, paul;jackes, robert;williamson, elaine",
+			"sections_id": "101"
+		},
+		{
+			"sections_dept": "busi",
+			"sections_avg": 72.38,
+			"sections_uuid": "87456",
+			"sections_title": "intr income tax",
+			"sections_instructor": "chong, mary",
+			"sections_id": "355"
+		},
+		{
+			"sections_dept": "math",
+			"sections_avg": 72.54,
+			"sections_uuid": "3744",
+			"sections_title": "df calc ap ph sc",
+			"sections_instructor": "pollack, paul",
+			"sections_id": "100"
+		},
+		{
+			"sections_dept": "phys",
+			"sections_avg": 72.63,
+			"sections_uuid": "474",
+			"sections_title": "statistical mech",
+			"sections_instructor": "tovar, mayra",
+			"sections_id": "403"
+		},
+		{
+			"sections_dept": "phys",
+			"sections_avg": 72.63,
+			"sections_uuid": "475",
+			"sections_title": "statistical mech",
+			"sections_instructor": "",
+			"sections_id": "403"
+		},
+		{
+			"sections_dept": "poli",
+			"sections_avg": 72.68,
+			"sections_uuid": "70724",
+			"sections_title": "intro to politic",
+			"sections_instructor": "praud, jocelyne",
+			"sections_id": "100"
+		},
+		{
+			"sections_dept": "comm",
+			"sections_avg": 72.7,
+			"sections_uuid": "701",
+			"sections_title": "busn fundamental",
+			"sections_instructor": "cubbon, paul;kroeker, jeff",
+			"sections_id": "101"
+		},
+		{
+			"sections_dept": "poli",
+			"sections_avg": 72.77,
+			"sections_uuid": "70741",
+			"sections_title": "intro global pol",
+			"sections_instructor": "farkasch, robert",
+			"sections_id": "260"
+		},
+		{
+			"sections_dept": "math",
+			"sections_avg": 73.14,
+			"sections_uuid": "72912",
+			"sections_title": "df calc app lf s",
+			"sections_instructor": "israel, robert b",
+			"sections_id": "102"
+		},
+		{
+			"sections_dept": "stat",
+			"sections_avg": 73.3,
+			"sections_uuid": "43519",
+			"sections_title": "intr probability",
+			"sections_instructor": "bouchard-cote, alexandre",
+			"sections_id": "302"
+		},
+		{
+			"sections_dept": "chbe",
+			"sections_avg": 73.49,
+			"sections_uuid": "49097",
+			"sections_title": "",
+			"sections_instructor": "smith, kevin",
+			"sections_id": "456"
+		},
+		{
+			"sections_dept": "chbe",
+			"sections_avg": 73.49,
+			"sections_uuid": "49098",
+			"sections_title": "",
+			"sections_instructor": "",
+			"sections_id": "456"
+		},
+		{
+			"sections_dept": "cpsc",
+			"sections_avg": 73.53,
+			"sections_uuid": "61084",
+			"sections_title": "comptn, progrmng",
+			"sections_instructor": "kiczales, gregor",
+			"sections_id": "110"
+		},
+		{
+			"sections_dept": "comm",
+			"sections_avg": 73.54,
+			"sections_uuid": "83698",
+			"sections_title": "info sys mngt",
+			"sections_instructor": "tan, william",
+			"sections_id": "335"
+		},
+		{
+			"sections_dept": "econ",
+			"sections_avg": 73.56,
+			"sections_uuid": "78339",
+			"sections_title": "princpl macrecon",
+			"sections_instructor": "malhotra, nisha",
+			"sections_id": "102"
+		},
+		{
+			"sections_dept": "biol",
+			"sections_avg": 73.7,
+			"sections_uuid": "19759",
+			"sections_title": "comp env physiol",
+			"sections_instructor": "brauner, colin",
+			"sections_id": "457"
+		},
+		{
+			"sections_dept": "biol",
+			"sections_avg": 73.7,
+			"sections_uuid": "19760",
+			"sections_title": "comp env physiol",
+			"sections_instructor": "",
+			"sections_id": "457"
+		},
+		{
+			"sections_dept": "busi",
+			"sections_avg": 73.7,
+			"sections_uuid": "50638",
+			"sections_title": "cost accounting",
+			"sections_instructor": "norwood, peter",
+			"sections_id": "354"
+		},
+		{
+			"sections_dept": "mech",
+			"sections_avg": 73.79,
+			"sections_uuid": "77343",
+			"sections_title": "mech materials",
+			"sections_instructor": "cripton, peter",
+			"sections_id": "360"
+		},
+		{
+			"sections_dept": "econ",
+			"sections_avg": 73.8,
+			"sections_uuid": "74379",
+			"sections_title": "intro int trade",
+			"sections_instructor": "swiecki, tomasz",
+			"sections_id": "355"
+		},
+		{
+			"sections_dept": "econ",
+			"sections_avg": 74.14,
+			"sections_uuid": "58372",
+			"sections_title": "empirical econ",
+			"sections_instructor": "neary, hugh;whistler, diana",
+			"sections_id": "325"
+		},
+		{
+			"sections_dept": "geog",
+			"sections_avg": 74.27,
+			"sections_uuid": "29126",
+			"sections_title": "intr geog amer",
+			"sections_instructor": "sundberg, juanita",
+			"sections_id": "395"
+		},
+		{
+			"sections_dept": "geog",
+			"sections_avg": 74.27,
+			"sections_uuid": "29127",
+			"sections_title": "intr geog amer",
+			"sections_instructor": "",
+			"sections_id": "395"
+		},
+		{
+			"sections_dept": "comm",
+			"sections_avg": 74.39,
+			"sections_uuid": "96387",
+			"sections_title": "intro to finance",
+			"sections_instructor": "freedman, ruth;graham, brian",
+			"sections_id": "298"
+		},
+		{
+			"sections_dept": "mech",
+			"sections_avg": 74.46,
+			"sections_uuid": "77344",
+			"sections_title": "mech materials",
+			"sections_instructor": "gadala, mohamed",
+			"sections_id": "360"
+		},
+		{
+			"sections_dept": "phil",
+			"sections_avg": 74.54,
+			"sections_uuid": "70260",
+			"sections_title": "critical thinkng",
+			"sections_instructor": "korolev, alexandre",
+			"sections_id": "120"
+		},
+		{
+			"sections_dept": "mech",
+			"sections_avg": 74.62,
+			"sections_uuid": "9062",
+			"sections_title": "therm sys design",
+			"sections_instructor": "kirchen, patrick",
+			"sections_id": "327"
+		},
+		{
+			"sections_dept": "mech",
+			"sections_avg": 74.62,
+			"sections_uuid": "9063",
+			"sections_title": "therm sys design",
+			"sections_instructor": "",
+			"sections_id": "327"
+		},
+		{
+			"sections_dept": "busi",
+			"sections_avg": 74.63,
+			"sections_uuid": "73506",
+			"sections_title": "info systems",
+			"sections_instructor": "",
+			"sections_id": "335"
+		},
+		{
+			"sections_dept": "cpsc",
+			"sections_avg": 74.65,
+			"sections_uuid": "62359",
+			"sections_title": "sftwr constructn",
+			"sections_instructor": "carter, paul martin",
+			"sections_id": "210"
+		},
+		{
+			"sections_dept": "clst",
+			"sections_avg": 74.66,
+			"sections_uuid": "22795",
+			"sections_title": "tech terms medic",
+			"sections_instructor": "reid, shelley",
+			"sections_id": "301"
+		},
+		{
+			"sections_dept": "fmst",
+			"sections_avg": 74.69,
+			"sections_uuid": "48644",
+			"sections_title": "relation develop",
+			"sections_instructor": "bartolic, silvia",
+			"sections_id": "314"
+		},
+		{
+			"sections_dept": "fmst",
+			"sections_avg": 74.76,
+			"sections_uuid": "5472",
+			"sections_title": "parent-child rel",
+			"sections_instructor": "bartolic, silvia",
+			"sections_id": "312"
+		},
+		{
+			"sections_dept": "econ",
+			"sections_avg": 74.77,
+			"sections_uuid": "8108",
+			"sections_title": "money & banking",
+			"sections_instructor": "newman, geoffrey",
+			"sections_id": "345"
+		},
+		{
+			"sections_dept": "econ",
+			"sections_avg": 74.77,
+			"sections_uuid": "8109",
+			"sections_title": "money & banking",
+			"sections_instructor": "",
+			"sections_id": "345"
+		},
+		{
+			"sections_dept": "comm",
+			"sections_avg": 75.01,
+			"sections_uuid": "44273",
+			"sections_title": "business finance",
+			"sections_instructor": "degraaf, darren",
+			"sections_id": "473"
+		},
+		{
+			"sections_dept": "math",
+			"sections_avg": 75.31,
+			"sections_uuid": "13702",
+			"sections_title": "dff calc ap c&ss",
+			"sections_instructor": "yue, pengtao",
+			"sections_id": "104"
+		},
+		{
+			"sections_dept": "kin",
+			"sections_avg": 75.34,
+			"sections_uuid": "2989",
+			"sections_title": "leisure sport sc",
+			"sections_instructor": "",
+			"sections_id": "161"
+		},
+		{
+			"sections_dept": "cpsc",
+			"sections_avg": 75.49,
+			"sections_uuid": "52002",
+			"sections_title": "intr rel databse",
+			"sections_instructor": "",
+			"sections_id": "304"
+		},
+		{
+			"sections_dept": "chin",
+			"sections_avg": 75.58,
+			"sections_uuid": "83143",
+			"sections_title": "basic chin i 2",
+			"sections_instructor": "",
+			"sections_id": "103"
+		},
+		{
+			"sections_dept": "frst",
+			"sections_avg": 75.63,
+			"sections_uuid": "21265",
+			"sections_title": "aqua ecosys&fish",
+			"sections_instructor": "hinch, scott;richardson, john",
+			"sections_id": "386"
+		},
+		{
+			"sections_dept": "frst",
+			"sections_avg": 75.63,
+			"sections_uuid": "21266",
+			"sections_title": "aqua ecosys&fish",
+			"sections_instructor": "",
+			"sections_id": "386"
+		},
+		{
+			"sections_dept": "cpsc",
+			"sections_avg": 75.72,
+			"sections_uuid": "90540",
+			"sections_title": "intr sftwr eng",
+			"sections_instructor": "shepherd, david",
+			"sections_id": "310"
+		},
+		{
+			"sections_dept": "engl",
+			"sections_avg": 75.88,
+			"sections_uuid": "42921",
+			"sections_title": "world lit engl",
+			"sections_instructor": "",
+			"sections_id": "224"
+		},
+		{
+			"sections_dept": "busi",
+			"sections_avg": 76.19,
+			"sections_uuid": "74156",
+			"sections_title": "intr mgmt acct",
+			"sections_instructor": "chan, david",
+			"sections_id": "294"
+		},
+		{
+			"sections_dept": "wood",
+			"sections_avg": 76.25,
+			"sections_uuid": "85346",
+			"sections_title": "globlzn&sustainb",
+			"sections_instructor": "cohen, david",
+			"sections_id": "461"
+		},
+		{
+			"sections_dept": "wood",
+			"sections_avg": 76.25,
+			"sections_uuid": "85347",
+			"sections_title": "globlzn&sustainb",
+			"sections_instructor": "",
+			"sections_id": "461"
+		},
+		{
+			"sections_dept": "comm",
+			"sections_avg": 76.51,
+			"sections_uuid": "762",
+			"sections_title": "intro to finance",
+			"sections_instructor": "yuill, garry",
+			"sections_id": "298"
+		},
+		{
+			"sections_dept": "busi",
+			"sections_avg": 76.52,
+			"sections_uuid": "11140",
+			"sections_title": "case std aprsl i",
+			"sections_instructor": "",
+			"sections_id": "442"
+		},
+		{
+			"sections_dept": "chem",
+			"sections_avg": 76.83,
+			"sections_uuid": "82136",
+			"sections_title": "org chem lab",
+			"sections_instructor": "zendrowski, dana",
+			"sections_id": "235"
+		},
+		{
+			"sections_dept": "chbe",
+			"sections_avg": 76.86,
+			"sections_uuid": "45683",
+			"sections_title": "kinet react desg",
+			"sections_instructor": "yadav, vikramaditya",
+			"sections_id": "455"
+		},
+		{
+			"sections_dept": "cpsc",
+			"sections_avg": 76.91,
+			"sections_uuid": "46691",
+			"sections_title": "intr rel databse",
+			"sections_instructor": "knorr, edwin max",
+			"sections_id": "304"
+		},
+		{
+			"sections_dept": "engl",
+			"sections_avg": 77.12,
+			"sections_uuid": "95295",
+			"sections_title": "tech writing",
+			"sections_instructor": "",
+			"sections_id": "301"
+		},
+		{
+			"sections_dept": "envr",
+			"sections_avg": 77.14,
+			"sections_uuid": "2680",
+			"sections_title": "intr envrmnt sci",
+			"sections_instructor": "",
+			"sections_id": "200"
+		},
+		{
+			"sections_dept": "law",
+			"sections_avg": 77.44,
+			"sections_uuid": "65637",
+			"sections_title": "adv lgl research",
+			"sections_instructor": "",
+			"sections_id": "430"
+		},
+		{
+			"sections_dept": "cons",
+			"sections_avg": 77.63,
+			"sections_uuid": "96283",
+			"sections_title": "visual clim chng",
+			"sections_instructor": "sheppard, stephen",
+			"sections_id": "210"
+		},
+		{
+			"sections_dept": "cons",
+			"sections_avg": 77.63,
+			"sections_uuid": "96284",
+			"sections_title": "visual clim chng",
+			"sections_instructor": "",
+			"sections_id": "210"
+		},
+		{
+			"sections_dept": "anth",
+			"sections_avg": 77.77,
+			"sections_uuid": "91530",
+			"sections_title": "anth of media",
+			"sections_instructor": "",
+			"sections_id": "378"
+		},
+		{
+			"sections_dept": "math",
+			"sections_avg": 78.18,
+			"sections_uuid": "90150",
+			"sections_title": "intro to math",
+			"sections_instructor": "",
+			"sections_id": "335"
+		},
+		{
+			"sections_dept": "eosc",
+			"sections_avg": 78.23,
+			"sections_uuid": "38554",
+			"sections_title": "ocean ecosystem",
+			"sections_instructor": "",
+			"sections_id": "315"
+		},
+		{
+			"sections_dept": "chbe",
+			"sections_avg": 78.44,
+			"sections_uuid": "12940",
+			"sections_title": "chem eng app lab",
+			"sections_instructor": "kannangara, dhaneshwarie",
+			"sections_id": "262"
+		},
+		{
+			"sections_dept": "chbe",
+			"sections_avg": 78.44,
+			"sections_uuid": "12941",
+			"sections_title": "chem eng app lab",
+			"sections_instructor": "",
+			"sections_id": "262"
+		},
+		{
+			"sections_dept": "chbe",
+			"sections_avg": 78.84,
+			"sections_uuid": "58583",
+			"sections_title": "chml economics",
+			"sections_instructor": "lau, anthony k",
+			"sections_id": "459"
+		},
+		{
+			"sections_dept": "chbe",
+			"sections_avg": 78.84,
+			"sections_uuid": "58584",
+			"sections_title": "chml economics",
+			"sections_instructor": "",
+			"sections_id": "459"
+		},
+		{
+			"sections_dept": "phys",
+			"sections_avg": 78.86,
+			"sections_uuid": "79986",
+			"sections_title": "dynamics & waves",
+			"sections_instructor": "",
+			"sections_id": "117"
+		},
+		{
+			"sections_dept": "biol",
+			"sections_avg": 79.44,
+			"sections_uuid": "55161",
+			"sections_title": "lab animal physi",
+			"sections_instructor": "lacombe, agnes",
+			"sections_id": "363"
+		},
+		{
+			"sections_dept": "math",
+			"sections_avg": 80.08,
+			"sections_uuid": "27336",
+			"sections_title": "diff equations",
+			"sections_instructor": "homsy, bud",
+			"sections_id": "256"
+		},
+		{
+			"sections_dept": "mech",
+			"sections_avg": 82.93,
+			"sections_uuid": "12790",
+			"sections_title": "mech vibrations",
+			"sections_instructor": "anasavarapu, srikantha",
+			"sections_id": "463"
+		},
+		{
+			"sections_dept": "bait",
+			"sections_avg": 83.34,
+			"sections_uuid": "39775",
+			"sections_title": "prj mgt bsn sol",
+			"sections_instructor": "",
+			"sections_id": "510"
+		},
+		{
+			"sections_dept": "bafi",
+			"sections_avg": 85.22,
+			"sections_uuid": "48103",
+			"sections_title": "adv corp finance",
+			"sections_instructor": "",
+			"sections_id": "502"
+		},
+		{
+			"sections_dept": "cnps",
+			"sections_avg": 86.13,
+			"sections_uuid": "15567",
+			"sections_title": "fmly ed & consul",
+			"sections_instructor": "",
+			"sections_id": "364"
+		},
+		{
+			"sections_dept": "adhe",
+			"sections_avg": 86.72,
+			"sections_uuid": "19188",
+			"sections_title": "com adult educ",
+			"sections_instructor": "",
+			"sections_id": "330"
+		},
+		{
+			"sections_dept": "chbe",
+			"sections_avg": 87.2,
+			"sections_uuid": "7861",
+			"sections_title": "int chem&bio eng",
+			"sections_instructor": "mohseni, madjid",
+			"sections_id": "243"
+		},
+		{
+			"sections_dept": "chbe",
+			"sections_avg": 87.2,
+			"sections_uuid": "7862",
+			"sections_title": "int chem&bio eng",
+			"sections_instructor": "",
+			"sections_id": "243"
+		},
+		{
+			"sections_dept": "etec",
+			"sections_avg": 88.66,
+			"sections_uuid": "16963",
+			"sections_title": "found ed tech",
+			"sections_instructor": "",
+			"sections_id": "511"
+		},
+		{
+			"sections_dept": "epse",
+			"sections_avg": 88.67,
+			"sections_uuid": "86864",
+			"sections_title": "lrn'g disablties",
+			"sections_instructor": "",
+			"sections_id": "316"
+		},
+		{
+			"sections_dept": "etec",
+			"sections_avg": 88.67,
+			"sections_uuid": "39843",
+			"sections_title": "appl lear theor",
+			"sections_instructor": "",
+			"sections_id": "512"
+		},
+		{
+			"sections_dept": "frst",
+			"sections_avg": 89.12,
+			"sections_uuid": "21243",
+			"sections_title": "forest genetics",
+			"sections_instructor": "el-kassaby, yousry",
+			"sections_id": "302"
+		},
+		{
+			"sections_dept": "frst",
+			"sections_avg": 89.12,
+			"sections_uuid": "21244",
+			"sections_title": "forest genetics",
+			"sections_instructor": "",
+			"sections_id": "302"
+		}
+	]
+}

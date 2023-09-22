@@ -1,0 +1,416 @@
+{
+	"title": "test fail",
+	"input": {
+		"WHERE": {
+			"EQ": {
+				"sections_fail": 30
+			}
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_dept",
+				"sections_avg",
+				"sections_uuid",
+				"sections_title",
+				"sections_instructor",
+				"sections_id"
+			],
+			"ORDER": "sections_avg"
+		}
+	},
+	"errorExpected": false,
+	"expected": [
+		{
+			"sections_dept": "math",
+			"sections_avg": 60.86,
+			"sections_uuid": "72903",
+			"sections_title": "int calc ap ph s",
+			"sections_instructor": "magyar, akos",
+			"sections_id": "101"
+		},
+		{
+			"sections_dept": "math",
+			"sections_avg": 63.77,
+			"sections_uuid": "96995",
+			"sections_title": "calc socsci comm",
+			"sections_instructor": "pavlov, ronnie",
+			"sections_id": "184"
+		},
+		{
+			"sections_dept": "math",
+			"sections_avg": 63.77,
+			"sections_uuid": "96996",
+			"sections_title": "calc socsci comm",
+			"sections_instructor": "",
+			"sections_id": "184"
+		},
+		{
+			"sections_dept": "chem",
+			"sections_avg": 64.02,
+			"sections_uuid": "54506",
+			"sections_title": "org chem biol sc",
+			"sections_instructor": "rogers, christine;stewart, jaclyn",
+			"sections_id": "233"
+		},
+		{
+			"sections_dept": "math",
+			"sections_avg": 64.24,
+			"sections_uuid": "29733",
+			"sections_title": "dff calc ap c&ss",
+			"sections_instructor": "",
+			"sections_id": "104"
+		},
+		{
+			"sections_dept": "busi",
+			"sections_avg": 64.34,
+			"sections_uuid": "16772",
+			"sections_title": "found re apprai",
+			"sections_instructor": "",
+			"sections_id": "330"
+		},
+		{
+			"sections_dept": "busi",
+			"sections_avg": 64.34,
+			"sections_uuid": "16773",
+			"sections_title": "found re apprai",
+			"sections_instructor": "",
+			"sections_id": "330"
+		},
+		{
+			"sections_dept": "psyc",
+			"sections_avg": 64.55,
+			"sections_uuid": "78066",
+			"sections_title": "bio cog psych",
+			"sections_instructor": "rankin, catharine",
+			"sections_id": "101"
+		},
+		{
+			"sections_dept": "phys",
+			"sections_avg": 64.58,
+			"sections_uuid": "75265",
+			"sections_title": "energy & waves",
+			"sections_instructor": "rieger, georg;turrell, brian g",
+			"sections_id": "101"
+		},
+		{
+			"sections_dept": "math",
+			"sections_avg": 64.72,
+			"sections_uuid": "90107",
+			"sections_title": "intr complex var",
+			"sections_instructor": "",
+			"sections_id": "300"
+		},
+		{
+			"sections_dept": "chem",
+			"sections_avg": 66.4,
+			"sections_uuid": "82098",
+			"sections_title": "phys & org chem",
+			"sections_instructor": "addison, christopher;lekhi, priya;ryan, katherine",
+			"sections_id": "123"
+		},
+		{
+			"sections_dept": "phys",
+			"sections_avg": 66.42,
+			"sections_uuid": "50218",
+			"sections_title": "mechanics i",
+			"sections_instructor": "mcmillan, j malcolm;semenoff, gordon walter",
+			"sections_id": "170"
+		},
+		{
+			"sections_dept": "psyc",
+			"sections_avg": 66.47,
+			"sections_uuid": "31392",
+			"sections_title": "bio cog psych",
+			"sections_instructor": "rankin, catharine",
+			"sections_id": "101"
+		},
+		{
+			"sections_dept": "econ",
+			"sections_avg": 66.99,
+			"sections_uuid": "52227",
+			"sections_title": "prncpls micrecon",
+			"sections_instructor": "gateman, robert",
+			"sections_id": "101"
+		},
+		{
+			"sections_dept": "chem",
+			"sections_avg": 67.26,
+			"sections_uuid": "31627",
+			"sections_title": "strctr bond chem",
+			"sections_instructor": "terpstra, andrea",
+			"sections_id": "121"
+		},
+		{
+			"sections_dept": "econ",
+			"sections_avg": 67.31,
+			"sections_uuid": "90873",
+			"sections_title": "prncpls micrecon",
+			"sections_instructor": "gateman, robert",
+			"sections_id": "101"
+		},
+		{
+			"sections_dept": "chem",
+			"sections_avg": 67.39,
+			"sections_uuid": "42531",
+			"sections_title": "org chem biol sc",
+			"sections_instructor": "stewart, jaclyn",
+			"sections_id": "233"
+		},
+		{
+			"sections_dept": "psyc",
+			"sections_avg": 67.46,
+			"sections_uuid": "27808",
+			"sections_title": "dev soc cli psy",
+			"sections_instructor": "schmader, tanya",
+			"sections_id": "102"
+		},
+		{
+			"sections_dept": "math",
+			"sections_avg": 67.61,
+			"sections_uuid": "27209",
+			"sections_title": "int calc ap ph s",
+			"sections_instructor": "martin, gregory",
+			"sections_id": "101"
+		},
+		{
+			"sections_dept": "psyc",
+			"sections_avg": 67.63,
+			"sections_uuid": "89664",
+			"sections_title": "bio cog psych",
+			"sections_instructor": "rankin, catharine",
+			"sections_id": "101"
+		},
+		{
+			"sections_dept": "psyc",
+			"sections_avg": 67.69,
+			"sections_uuid": "80815",
+			"sections_title": "bio cog psych",
+			"sections_instructor": "souza, michael",
+			"sections_id": "101"
+		},
+		{
+			"sections_dept": "chem",
+			"sections_avg": 67.83,
+			"sections_uuid": "70100",
+			"sections_title": "org chem biol sc",
+			"sections_instructor": "stewart, jaclyn",
+			"sections_id": "233"
+		},
+		{
+			"sections_dept": "micb",
+			"sections_avg": 68.06,
+			"sections_uuid": "17202",
+			"sections_title": "immunology",
+			"sections_instructor": "kion, tracy",
+			"sections_id": "302"
+		},
+		{
+			"sections_dept": "micb",
+			"sections_avg": 68.06,
+			"sections_uuid": "17203",
+			"sections_title": "immunology",
+			"sections_instructor": "",
+			"sections_id": "302"
+		},
+		{
+			"sections_dept": "chem",
+			"sections_avg": 68.24,
+			"sections_uuid": "31629",
+			"sections_title": "strctr bond chem",
+			"sections_instructor": "therrien, jeffrey",
+			"sections_id": "121"
+		},
+		{
+			"sections_dept": "busi",
+			"sections_avg": 68.31,
+			"sections_uuid": "95572",
+			"sections_title": "intr income tax",
+			"sections_instructor": "",
+			"sections_id": "355"
+		},
+		{
+			"sections_dept": "phys",
+			"sections_avg": 68.41,
+			"sections_uuid": "400",
+			"sections_title": "intr phys eng ii",
+			"sections_instructor": "folk, joshua",
+			"sections_id": "158"
+		},
+		{
+			"sections_dept": "chem",
+			"sections_avg": 68.64,
+			"sections_uuid": "82088",
+			"sections_title": "structural chem",
+			"sections_instructor": "lekhi, priya;wolf, michael",
+			"sections_id": "121"
+		},
+		{
+			"sections_dept": "chem",
+			"sections_avg": 69,
+			"sections_uuid": "70063",
+			"sections_title": "structural chem",
+			"sections_instructor": "crane, angela;mehrkhodavandi, parisa",
+			"sections_id": "121"
+		},
+		{
+			"sections_dept": "phys",
+			"sections_avg": 69.54,
+			"sections_uuid": "75270",
+			"sections_title": "elec light & rad",
+			"sections_instructor": "bates, frances",
+			"sections_id": "102"
+		},
+		{
+			"sections_dept": "geob",
+			"sections_avg": 69.59,
+			"sections_uuid": "37516",
+			"sections_title": "chng env: wt&lnd",
+			"sections_instructor": "",
+			"sections_id": "103"
+		},
+		{
+			"sections_dept": "mech",
+			"sections_avg": 70.15,
+			"sections_uuid": "23958",
+			"sections_title": "heat transfer i",
+			"sections_instructor": "",
+			"sections_id": "375"
+		},
+		{
+			"sections_dept": "mech",
+			"sections_avg": 70.3,
+			"sections_uuid": "12754",
+			"sections_title": "heat transfer i",
+			"sections_instructor": "",
+			"sections_id": "375"
+		},
+		{
+			"sections_dept": "biol",
+			"sections_avg": 70.4,
+			"sections_uuid": "86114",
+			"sections_title": "unicellular life",
+			"sections_instructor": "benbasat, julyet",
+			"sections_id": "112"
+		},
+		{
+			"sections_dept": "biol",
+			"sections_avg": 70.4,
+			"sections_uuid": "86115",
+			"sections_title": "unicellular life",
+			"sections_instructor": "",
+			"sections_id": "112"
+		},
+		{
+			"sections_dept": "comm",
+			"sections_avg": 70.48,
+			"sections_uuid": "81816",
+			"sections_title": "fndtls fin acct",
+			"sections_instructor": "",
+			"sections_id": "457"
+		},
+		{
+			"sections_dept": "math",
+			"sections_avg": 70.52,
+			"sections_uuid": "5239",
+			"sections_title": "multivrbl calc",
+			"sections_instructor": "",
+			"sections_id": "253"
+		},
+		{
+			"sections_dept": "apsc",
+			"sections_avg": 70.56,
+			"sections_uuid": "8245",
+			"sections_title": "comp eng design",
+			"sections_instructor": "carter, paul martin;karim, faizal;knorr, edwin max",
+			"sections_id": "160"
+		},
+		{
+			"sections_dept": "biol",
+			"sections_avg": 70.95,
+			"sections_uuid": "20574",
+			"sections_title": "fund genetics",
+			"sections_instructor": "",
+			"sections_id": "234"
+		},
+		{
+			"sections_dept": "math",
+			"sections_avg": 71.01,
+			"sections_uuid": "34046",
+			"sections_title": "elem diff eq i",
+			"sections_instructor": "",
+			"sections_id": "215"
+		},
+		{
+			"sections_dept": "math",
+			"sections_avg": 71.3,
+			"sections_uuid": "90095",
+			"sections_title": "diff equations",
+			"sections_instructor": "",
+			"sections_id": "256"
+		},
+		{
+			"sections_dept": "math",
+			"sections_avg": 71.77,
+			"sections_uuid": "34082",
+			"sections_title": "ord diff equtns",
+			"sections_instructor": "",
+			"sections_id": "255"
+		},
+		{
+			"sections_dept": "chem",
+			"sections_avg": 71.83,
+			"sections_uuid": "42526",
+			"sections_title": "analytical chem",
+			"sections_instructor": "",
+			"sections_id": "211"
+		},
+		{
+			"sections_dept": "poli",
+			"sections_avg": 72.18,
+			"sections_uuid": "70725",
+			"sections_title": "intro to politic",
+			"sections_instructor": "",
+			"sections_id": "100"
+		},
+		{
+			"sections_dept": "phys",
+			"sections_avg": 72.31,
+			"sections_uuid": "41174",
+			"sections_title": "energy & waves",
+			"sections_instructor": "folk, joshua",
+			"sections_id": "101"
+		},
+		{
+			"sections_dept": "biol",
+			"sections_avg": 72.48,
+			"sections_uuid": "34257",
+			"sections_title": "unicellular life",
+			"sections_instructor": "",
+			"sections_id": "112"
+		},
+		{
+			"sections_dept": "comm",
+			"sections_avg": 72.68,
+			"sections_uuid": "71201",
+			"sections_title": "mngmt&orgnz bhvr",
+			"sections_instructor": "",
+			"sections_id": "292"
+		},
+		{
+			"sections_dept": "apsc",
+			"sections_avg": 74.05,
+			"sections_uuid": "36551",
+			"sections_title": "comp eng design",
+			"sections_instructor": "agharebparast, farshid;carter, paul martin",
+			"sections_id": "160"
+		},
+		{
+			"sections_dept": "comm",
+			"sections_avg": 75.44,
+			"sections_uuid": "43903",
+			"sections_title": "career fundmtls",
+			"sections_instructor": "",
+			"sections_id": "202"
+		}
+	]
+}
