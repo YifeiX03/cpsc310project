@@ -34,7 +34,6 @@ describe("InsightFacade", function () {
 		inval2Sec = getContentFromArchives("pair-inval2.zip");
 		inval3Sec = getContentFromArchives("pair-inval3.zip");
 
-
 		// Just in case there is anything hanging around from a previous run of the test suite
 		clearDisk();
 	});
@@ -68,87 +67,87 @@ describe("InsightFacade", function () {
 			return expect(result).to.eventually.be.rejectedWith(InsightError);
 		});
 
-		it ("should reject with an empty dataset id (1.1)", function() {
+		it("should reject with an empty dataset id (1.1)", function () {
 			const result = facade.addDataset("", smallSec, InsightDatasetKind.Sections);
 			return expect(result).to.eventually.be.rejectedWith(InsightError);
 		});
 
-		it ("should reject with an empty dataset id (1.2)", function() {
+		it("should reject with an empty dataset id (1.2)", function () {
 			const result = facade.addDataset("   ", smallSec, InsightDatasetKind.Sections);
 			return expect(result).to.eventually.be.rejectedWith(InsightError);
 		});
 
-		it ("should reject with an empty dataset id (1.3)", function() {
+		it("should reject with an empty dataset id (1.3)", function () {
 			const result = facade.addDataset("UBC_Sections", smallSec, InsightDatasetKind.Sections);
 			return expect(result).to.eventually.be.rejectedWith(InsightError);
 		});
 
-		it ("should reject with an empty dataset id (1.4)", function() {
+		it("should reject with an empty dataset id (1.4)", function () {
 			const result = facade.addDataset("UBC", inval1Sec, InsightDatasetKind.Sections);
 			return expect(result).to.eventually.be.rejectedWith(InsightError);
 		});
 
-		it ("should reject with an empty dataset id (1.5)", function() {
+		it("should reject with an empty dataset id (1.5)", function () {
 			const result = facade.addDataset("UBC", inval2Sec, InsightDatasetKind.Sections);
 			return expect(result).to.eventually.be.rejectedWith(InsightError);
 		});
 
-		it ("should reject with an empty dataset id (1.6)", function() {
+		it("should reject with an empty dataset id (1.6)", function () {
 			const result = facade.addDataset("UBC", inval3Sec, InsightDatasetKind.Sections);
 			return expect(result).to.eventually.be.rejectedWith(InsightError);
 		});
 
-		it ("should successfully add a dataset (2.1)", function() {
+		it("should successfully add a dataset (2.1)", function () {
 			const result = facade.addDataset("ubc", smallSec, InsightDatasetKind.Sections);
 			return expect(result).to.eventually.have.members(["ubc"]);
 		});
 
-		it ("should unsuccessfully add a dataset (2.2)", async function() {
+		it("should unsuccessfully add a dataset (2.2)", async function () {
 			await facade.addDataset("ubc", smallSec, InsightDatasetKind.Sections);
 			const result = facade.addDataset("ubc", smallSec, InsightDatasetKind.Sections);
 			return expect(result).to.eventually.be.rejectedWith(InsightError);
 		});
 
-		it ("should successfully add a dataset (2.3)", async function() {
+		it("should successfully add a dataset (2.3)", async function () {
 			await facade.addDataset("ubc", smallSec, InsightDatasetKind.Sections);
 			const result = facade.addDataset("ubc1", smallSec, InsightDatasetKind.Sections);
 			return expect(result).to.eventually.have.deep.members(["ubc", "ubc1"]);
 		});
 
-		it ("should unsuccessfully remove a dataset (3.1)", function() {
+		it("should unsuccessfully remove a dataset (3.1)", function () {
 			const result = facade.removeDataset("ubc");
 			return expect(result).to.eventually.be.rejectedWith(NotFoundError);
 		});
 
-		it ("should successfully add a dataset (3.2)", function() {
+		it("should successfully add a dataset (3.2)", function () {
 			const result = facade.addDataset("ubc", smallSec, InsightDatasetKind.Sections);
 			return expect(result).to.eventually.have.members(["ubc"]);
 		});
 
-		it ("should unsuccessfully remove a dataset (3.3)", function() {
+		it("should unsuccessfully remove a dataset (3.3)", function () {
 			const result = facade.removeDataset("ub_c");
 			return expect(result).to.eventually.be.rejectedWith(InsightError);
 		});
 
-		it ("should unsuccessfully remove a dataset (3.3.5)", function() {
+		it("should unsuccessfully remove a dataset (3.3.5)", function () {
 			const result = facade.removeDataset("  ");
 			return expect(result).to.eventually.be.rejectedWith(InsightError);
 		});
 
-		it ("should successfully remove a dataset (3.4)", async function() {
+		it("should successfully remove a dataset (3.4)", async function () {
 			await facade.addDataset("ubc", smallSec, InsightDatasetKind.Sections);
 			const result = facade.removeDataset("ubc");
 			return expect(result).to.eventually.equal("ubc");
 		});
 
-		it ("should successfully remove a dataset from two (3.5)", async function() {
+		it("should successfully remove a dataset from two (3.5)", async function () {
 			await facade.addDataset("ubc1", smallSec, InsightDatasetKind.Sections);
 			await facade.addDataset("ubc2", smallSec, InsightDatasetKind.Sections);
 			const result = facade.removeDataset("ubc1");
 			return expect(result).to.eventually.equal("ubc1");
 		});
 
-		it ("should successfully remove a dataset from two (3.5.1)", async function() {
+		it("should successfully remove a dataset from two (3.5.1)", async function () {
 			await facade.addDataset("ubc1", smallSec, InsightDatasetKind.Sections);
 			await facade.addDataset("ubc2", smallSec, InsightDatasetKind.Sections);
 			await facade.removeDataset("ubc1");
@@ -156,37 +155,37 @@ describe("InsightFacade", function () {
 			return expect(result).to.eventually.have.deep.members(["ubc2", "ubc3"]);
 		});
 
-		it ("should unsuccessfully remove a dataset (3.6)", async function() {
+		it("should unsuccessfully remove a dataset (3.6)", async function () {
 			await facade.addDataset("ubc", smallSec, InsightDatasetKind.Sections);
 			const result = facade.removeDataset("sections");
 			return expect(result).to.eventually.be.rejectedWith(NotFoundError);
 		});
 
-		it ("should successfully add a dataset (3.7)", async function() {
+		it("should successfully add a dataset (3.7)", async function () {
 			await facade.addDataset("ubc", smallSec, InsightDatasetKind.Sections);
 			await facade.removeDataset("ubc");
 			const result = facade.addDataset("ubc", smallSec, InsightDatasetKind.Sections);
 			return expect(result).to.eventually.have.members(["ubc"]);
 		});
 
-		it ("should successfully return empty list of datasets (5.1)", function() {
+		it("should successfully return empty list of datasets (5.1)", function () {
 			const result = facade.listDatasets();
 			return expect(result).to.eventually.be.an("array").that.is.empty;
 		});
 
-		it ("should successfully return an array of datasets (5.2)", async function() {
+		it("should successfully return an array of datasets (5.2)", async function () {
 			await facade.addDataset("ubc", smallSec, InsightDatasetKind.Sections);
 			const result = facade.listDatasets();
 			return expect(result).to.eventually.have.deep.members([
 				{
 					id: "ubc",
 					kind: InsightDatasetKind.Sections,
-					numRows: 2
-				}
+					numRows: 2,
+				},
 			]);
 		});
 
-		it ("should successfully return an array of datasets (5.3)", async function() {
+		it("should successfully return an array of datasets (5.3)", async function () {
 			await facade.addDataset("ubc", smallSec, InsightDatasetKind.Sections);
 			await facade.addDataset("ubc2", smallSec, InsightDatasetKind.Sections);
 			const result = facade.listDatasets();
@@ -194,17 +193,17 @@ describe("InsightFacade", function () {
 				{
 					id: "ubc",
 					kind: InsightDatasetKind.Sections,
-					numRows: 2
+					numRows: 2,
 				},
 				{
 					id: "ubc2",
 					kind: InsightDatasetKind.Sections,
-					numRows: 2
-				}
+					numRows: 2,
+				},
 			]);
 		});
 
-		it ("should successfully return an array of datasets (5.4)", async function() {
+		it("should successfully return an array of datasets (5.4)", async function () {
 			await facade.addDataset("ubc", smallSec, InsightDatasetKind.Sections);
 			await facade.addDataset("ubc2", smallSec, InsightDatasetKind.Sections);
 			await facade.removeDataset("ubc");
@@ -213,8 +212,8 @@ describe("InsightFacade", function () {
 				{
 					id: "ubc2",
 					kind: InsightDatasetKind.Sections,
-					numRows: 2
-				}
+					numRows: 2,
+				},
 			]);
 		});
 	});
@@ -240,6 +239,103 @@ describe("InsightFacade", function () {
 		after(function () {
 			console.info(`After: ${this.test?.parent?.title}`);
 			clearDisk();
+		});
+
+		it("should unsuccessfully query a database (6.1)", function () {
+			const result = facade.performQuery({INVALID: "TEST"});
+			return expect(result).to.eventually.be.rejectedWith(InsightError);
+		});
+
+		// ResultTooLargeError, querying from database that doesn't exist, reference multiple datasets
+		it("should unsuccessfully query a database (6.2)", function () {
+			const result = facade.performQuery({
+				WHERE: {},
+				OPTIONS: {
+					COLUMNS: ["sections_avg"],
+				},
+			});
+			return expect(result).to.eventually.be.rejectedWith(ResultTooLargeError);
+		});
+
+		it("should unsuccessfully query a database (6.3)", function () {
+			const result = facade.performQuery({
+				WHERE: {},
+				OPTIONS: {
+					COLUMNS: ["mystery_avg"],
+				},
+			});
+			return expect(result).to.eventually.be.rejectedWith(InsightError);
+		});
+
+		it("should unsuccessfully query a database (6.4)", function () {
+			const result = facade.performQuery({
+				WHERE: {},
+				OPTIONS: {
+					COLUMNS: ["sections_avg", "mystery_title"],
+				},
+			});
+			return expect(result).to.eventually.be.rejectedWith(InsightError);
+		});
+
+		it("should unsuccessfully query a database (6.5)", function () {
+			const result = facade.performQuery({
+				WHERE: {
+					IS: {
+						sections_title: "**geog*",
+					},
+				},
+				OPTIONS: {
+					COLUMNS: ["sections_title", "sections_id", "sections_dept", "sections_avg"],
+					ORDER: "sections_avg",
+				},
+			});
+			return expect(result).to.eventually.be.rejectedWith(InsightError);
+		});
+
+		it("should unsuccessfully query a database (6.6)", function () {
+			const result = facade.performQuery({
+				WHERE: {
+					IS: {
+						sections_title: "comp*",
+					},
+				},
+				OPTIONS: {
+					COLUMNS: [],
+					ORDER: "sections_avg",
+				},
+			});
+			return expect(result).to.eventually.be.rejectedWith(InsightError);
+		});
+
+		it("shouldn't be able to query from the wrong dataset (6.7)", async function () {
+			await facade.addDataset("ubc", smallSec, InsightDatasetKind.Sections);
+			const result = facade.performQuery({
+				WHERE: {
+					IS: {
+						ubc_title: "comptn, progrmng",
+					},
+				},
+				OPTIONS: {
+					COLUMNS: ["ubc_title", "ubc_avg"],
+					ORDER: "ubc_avg",
+				},
+			});
+			return expect(result).to.eventually.be.an("array").that.is.empty;
+		});
+
+		it("should successfully query everything from small dataset (6.8)", async function () {
+			// await facade.addDataset("ubc", smallSec, InsightDatasetKind.Sections);
+			const result = facade.performQuery({
+				WHERE: {},
+				OPTIONS: {
+					COLUMNS: ["ubc_title", "ubc_avg"],
+					ORDER: "ubc_avg",
+				},
+			});
+			return expect(result).to.eventually.have.deep.members([
+				{ubc_title: "rsrch methdlgy", ubc_avg: 94.44},
+				{ubc_title: "rsrch methdlgy", ubc_avg: 94.44},
+			]);
 		});
 
 		// type PQErrorKind = "ResultTooLargeError" | "InsightError";
@@ -270,16 +366,11 @@ describe("InsightFacade", function () {
 			return await facade.performQuery(input);
 		}
 
-		folderTest<Input, Output, Error>(
-			"Successful Query Tests",
-			target,
-			"./test/resources/queries",
-			{
-				errorValidator,
-				assertOnError,
-				assertOnResult
-			}
-		);
+		folderTest<Input, Output, Error>("Successful Query Tests", target, "./test/resources/queries", {
+			errorValidator,
+			assertOnError,
+			assertOnResult,
+		});
 
 		// folderTest<unknown, Promise<InsightResult[]>, PQErrorKind>(
 		// 	"Dynamic InsightFacade PerformQuery tests",
