@@ -1,0 +1,27 @@
+{
+	"title": "typeMismatchLT",
+	"input": {
+		"WHERE": {
+			"AND": [
+				{
+					"GT": {
+						"sections_avg": 95
+					}
+				},
+				{
+					"LT": {
+						"sections_dept": "cnps"
+					}
+				}
+			]
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_dept",
+				"sections_avg"
+			]
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

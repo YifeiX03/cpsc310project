@@ -1,0 +1,1234 @@
+{
+	"title": "IS3-test",
+	"input": {
+		"WHERE": {
+			"IS": {
+				"sections_title": "geog*"
+			}
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_title",
+				"sections_id",
+				"sections_dept",
+				"sections_avg"
+			],
+			"ORDER": "sections_avg"
+		}
+	},
+	"errorExpected": false,
+	"expected": [
+		{
+			"sections_title": "geog mod glob ii",
+			"sections_id": "122",
+			"sections_dept": "geog",
+			"sections_avg": 62.22
+		},
+		{
+			"sections_title": "geog mod glob ii",
+			"sections_id": "122",
+			"sections_dept": "geog",
+			"sections_avg": 62.75
+		},
+		{
+			"sections_title": "geog mod glob ii",
+			"sections_id": "122",
+			"sections_dept": "geog",
+			"sections_avg": 63.71
+		},
+		{
+			"sections_title": "geography asia",
+			"sections_id": "380",
+			"sections_dept": "geog",
+			"sections_avg": 63.86
+		},
+		{
+			"sections_title": "geography asia",
+			"sections_id": "380",
+			"sections_dept": "geog",
+			"sections_avg": 63.86
+		},
+		{
+			"sections_title": "geog mod glob ii",
+			"sections_id": "122",
+			"sections_dept": "geog",
+			"sections_avg": 64.17
+		},
+		{
+			"sections_title": "geog mod glob ii",
+			"sections_id": "122",
+			"sections_dept": "geog",
+			"sections_avg": 64.64
+		},
+		{
+			"sections_title": "geog mod glob ii",
+			"sections_id": "122",
+			"sections_dept": "geog",
+			"sections_avg": 64.71
+		},
+		{
+			"sections_title": "geog mod glob ii",
+			"sections_id": "122",
+			"sections_dept": "geog",
+			"sections_avg": 64.82
+		},
+		{
+			"sections_title": "geog mod glob ii",
+			"sections_id": "122",
+			"sections_dept": "geog",
+			"sections_avg": 64.83
+		},
+		{
+			"sections_title": "geog mod glob ii",
+			"sections_id": "122",
+			"sections_dept": "geog",
+			"sections_avg": 65.26
+		},
+		{
+			"sections_title": "geog mod glob ii",
+			"sections_id": "122",
+			"sections_dept": "geog",
+			"sections_avg": 65.4
+		},
+		{
+			"sections_title": "geog mod glob ii",
+			"sections_id": "122",
+			"sections_dept": "geog",
+			"sections_avg": 65.5
+		},
+		{
+			"sections_title": "geog mod glob ii",
+			"sections_id": "122",
+			"sections_dept": "geog",
+			"sections_avg": 65.51
+		},
+		{
+			"sections_title": "geog mod glob ii",
+			"sections_id": "122",
+			"sections_dept": "geog",
+			"sections_avg": 65.61
+		},
+		{
+			"sections_title": "geog mod glob ii",
+			"sections_id": "122",
+			"sections_dept": "geog",
+			"sections_avg": 65.66
+		},
+		{
+			"sections_title": "geog mod glob ii",
+			"sections_id": "122",
+			"sections_dept": "geog",
+			"sections_avg": 65.72
+		},
+		{
+			"sections_title": "geog mod glob ii",
+			"sections_id": "122",
+			"sections_dept": "geog",
+			"sections_avg": 65.73
+		},
+		{
+			"sections_title": "geog enviro glob",
+			"sections_id": "121",
+			"sections_dept": "geog",
+			"sections_avg": 66
+		},
+		{
+			"sections_title": "geog mod glob ii",
+			"sections_id": "122",
+			"sections_dept": "geog",
+			"sections_avg": 66.08
+		},
+		{
+			"sections_title": "geog mod glob i",
+			"sections_id": "121",
+			"sections_dept": "geog",
+			"sections_avg": 66.42
+		},
+		{
+			"sections_title": "geog mod glob ii",
+			"sections_id": "122",
+			"sections_dept": "geog",
+			"sections_avg": 66.44
+		},
+		{
+			"sections_title": "geog mod glob ii",
+			"sections_id": "122",
+			"sections_dept": "geog",
+			"sections_avg": 66.44
+		},
+		{
+			"sections_title": "geography asia",
+			"sections_id": "380",
+			"sections_dept": "geog",
+			"sections_avg": 66.5
+		},
+		{
+			"sections_title": "geography asia",
+			"sections_id": "380",
+			"sections_dept": "geog",
+			"sections_avg": 66.5
+		},
+		{
+			"sections_title": "geog mod glob i",
+			"sections_id": "121",
+			"sections_dept": "geog",
+			"sections_avg": 66.66
+		},
+		{
+			"sections_title": "geog enviro glob",
+			"sections_id": "121",
+			"sections_dept": "geog",
+			"sections_avg": 66.9
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 67
+		},
+		{
+			"sections_title": "geog mod glob i",
+			"sections_id": "121",
+			"sections_dept": "geog",
+			"sections_avg": 67.18
+		},
+		{
+			"sections_title": "geog mod glob i",
+			"sections_id": "121",
+			"sections_dept": "geog",
+			"sections_avg": 67.18
+		},
+		{
+			"sections_title": "geog mod glob ii",
+			"sections_id": "122",
+			"sections_dept": "geog",
+			"sections_avg": 67.21
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 67.22
+		},
+		{
+			"sections_title": "geog mod glob ii",
+			"sections_id": "122",
+			"sections_dept": "geog",
+			"sections_avg": 67.26
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 67.58
+		},
+		{
+			"sections_title": "geog mod glob ii",
+			"sections_id": "122",
+			"sections_dept": "geog",
+			"sections_avg": 67.7
+		},
+		{
+			"sections_title": "geog mod glob i",
+			"sections_id": "121",
+			"sections_dept": "geog",
+			"sections_avg": 67.83
+		},
+		{
+			"sections_title": "geog mod glob i",
+			"sections_id": "121",
+			"sections_dept": "geog",
+			"sections_avg": 67.83
+		},
+		{
+			"sections_title": "geog mod glob i",
+			"sections_id": "121",
+			"sections_dept": "geog",
+			"sections_avg": 67.86
+		},
+		{
+			"sections_title": "geog mod glob i",
+			"sections_id": "121",
+			"sections_dept": "geog",
+			"sections_avg": 67.88
+		},
+		{
+			"sections_title": "geog enviro glob",
+			"sections_id": "121",
+			"sections_dept": "geog",
+			"sections_avg": 67.96
+		},
+		{
+			"sections_title": "geog mod glob ii",
+			"sections_id": "122",
+			"sections_dept": "geog",
+			"sections_avg": 68
+		},
+		{
+			"sections_title": "geog mod glob i",
+			"sections_id": "121",
+			"sections_dept": "geog",
+			"sections_avg": 68.19
+		},
+		{
+			"sections_title": "geog mod glob i",
+			"sections_id": "121",
+			"sections_dept": "geog",
+			"sections_avg": 68.44
+		},
+		{
+			"sections_title": "geog pacific rim",
+			"sections_id": "281",
+			"sections_dept": "geog",
+			"sections_avg": 68.5
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 68.51
+		},
+		{
+			"sections_title": "geog mod glob i",
+			"sections_id": "121",
+			"sections_dept": "geog",
+			"sections_avg": 68.51
+		},
+		{
+			"sections_title": "geog mod glob i",
+			"sections_id": "121",
+			"sections_dept": "geog",
+			"sections_avg": 68.56
+		},
+		{
+			"sections_title": "geog mod glob",
+			"sections_id": "122",
+			"sections_dept": "geog",
+			"sections_avg": 68.59
+		},
+		{
+			"sections_title": "geog pacific rim",
+			"sections_id": "281",
+			"sections_dept": "geog",
+			"sections_avg": 68.6
+		},
+		{
+			"sections_title": "geog mod glob i",
+			"sections_id": "121",
+			"sections_dept": "geog",
+			"sections_avg": 68.66
+		},
+		{
+			"sections_title": "geog mod glob i",
+			"sections_id": "121",
+			"sections_dept": "geog",
+			"sections_avg": 68.67
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 68.69
+		},
+		{
+			"sections_title": "geog mod glob ii",
+			"sections_id": "122",
+			"sections_dept": "geog",
+			"sections_avg": 68.73
+		},
+		{
+			"sections_title": "geog mod glob ii",
+			"sections_id": "122",
+			"sections_dept": "geog",
+			"sections_avg": 68.78
+		},
+		{
+			"sections_title": "geog econ devlop",
+			"sections_id": "362",
+			"sections_dept": "geog",
+			"sections_avg": 68.88
+		},
+		{
+			"sections_title": "geog econ devlop",
+			"sections_id": "362",
+			"sections_dept": "geog",
+			"sections_avg": 68.88
+		},
+		{
+			"sections_title": "geography asia",
+			"sections_id": "380",
+			"sections_dept": "geog",
+			"sections_avg": 68.89
+		},
+		{
+			"sections_title": "geography asia",
+			"sections_id": "380",
+			"sections_dept": "geog",
+			"sections_avg": 68.89
+		},
+		{
+			"sections_title": "geog mod glob i",
+			"sections_id": "121",
+			"sections_dept": "geog",
+			"sections_avg": 68.94
+		},
+		{
+			"sections_title": "geography asia",
+			"sections_id": "380",
+			"sections_dept": "geog",
+			"sections_avg": 69.12
+		},
+		{
+			"sections_title": "geography asia",
+			"sections_id": "380",
+			"sections_dept": "geog",
+			"sections_avg": 69.12
+		},
+		{
+			"sections_title": "geog mod glob ii",
+			"sections_id": "122",
+			"sections_dept": "geog",
+			"sections_avg": 69.21
+		},
+		{
+			"sections_title": "geog pacific rim",
+			"sections_id": "281",
+			"sections_dept": "geog",
+			"sections_avg": 69.26
+		},
+		{
+			"sections_title": "geog mod glob i",
+			"sections_id": "121",
+			"sections_dept": "geog",
+			"sections_avg": 69.31
+		},
+		{
+			"sections_title": "geog pacific rim",
+			"sections_id": "281",
+			"sections_dept": "geog",
+			"sections_avg": 69.36
+		},
+		{
+			"sections_title": "geography asia",
+			"sections_id": "380",
+			"sections_dept": "geog",
+			"sections_avg": 69.42
+		},
+		{
+			"sections_title": "geography asia",
+			"sections_id": "380",
+			"sections_dept": "geog",
+			"sections_avg": 69.42
+		},
+		{
+			"sections_title": "geog mod glob i",
+			"sections_id": "121",
+			"sections_dept": "geog",
+			"sections_avg": 69.55
+		},
+		{
+			"sections_title": "geog mod glob i",
+			"sections_id": "121",
+			"sections_dept": "geog",
+			"sections_avg": 69.67
+		},
+		{
+			"sections_title": "geography europe",
+			"sections_id": "391",
+			"sections_dept": "geog",
+			"sections_avg": 69.7
+		},
+		{
+			"sections_title": "geography europe",
+			"sections_id": "391",
+			"sections_dept": "geog",
+			"sections_avg": 69.7
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 69.8
+		},
+		{
+			"sections_title": "geography china",
+			"sections_id": "485",
+			"sections_dept": "geog",
+			"sections_avg": 69.92
+		},
+		{
+			"sections_title": "geography china",
+			"sections_id": "485",
+			"sections_dept": "geog",
+			"sections_avg": 69.92
+		},
+		{
+			"sections_title": "geography europe",
+			"sections_id": "391",
+			"sections_dept": "geog",
+			"sections_avg": 69.94
+		},
+		{
+			"sections_title": "geography europe",
+			"sections_id": "391",
+			"sections_dept": "geog",
+			"sections_avg": 69.94
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 70.05
+		},
+		{
+			"sections_title": "geog pacific rim",
+			"sections_id": "281",
+			"sections_dept": "geog",
+			"sections_avg": 70.1
+		},
+		{
+			"sections_title": "geography asia",
+			"sections_id": "380",
+			"sections_dept": "geog",
+			"sections_avg": 70.17
+		},
+		{
+			"sections_title": "geography asia",
+			"sections_id": "380",
+			"sections_dept": "geog",
+			"sections_avg": 70.17
+		},
+		{
+			"sections_title": "geog mod glob i",
+			"sections_id": "121",
+			"sections_dept": "geog",
+			"sections_avg": 70.18
+		},
+		{
+			"sections_title": "geog pacific rim",
+			"sections_id": "281",
+			"sections_dept": "geog",
+			"sections_avg": 70.21
+		},
+		{
+			"sections_title": "geog mod glob ii",
+			"sections_id": "122",
+			"sections_dept": "geog",
+			"sections_avg": 70.22
+		},
+		{
+			"sections_title": "geog mod glob ii",
+			"sections_id": "122",
+			"sections_dept": "geog",
+			"sections_avg": 70.22
+		},
+		{
+			"sections_title": "geog enviro glob",
+			"sections_id": "121",
+			"sections_dept": "geog",
+			"sections_avg": 70.31
+		},
+		{
+			"sections_title": "geog mod glob",
+			"sections_id": "122",
+			"sections_dept": "geog",
+			"sections_avg": 70.37
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 70.39
+		},
+		{
+			"sections_title": "geog mig & set",
+			"sections_id": "353",
+			"sections_dept": "geog",
+			"sections_avg": 70.41
+		},
+		{
+			"sections_title": "geog mig & set",
+			"sections_id": "353",
+			"sections_dept": "geog",
+			"sections_avg": 70.41
+		},
+		{
+			"sections_title": "geog mod glob i",
+			"sections_id": "121",
+			"sections_dept": "geog",
+			"sections_avg": 70.43
+		},
+		{
+			"sections_title": "geog natural haz",
+			"sections_id": "316",
+			"sections_dept": "geog",
+			"sections_avg": 70.56
+		},
+		{
+			"sections_title": "geog natural haz",
+			"sections_id": "316",
+			"sections_dept": "geog",
+			"sections_avg": 70.56
+		},
+		{
+			"sections_title": "geog mig & set",
+			"sections_id": "353",
+			"sections_dept": "geog",
+			"sections_avg": 70.58
+		},
+		{
+			"sections_title": "geog mig & set",
+			"sections_id": "353",
+			"sections_dept": "geog",
+			"sections_avg": 70.58
+		},
+		{
+			"sections_title": "geography china",
+			"sections_id": "485",
+			"sections_dept": "geog",
+			"sections_avg": 70.83
+		},
+		{
+			"sections_title": "geography china",
+			"sections_id": "485",
+			"sections_dept": "geog",
+			"sections_avg": 70.83
+		},
+		{
+			"sections_title": "geog pacific rim",
+			"sections_id": "281",
+			"sections_dept": "geog",
+			"sections_avg": 70.9
+		},
+		{
+			"sections_title": "geography europe",
+			"sections_id": "391",
+			"sections_dept": "geog",
+			"sections_avg": 70.94
+		},
+		{
+			"sections_title": "geography europe",
+			"sections_id": "391",
+			"sections_dept": "geog",
+			"sections_avg": 70.94
+		},
+		{
+			"sections_title": "geog mod glob",
+			"sections_id": "122",
+			"sections_dept": "geog",
+			"sections_avg": 71.13
+		},
+		{
+			"sections_title": "geography europe",
+			"sections_id": "391",
+			"sections_dept": "geog",
+			"sections_avg": 71.15
+		},
+		{
+			"sections_title": "geography europe",
+			"sections_id": "391",
+			"sections_dept": "geog",
+			"sections_avg": 71.15
+		},
+		{
+			"sections_title": "geog pacific rim",
+			"sections_id": "281",
+			"sections_dept": "geog",
+			"sections_avg": 71.24
+		},
+		{
+			"sections_title": "geog pacific rim",
+			"sections_id": "281",
+			"sections_dept": "geog",
+			"sections_avg": 71.24
+		},
+		{
+			"sections_title": "geog mod glob ii",
+			"sections_id": "122",
+			"sections_dept": "geog",
+			"sections_avg": 71.3
+		},
+		{
+			"sections_title": "geog pacific rim",
+			"sections_id": "281",
+			"sections_dept": "geog",
+			"sections_avg": 71.32
+		},
+		{
+			"sections_title": "geog pacific rim",
+			"sections_id": "281",
+			"sections_dept": "geog",
+			"sections_avg": 71.32
+		},
+		{
+			"sections_title": "geog pacific rim",
+			"sections_id": "281",
+			"sections_dept": "geog",
+			"sections_avg": 71.42
+		},
+		{
+			"sections_title": "geog mod glob i",
+			"sections_id": "121",
+			"sections_dept": "geog",
+			"sections_avg": 71.45
+		},
+		{
+			"sections_title": "geog mig & set",
+			"sections_id": "353",
+			"sections_dept": "geog",
+			"sections_avg": 71.45
+		},
+		{
+			"sections_title": "geog mig & set",
+			"sections_id": "353",
+			"sections_dept": "geog",
+			"sections_avg": 71.45
+		},
+		{
+			"sections_title": "geog mig & set",
+			"sections_id": "353",
+			"sections_dept": "geog",
+			"sections_avg": 71.54
+		},
+		{
+			"sections_title": "geog mig & set",
+			"sections_id": "353",
+			"sections_dept": "geog",
+			"sections_avg": 71.54
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 71.56
+		},
+		{
+			"sections_title": "geog mod glob ii",
+			"sections_id": "122",
+			"sections_dept": "geog",
+			"sections_avg": 71.58
+		},
+		{
+			"sections_title": "geog mod glob ii",
+			"sections_id": "122",
+			"sections_dept": "geog",
+			"sections_avg": 71.58
+		},
+		{
+			"sections_title": "geography asia",
+			"sections_id": "380",
+			"sections_dept": "geog",
+			"sections_avg": 71.58
+		},
+		{
+			"sections_title": "geography asia",
+			"sections_id": "380",
+			"sections_dept": "geog",
+			"sections_avg": 71.58
+		},
+		{
+			"sections_title": "geog mod glob i",
+			"sections_id": "121",
+			"sections_dept": "geog",
+			"sections_avg": 71.62
+		},
+		{
+			"sections_title": "geog mod glob ii",
+			"sections_id": "122",
+			"sections_dept": "geog",
+			"sections_avg": 71.76
+		},
+		{
+			"sections_title": "geog mod glob ii",
+			"sections_id": "122",
+			"sections_dept": "geog",
+			"sections_avg": 71.76
+		},
+		{
+			"sections_title": "geog natural haz",
+			"sections_id": "316",
+			"sections_dept": "geog",
+			"sections_avg": 71.79
+		},
+		{
+			"sections_title": "geog natural haz",
+			"sections_id": "316",
+			"sections_dept": "geog",
+			"sections_avg": 71.79
+		},
+		{
+			"sections_title": "geog mig & set",
+			"sections_id": "353",
+			"sections_dept": "geog",
+			"sections_avg": 71.81
+		},
+		{
+			"sections_title": "geog mig & set",
+			"sections_id": "353",
+			"sections_dept": "geog",
+			"sections_avg": 71.81
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 71.82
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 71.99
+		},
+		{
+			"sections_title": "geog natural haz",
+			"sections_id": "316",
+			"sections_dept": "geog",
+			"sections_avg": 72.03
+		},
+		{
+			"sections_title": "geog natural haz",
+			"sections_id": "316",
+			"sections_dept": "geog",
+			"sections_avg": 72.03
+		},
+		{
+			"sections_title": "geog mod glob i",
+			"sections_id": "121",
+			"sections_dept": "geog",
+			"sections_avg": 72.06
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 72.1
+		},
+		{
+			"sections_title": "geog pacific rim",
+			"sections_id": "281",
+			"sections_dept": "geog",
+			"sections_avg": 72.13
+		},
+		{
+			"sections_title": "geog pacific rim",
+			"sections_id": "281",
+			"sections_dept": "geog",
+			"sections_avg": 72.13
+		},
+		{
+			"sections_title": "geog econ devlop",
+			"sections_id": "362",
+			"sections_dept": "geog",
+			"sections_avg": 72.13
+		},
+		{
+			"sections_title": "geog econ devlop",
+			"sections_id": "362",
+			"sections_dept": "geog",
+			"sections_avg": 72.13
+		},
+		{
+			"sections_title": "geog mig & set",
+			"sections_id": "353",
+			"sections_dept": "geog",
+			"sections_avg": 72.26
+		},
+		{
+			"sections_title": "geog mig & set",
+			"sections_id": "353",
+			"sections_dept": "geog",
+			"sections_avg": 72.26
+		},
+		{
+			"sections_title": "geog mig & set",
+			"sections_id": "353",
+			"sections_dept": "geog",
+			"sections_avg": 72.36
+		},
+		{
+			"sections_title": "geog mig & set",
+			"sections_id": "353",
+			"sections_dept": "geog",
+			"sections_avg": 72.36
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 72.43
+		},
+		{
+			"sections_title": "geog econ devlop",
+			"sections_id": "362",
+			"sections_dept": "geog",
+			"sections_avg": 72.48
+		},
+		{
+			"sections_title": "geog econ devlop",
+			"sections_id": "362",
+			"sections_dept": "geog",
+			"sections_avg": 72.48
+		},
+		{
+			"sections_title": "geog econ devlop",
+			"sections_id": "362",
+			"sections_dept": "geog",
+			"sections_avg": 72.5
+		},
+		{
+			"sections_title": "geog econ devlop",
+			"sections_id": "362",
+			"sections_dept": "geog",
+			"sections_avg": 72.5
+		},
+		{
+			"sections_title": "geography asia",
+			"sections_id": "380",
+			"sections_dept": "geog",
+			"sections_avg": 72.55
+		},
+		{
+			"sections_title": "geography asia",
+			"sections_id": "380",
+			"sections_dept": "geog",
+			"sections_avg": 72.55
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 72.57
+		},
+		{
+			"sections_title": "geog pacific rim",
+			"sections_id": "281",
+			"sections_dept": "geog",
+			"sections_avg": 72.7
+		},
+		{
+			"sections_title": "geog mod glob",
+			"sections_id": "122",
+			"sections_dept": "geog",
+			"sections_avg": 72.81
+		},
+		{
+			"sections_title": "geog mig & set",
+			"sections_id": "353",
+			"sections_dept": "geog",
+			"sections_avg": 72.84
+		},
+		{
+			"sections_title": "geog mig & set",
+			"sections_id": "353",
+			"sections_dept": "geog",
+			"sections_avg": 72.84
+		},
+		{
+			"sections_title": "geog natural haz",
+			"sections_id": "316",
+			"sections_dept": "geog",
+			"sections_avg": 73.04
+		},
+		{
+			"sections_title": "geog natural haz",
+			"sections_id": "316",
+			"sections_dept": "geog",
+			"sections_avg": 73.04
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 73.05
+		},
+		{
+			"sections_title": "geog mig & set",
+			"sections_id": "353",
+			"sections_dept": "geog",
+			"sections_avg": 73.1
+		},
+		{
+			"sections_title": "geog mig & set",
+			"sections_id": "353",
+			"sections_dept": "geog",
+			"sections_avg": 73.1
+		},
+		{
+			"sections_title": "geog econ devlop",
+			"sections_id": "362",
+			"sections_dept": "geog",
+			"sections_avg": 73.25
+		},
+		{
+			"sections_title": "geog econ devlop",
+			"sections_id": "362",
+			"sections_dept": "geog",
+			"sections_avg": 73.25
+		},
+		{
+			"sections_title": "geog pacific rim",
+			"sections_id": "281",
+			"sections_dept": "geog",
+			"sections_avg": 73.27
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 73.3
+		},
+		{
+			"sections_title": "geog pacific rim",
+			"sections_id": "281",
+			"sections_dept": "geog",
+			"sections_avg": 73.32
+		},
+		{
+			"sections_title": "geog pacific rim",
+			"sections_id": "281",
+			"sections_dept": "geog",
+			"sections_avg": 73.32
+		},
+		{
+			"sections_title": "geog natural haz",
+			"sections_id": "316",
+			"sections_dept": "geog",
+			"sections_avg": 73.69
+		},
+		{
+			"sections_title": "geog natural haz",
+			"sections_id": "316",
+			"sections_dept": "geog",
+			"sections_avg": 73.69
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 73.7
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 73.7
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 73.72
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 73.78
+		},
+		{
+			"sections_title": "geog mig & set",
+			"sections_id": "353",
+			"sections_dept": "geog",
+			"sections_avg": 74.05
+		},
+		{
+			"sections_title": "geog mig & set",
+			"sections_id": "353",
+			"sections_dept": "geog",
+			"sections_avg": 74.05
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 74.2
+		},
+		{
+			"sections_title": "geog mod glob ii",
+			"sections_id": "122",
+			"sections_dept": "geog",
+			"sections_avg": 74.37
+		},
+		{
+			"sections_title": "geog econ devlop",
+			"sections_id": "362",
+			"sections_dept": "geog",
+			"sections_avg": 74.42
+		},
+		{
+			"sections_title": "geog econ devlop",
+			"sections_id": "362",
+			"sections_dept": "geog",
+			"sections_avg": 74.42
+		},
+		{
+			"sections_title": "geog natural haz",
+			"sections_id": "316",
+			"sections_dept": "geog",
+			"sections_avg": 74.51
+		},
+		{
+			"sections_title": "geog natural haz",
+			"sections_id": "316",
+			"sections_dept": "geog",
+			"sections_avg": 74.51
+		},
+		{
+			"sections_title": "geog natural haz",
+			"sections_id": "316",
+			"sections_dept": "geog",
+			"sections_avg": 74.51
+		},
+		{
+			"sections_title": "geog natural haz",
+			"sections_id": "316",
+			"sections_dept": "geog",
+			"sections_avg": 74.51
+		},
+		{
+			"sections_title": "geog econ devlop",
+			"sections_id": "362",
+			"sections_dept": "geog",
+			"sections_avg": 74.7
+		},
+		{
+			"sections_title": "geog econ devlop",
+			"sections_id": "362",
+			"sections_dept": "geog",
+			"sections_avg": 74.7
+		},
+		{
+			"sections_title": "geog pacific rim",
+			"sections_id": "281",
+			"sections_dept": "geog",
+			"sections_avg": 74.73
+		},
+		{
+			"sections_title": "geog pacific rim",
+			"sections_id": "281",
+			"sections_dept": "geog",
+			"sections_avg": 74.73
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 75.05
+		},
+		{
+			"sections_title": "geog mod glob ii",
+			"sections_id": "122",
+			"sections_dept": "geog",
+			"sections_avg": 75.19
+		},
+		{
+			"sections_title": "geog inform sci",
+			"sections_id": "270",
+			"sections_dept": "geob",
+			"sections_avg": 75.42
+		},
+		{
+			"sections_title": "geog natural haz",
+			"sections_id": "316",
+			"sections_dept": "geog",
+			"sections_avg": 75.51
+		},
+		{
+			"sections_title": "geog natural haz",
+			"sections_id": "316",
+			"sections_dept": "geog",
+			"sections_avg": 75.51
+		},
+		{
+			"sections_title": "geog econ devlop",
+			"sections_id": "362",
+			"sections_dept": "geog",
+			"sections_avg": 76.11
+		},
+		{
+			"sections_title": "geog econ devlop",
+			"sections_id": "362",
+			"sections_dept": "geog",
+			"sections_avg": 76.11
+		},
+		{
+			"sections_title": "geog mod glob i",
+			"sections_id": "121",
+			"sections_dept": "geog",
+			"sections_avg": 76.18
+		},
+		{
+			"sections_title": "geog pacific rim",
+			"sections_id": "281",
+			"sections_dept": "geog",
+			"sections_avg": 76.49
+		},
+		{
+			"sections_title": "geog natural haz",
+			"sections_id": "316",
+			"sections_dept": "geog",
+			"sections_avg": 76.74
+		},
+		{
+			"sections_title": "geog natural haz",
+			"sections_id": "316",
+			"sections_dept": "geog",
+			"sections_avg": 76.74
+		},
+		{
+			"sections_title": "geography china",
+			"sections_id": "485",
+			"sections_dept": "geog",
+			"sections_avg": 78.67
+		},
+		{
+			"sections_title": "geography china",
+			"sections_id": "485",
+			"sections_dept": "geog",
+			"sections_avg": 78.67
+		},
+		{
+			"sections_title": "geog econ devlop",
+			"sections_id": "362",
+			"sections_dept": "geog",
+			"sections_avg": 79.49
+		},
+		{
+			"sections_title": "geog econ devlop",
+			"sections_id": "362",
+			"sections_dept": "geog",
+			"sections_avg": 79.49
+		},
+		{
+			"sections_title": "geog pacific rim",
+			"sections_id": "281",
+			"sections_dept": "geog",
+			"sections_avg": 79.6
+		},
+		{
+			"sections_title": "geog pacific rim",
+			"sections_id": "281",
+			"sections_dept": "geog",
+			"sections_avg": 79.6
+		},
+		{
+			"sections_title": "geog pacific rim",
+			"sections_id": "281",
+			"sections_dept": "geog",
+			"sections_avg": 80.94
+		},
+		{
+			"sections_title": "geography china",
+			"sections_id": "485",
+			"sections_dept": "geog",
+			"sections_avg": 85.83
+		},
+		{
+			"sections_title": "geography china",
+			"sections_id": "485",
+			"sections_dept": "geog",
+			"sections_avg": 85.83
+		}
+	]
+}

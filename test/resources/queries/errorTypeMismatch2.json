@@ -1,0 +1,19 @@
+{
+	"title": "errorTypeMismatch2",
+	"input": {
+		"WHERE": {
+			"GT": {
+				"sections_dept": "cpns"
+			}
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_dept",
+				"sections_avg"
+			],
+			"ORDER": "sections_dept"
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}
