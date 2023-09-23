@@ -1,0 +1,14 @@
+{
+	"title": "should fail 9",
+	"input": {
+		"WHERE": {},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_avg"
+			],
+			"ORDER": {}
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

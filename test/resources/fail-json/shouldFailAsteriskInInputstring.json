@@ -1,0 +1,23 @@
+{
+	"title": "should fail asterisk in inputstring",
+	"input": {
+		"WHERE": {
+			"IS": {
+				"sections_dept": "ma*th"
+			}
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_dept",
+				"sections_avg",
+				"sections_uuid",
+				"sections_title",
+				"sections_instructor",
+				"sections_id"
+			],
+			"ORDER": "sections_avg"
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}
