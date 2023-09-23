@@ -1,0 +1,14 @@
+{
+	"title": "error4",
+	"input": {
+		"WHERE": {},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_avg",
+				"mystery_title"
+			]
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}
