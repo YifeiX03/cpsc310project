@@ -1,0 +1,13 @@
+{
+	"title": "should fail 6",
+	"input": {
+		"WHERE": {},
+		"OPTIONS": {
+			"COLUMNS": [
+				"aaa_aaa"
+			]
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

@@ -1,0 +1,15 @@
+{
+	"title": "should fail 23",
+	"input": {
+		"WHERE": {},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_dept"
+			],
+			"ORDER": "sections_dept"
+		},
+		"aaa": "aaa"
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

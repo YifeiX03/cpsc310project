@@ -1,0 +1,9 @@
+{
+	"title": "should fail 2",
+	"input": {
+		"WHERE": {},
+		"OPTIONS": {}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

@@ -1,0 +1,16 @@
+{
+	"title": "should fail 43",
+	"input": {
+		"WHERE": {
+			"IS": {}
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_dept"
+			],
+			"ORDER": "sections_dept"
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

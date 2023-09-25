@@ -1,0 +1,11 @@
+{
+	"title": "should fail 3",
+	"input": {
+		"WHERE": {},
+		"OPTIONS": {
+			"COLUMNS": {}
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

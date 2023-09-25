@@ -1,0 +1,19 @@
+{
+	"title": "should fail 30",
+	"input": {
+		"WHERE": {
+			"EQ": {
+				"sections_dept": "aa",
+				"section_avg": 1
+			}
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_dept"
+			],
+			"ORDER": "sections_dept"
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

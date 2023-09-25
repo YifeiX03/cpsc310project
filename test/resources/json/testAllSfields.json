@@ -1,0 +1,185 @@
+{
+	"title": "test all sfields",
+	"input": {
+		"WHERE": {
+			"AND": [
+				{
+					"GT": {
+						"sections_avg": 95
+					}
+				},
+				{
+					"IS": {
+						"sections_dept": "math"
+					}
+				}
+			]
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_dept",
+				"sections_avg",
+				"sections_uuid",
+				"sections_title",
+				"sections_instructor",
+				"sections_id"
+			],
+			"ORDER": "sections_avg"
+		}
+	},
+	"errorExpected": false,
+	"expected": [
+		{
+			"sections_dept": "math",
+			"sections_avg": 95.56,
+			"sections_uuid": "13938",
+			"sections_title": "lie theory i",
+			"sections_instructor": "gordon, julia yulia",
+			"sections_id": "534"
+		},
+		{
+			"sections_dept": "math",
+			"sections_avg": 95.56,
+			"sections_uuid": "13939",
+			"sections_title": "lie theory i",
+			"sections_instructor": "",
+			"sections_id": "534"
+		},
+		{
+			"sections_dept": "math",
+			"sections_avg": 95.67,
+			"sections_uuid": "90202",
+			"sections_title": "functional analy",
+			"sections_instructor": "murugan, mathav",
+			"sections_id": "510"
+		},
+		{
+			"sections_dept": "math",
+			"sections_avg": 95.67,
+			"sections_uuid": "90203",
+			"sections_title": "functional analy",
+			"sections_instructor": "",
+			"sections_id": "510"
+		},
+		{
+			"sections_dept": "math",
+			"sections_avg": 96.25,
+			"sections_uuid": "90206",
+			"sections_title": "prt diff equa i",
+			"sections_instructor": "wei, juncheng",
+			"sections_id": "516"
+		},
+		{
+			"sections_dept": "math",
+			"sections_avg": 96.25,
+			"sections_uuid": "90207",
+			"sections_title": "prt diff equa i",
+			"sections_instructor": "",
+			"sections_id": "516"
+		},
+		{
+			"sections_dept": "math",
+			"sections_avg": 96.33,
+			"sections_uuid": "34240",
+			"sections_title": "msc major essay",
+			"sections_instructor": "",
+			"sections_id": "589"
+		},
+		{
+			"sections_dept": "math",
+			"sections_avg": 96.44,
+			"sections_uuid": "5351",
+			"sections_title": "algebra ii",
+			"sections_instructor": "karu, kalle",
+			"sections_id": "502"
+		},
+		{
+			"sections_dept": "math",
+			"sections_avg": 96.44,
+			"sections_uuid": "5352",
+			"sections_title": "algebra ii",
+			"sections_instructor": "",
+			"sections_id": "502"
+		},
+		{
+			"sections_dept": "math",
+			"sections_avg": 96.83,
+			"sections_uuid": "4011",
+			"sections_title": "probability ii",
+			"sections_instructor": "nachmias, asaf",
+			"sections_id": "545"
+		},
+		{
+			"sections_dept": "math",
+			"sections_avg": 96.83,
+			"sections_uuid": "4012",
+			"sections_title": "probability ii",
+			"sections_instructor": "",
+			"sections_id": "545"
+		},
+		{
+			"sections_dept": "math",
+			"sections_avg": 97.09,
+			"sections_uuid": "73173",
+			"sections_title": "harmonic anal i",
+			"sections_instructor": "laba, izabella",
+			"sections_id": "541"
+		},
+		{
+			"sections_dept": "math",
+			"sections_avg": 97.09,
+			"sections_uuid": "73174",
+			"sections_title": "harmonic anal i",
+			"sections_instructor": "",
+			"sections_id": "541"
+		},
+		{
+			"sections_dept": "math",
+			"sections_avg": 97.25,
+			"sections_uuid": "32014",
+			"sections_title": "diff geometry i",
+			"sections_instructor": "fraser, ailana",
+			"sections_id": "525"
+		},
+		{
+			"sections_dept": "math",
+			"sections_avg": 97.25,
+			"sections_uuid": "32015",
+			"sections_title": "diff geometry i",
+			"sections_instructor": "",
+			"sections_id": "525"
+		},
+		{
+			"sections_dept": "math",
+			"sections_avg": 97.48,
+			"sections_uuid": "73165",
+			"sections_title": "algb geometry i",
+			"sections_instructor": "karu, kalle",
+			"sections_id": "532"
+		},
+		{
+			"sections_dept": "math",
+			"sections_avg": 97.48,
+			"sections_uuid": "73166",
+			"sections_title": "algb geometry i",
+			"sections_instructor": "",
+			"sections_id": "532"
+		},
+		{
+			"sections_dept": "math",
+			"sections_avg": 99.78,
+			"sections_uuid": "5373",
+			"sections_title": "algb topology i",
+			"sections_instructor": "gomez, jose",
+			"sections_id": "527"
+		},
+		{
+			"sections_dept": "math",
+			"sections_avg": 99.78,
+			"sections_uuid": "5374",
+			"sections_title": "algb topology i",
+			"sections_instructor": "",
+			"sections_id": "527"
+		}
+	]
+}
