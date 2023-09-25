@@ -7,6 +7,12 @@ import {
 	NotFoundError,
 } from "./IInsightFacade";
 
+import {
+	Dataset,
+	Course,
+	Section
+} from "../helpers/courses";
+
 /**
  * This is the main programmatic entry point for the project.
  * Method documentation is in IInsightFacade
