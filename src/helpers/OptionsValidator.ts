@@ -2,6 +2,9 @@ import {ValidationResult} from "./ValidationTypes";
 
 
 export function validateOptions(options: object, loadedDatasets: string[]): ValidationResult {
+	if (options === null) {
+		return {valid: false, error: "OPTIONS is null!"};
+	}
 	const validKeys = ["COLUMNS", "ORDER"];  // Valid keys list
 	let keys = Object.keys(options);
 	if (keys.length === 0) {
