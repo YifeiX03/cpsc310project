@@ -35,7 +35,7 @@ export function validateOptions(options: object, loadedDatasets: string[]): Vali
 			let res = validateOrder(order, options.COLUMNS as string[], loadedDatasets);
 			if (res.valid) {
 				if (!(options.COLUMNS as string[]).includes(order)) {
-					return {valid: false, error: "ORDER is not in COLUMNS"};
+					return {valid: false, error: "ORDER entry is not in COLUMNS"};
 				}
 			} else {
 				return res;
@@ -88,6 +88,9 @@ function validateColumns(columns: string[], loadedDatasets: string[]): Validatio
 
 function validateOrder(order: string, columns: string[], loadedDatasets: string[]): ValidationResult{
 	let targetID = columns[0].split("_")[0];
+	if (order.split("_").length !== 2) {
+		return {valid: false, error: "ORDER contains no or too many _"};
+	}
 	let actualID = order.split("_")[0];
 	if (targetID !== actualID) {
 		return {valid: false, error: "ORDER does not match COLUMNS"};
