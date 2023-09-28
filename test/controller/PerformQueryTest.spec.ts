@@ -40,7 +40,7 @@ export function createDatasetFromFolder(folderPath: string, datasetName: string)
 			const section = new Section(
 				entry.Avg,
 				dept,
-				entry.id,          // Using "id" for "uuid"
+				entry.Course,          // Using "id" for "uuid"
 				entry.Professor,   // Mapping "Professor" to "instructor"
 				entry.Title,       // Title remains "Title"
 				entry.Pass,        // Pass remains "Pass"
@@ -69,31 +69,30 @@ describe("test request validator", function() {
 
 		it("should handle request ", () => {
 			let datasets = [dataset];
-			let query = {
-				WHERE:{
+			let query  = {
+				WHERE: {
 					AND: [
+						{GT: {
+							sections_avg: 92
+						}},
 						{
-							GT: {
-								sections_avg: 92
-							}
-						}, {
 							IS: {
-								sections_dept: "cpsc"
+								sections_dept: "cp*"
 							}
 						}
 					]
 				},
-				OPTIONS:{
-					COLUMNS:[
+				OPTIONS: {
+					COLUMNS: [
 						"sections_dept",
 						"sections_avg"
 					],
-					ORDER:"sections_avg"
+					ORDER: "sections_avg"
 				}
 			};
 			// console.log(requestValidator(query, ["sections"]));
 			let res = performQueryHelper(query, datasets);
-			res.prettyPrint();
+			console.log(res);
 		});
 
 	});
