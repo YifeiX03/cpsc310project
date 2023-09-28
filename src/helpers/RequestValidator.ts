@@ -2,6 +2,13 @@ import {ValidationResult} from "./ValidationTypes";
 import {validateWhere} from "./WhereValidator";
 import {validateOptions} from "./OptionsValidator";
 
+
+/**
+ * Validates a query request
+ * @param request: query request
+ * @param loadedDataSets: list of loaded datasets
+ * @return: ValidationResult
+ */
 export function requestValidator(request: any, loadedDataSets: string[]): ValidationResult{
 	if (request == null) {
 		return {valid: false, error: "request is null"};
@@ -15,6 +22,7 @@ export function requestValidator(request: any, loadedDataSets: string[]): Valida
 		return {valid: false, error: "WHERE or OPTIONS is not an object"};
 	}
 	let datasetName: string = "";
+	// Check if dataset name is valid, if so, set datasetName for later assertions for only reference one dataset
 	if ("OPTIONS" in request && typeof request.OPTIONS === "object") {
 		if ("COLUMNS" in request.OPTIONS) {
 			if (Array.isArray(request.OPTIONS.COLUMNS) && request.OPTIONS.COLUMNS.length > 0) {
