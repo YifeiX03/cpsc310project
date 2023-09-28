@@ -2,7 +2,7 @@ import {Dataset, Section} from "./Courses";
 import {QueryResult} from "./QueryTypes";
 import {unionOfQueryResults, intersectionOfQueryResults} from "./SectionHelper";
 
-function performQueryHelper(query: any, datasets: Dataset[]): QueryResult {
+export function performQueryHelper(query: any, datasets: Dataset[]): QueryResult {
 	let option = processOptions(query.OPTIONS);
 	const foundDataset = datasets.find((dataset) => dataset.datasetName === option.datasetName);
 	let fields = option.fields;
@@ -59,18 +59,24 @@ function processOptions(options: any): any {
 }
 
 export function queryWhere(where: any, dataset: Dataset): QueryResult {
-	let key = where.keys[0];
+	let keys = Object.keys(where);
+	let key = keys[0];
+
 	if (key === "GT" || key === "LT" || key === "EQ") {
 		return queryCmp(key, where[key], dataset);
 	}
+
 	if (key === "IS") {
 		let cmp = where["IS"];
-		let field = cmp.keys[0].split("_")[1];
-		let target = cmp[cmp.keys[0]] as string;
+		let cmpKeys = Object.keys(cmp);
+		let field = cmpKeys[0].split("_")[1];
+		let target = cmp[cmpKeys[0]] as string;
 		return queryIs(dataset, field, target);
 	}
+
 	return queryLogic(key, where[key], dataset);
 }
+
 
 function queryLogic(key: string, logic: any, dataset: Dataset): QueryResult {
 	let results: QueryResult[] = [];
@@ -97,25 +103,28 @@ function queryLogic(key: string, logic: any, dataset: Dataset): QueryResult {
 }
 
 function queryCmp(key: string, cmp: any, dataset: Dataset): QueryResult {
-	let field = cmp.keys[0].split("_")[1];
-	let target = cmp[cmp.keys[0]] as number;
+	// Retrieve the keys of the cmp object
+	let fieldKeys = Object.keys(cmp);
+	let field = fieldKeys[0].split("_")[1];
+	let target = cmp[fieldKeys[0]] as number;
+
 	let res: Section[] = filterSectionsByField(dataset, key, field, target);
 	let qres = new QueryResult();
 	qres.addSectionList(res);
 	return qres;
 }
 
-function filterSectionsByField(dataset: Dataset, comparison: string, fieldName: keyof Section,
+function filterSectionsByField(dataset: Dataset, comparison: string, fieldName: string,
 	value: number): Section[]{
 	let result: Section[] = [];
 
 	for (let course of dataset.courses) {
 		for (let section of course.sections) {
-			if (comparison === "GT" && section[fieldName] > value) {
+			if (comparison === "GT" && (section as any)[fieldName] > value) {
 				result.push(section);
-			} else if (comparison === "LT" && section[fieldName] < value) {
+			} else if (comparison === "LT" && (section as any)[fieldName] < value) {
 				result.push(section);
-			} else if (comparison === "EQ" && section[fieldName] === value) {
+			} else if (comparison === "EQ" && (section as any)[fieldName] === value) {
 				result.push(section);
 			}
 		}
@@ -123,11 +132,11 @@ function filterSectionsByField(dataset: Dataset, comparison: string, fieldName: 
 	return result;
 }
 
-function queryIs (dataset: Dataset, fieldName: keyof Section, value: string): QueryResult{
+function queryIs(dataset: Dataset, fieldName: string, value: string): QueryResult {
 	let result: Section[] = [];
 	for (let course of dataset.courses) {
 		for (let section of course.sections) {
-			if (section[fieldName] === value) {
+			if ((section as any)[fieldName] === value) {
 				result.push(section);
 			}
 		}
