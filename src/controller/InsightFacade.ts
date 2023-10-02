@@ -19,8 +19,14 @@ import {
  *
  */
 export default class InsightFacade implements IInsightFacade {
+	public datasets: Dataset[];
+
 	constructor() {
 		console.log("InsightFacadeImpl::init()");
+		this.datasets = [];
+		if (this.datasets) {
+			console.log("Successfully initialized datasets");
+		}
 	}
 
 	public addDataset(id: string, content: string, kind: InsightDatasetKind): Promise<string[]> {
