@@ -31,9 +31,9 @@ export async function parseZip(id: string, dataZip: string): Promise<Dataset> {
 	let zip = await JSZip.loadAsync(buffer);
 	let courses: any = zip.folder("courses");
 	// check if folder named courses exists
-	// errorCheck(courses === null, "No folder named courses found");
+	errorCheck(courses === null, "No folder named courses found");
 	// check if courses folder is empty, might be redundant
-	// errorCheck(Object.keys(courses.files).length === 0, "Nothing found in courses folder");
+	errorCheck(Object.keys(courses.files).length === 0, "Nothing found in courses folder");
 
 	for (const fileName of Object.keys(courses.files)) {
 		let course = new Course(fileName.replace("courses/",""));
@@ -44,9 +44,9 @@ export async function parseZip(id: string, dataZip: string): Promise<Dataset> {
 		}
 		let courseObj = JSON.parse(data);
 		// check if result is in courses
-		// errorCheck(!("result" in courseObj), "No results in section");
+		errorCheck(!("result" in courseObj), "No results in section");
 		// check if results is actually an array first
-		// errorCheck(!Array.isArray(courseObj.result), "Results in section not an array");
+		errorCheck(!Array.isArray(courseObj.result), "Results in section not an array");
 		for (const sec of courseObj.result) {
 			// check if the results actually have all keys
 			let hasAllKeys = true;
@@ -71,8 +71,11 @@ export async function parseZip(id: string, dataZip: string): Promise<Dataset> {
 				course.addSection(section);
 			}
 		}
-		dataset.addCourse(course);
+		if (course.sections.length !== 0) {
+			dataset.addCourse(course);
+		}
 	}
+	errorCheck(dataset.courses.length === 0, "No valid sections");
 	return dataset;
 }
 

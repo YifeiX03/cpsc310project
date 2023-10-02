@@ -69,7 +69,7 @@ describe("test parseZip 2", async function() {
 describe ("ParseZip", async function () {
 	let dataset = await parseZip("sections", getContentFromArchives("pair-small-2.zip"));
 	const {...object} = dataset;
-	fs.writeFileSync("./data/test.txt", JSON.stringify(object));
+	fs.writeFileSync("./data/test1.json", JSON.stringify(object));
 });
 
 describe ("dataset", function () {
