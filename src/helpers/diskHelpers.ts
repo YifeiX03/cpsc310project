@@ -1,6 +1,7 @@
 import * as fs from "fs-extra";
 import {parseZip} from "./parseZip";
 import InsightFacade from "../controller/InsightFacade";
+import {Dataset} from "./courses";
 
 const persistDir = "./data";
 
@@ -11,15 +12,20 @@ export function toDisk(id: string, dataset: string): void {
 
 // Reads from directory persistDir and loads them into InsightFacade
 // Returns an array of datasets added
-export function fromDisk(insightFacade: InsightFacade): string[] {
+export async function fromDisk(insightFacade: InsightFacade): Promise<string[]> {
 	let files: string[] = fs.readdirSync(persistDir);
 	let ids: string[] = [];
+	let promises: Array<Promise<Dataset>> = [];
 	files.forEach( (fileName) => {
 		let file: string = fs.readFileSync(persistDir + "/" + fileName).toString("base64");
 		let id: string = fileName.replace(".txt", "");
-		// insightFacade.datasets.push(parseZip(id, file));
+		promises.push(parseZip(id, file));
 		ids.push(id);
 	});
+	let datasets = await Promise.all(promises);
+	for (const dataset of datasets) {
+		insightFacade.datasets.push(dataset);
+	}
 	return ids;
 }
 

@@ -31,8 +31,43 @@ describe("test parseZip", async function() {
 	});
 });
 
+describe("test parseZip 2", async function() {
+	let buffer = Buffer.from(getContentFromArchives("pair-small.zip"), "base64");
+	let zip = await JSZip.loadAsync(buffer);
+	let courses: any = zip.folder("courses");
+	// let a = 0;
+	for (const fileName of Object.keys(courses.files)) {
+		// eslint-disable-next-line no-await-in-loop
+		let data = await courses.files[fileName].async("String");
+		let courseObj = JSON.parse(data);
+		let i = 2;
+		for (const sec of courseObj.result) {
+			fs.writeFileSync("./data/section" + i + ".txt", "");
+			fs.appendFileSync("./data/section" + i + ".txt", JSON.stringify(sec.Avg) + "\n");
+			fs.appendFileSync("./data/section" + i + ".txt", JSON.stringify(sec.Subject) + "\n");
+			fs.appendFileSync("./data/section" + i + ".txt", JSON.stringify(sec.Course) + "\n");
+			fs.appendFileSync("./data/section" + i + ".txt", JSON.stringify(sec.Professor) + "\n");
+			fs.appendFileSync("./data/section" + i + ".txt", JSON.stringify(sec.Title) + "\n");
+			fs.appendFileSync("./data/section" + i + ".txt", JSON.stringify(sec.Pass) + "\n");
+			fs.appendFileSync("./data/section" + i + ".txt", JSON.stringify(sec.Fail) + "\n");
+			fs.appendFileSync("./data/section" + i + ".txt", JSON.stringify(sec.Audit) + "\n");
+			fs.appendFileSync("./data/section" + i + ".txt", JSON.stringify(sec.id) + "\n");
+			fs.appendFileSync("./data/section" + i + ".txt", JSON.stringify(sec.Year) + "\n");
+			// for (const property of Object.keys(sec)) {
+			// 	fs.appendFileSync(
+			// 		"./data/section" + i + ".txt",
+			// 		property + " : " + JSON.stringify(sec[property]) + "\n");
+			// }
+			i++;
+			// a++;
+		}
+	}
+	// fs.writeFileSync("./data/help.txt", a.toString());
+});
+
+
 describe ("ParseZip", async function () {
-	let dataset = await parseZip("sections", getContentFromArchives("pair-small.zip"));
+	let dataset = await parseZip("sections", getContentFromArchives("pair-small-2.zip"));
 	const {...object} = dataset;
 	fs.writeFileSync("./data/test.txt", JSON.stringify(object));
 });
