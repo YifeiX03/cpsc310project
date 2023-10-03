@@ -11,7 +11,8 @@ import {
 	Dataset,
 	Course,
 	Section
-} from "../helpers/courses";
+} from "../helpers/Courses";
+import {parseZip} from "../helpers/ParseZip";
 
 /**
  * This is the main programmatic entry point for the project.
@@ -30,7 +31,25 @@ export default class InsightFacade implements IInsightFacade {
 	}
 
 	public addDataset(id: string, content: string, kind: InsightDatasetKind): Promise<string[]> {
-		return Promise.reject("Not implemented.");
+		let datasetIDs = this.datasets.map((each) => each.datasetName);
+
+		if (datasetIDs.includes(id)) {
+			return Promise.reject(new InsightError("Duplicate Dataset id!"));
+		}
+
+		// Check if the id is an empty string or consists of all spaces.
+		if (!id.trim()) {
+			return Promise.reject(new InsightError("Dataset id cannot be empty or spaces only!"));
+		}
+
+		return parseZip(id, content)
+			.then((dataset) => {
+				this.datasets.push(dataset);
+				return this.datasets.map((each) => each.datasetName);
+			})
+			.catch(() => {
+				return Promise.reject(new InsightError("Dataset file invalid!"));
+			});
 	}
 
 	public removeDataset(id: string): Promise<string> {
