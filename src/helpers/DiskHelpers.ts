@@ -1,7 +1,7 @@
 import * as fs from "fs-extra";
-import {parseZip} from "./parseZip";
+import {parseZip} from "./ParseZip";
 import InsightFacade from "../controller/InsightFacade";
-import {Dataset} from "./courses";
+import {Dataset} from "./Courses";
 
 const persistDir = "./data";
 

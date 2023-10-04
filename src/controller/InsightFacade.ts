@@ -13,6 +13,8 @@ import {
 	Section
 } from "../helpers/Courses";
 import {parseZip} from "../helpers/ParseZip";
+import {performQueryHelper} from "../helpers/PerformQueryHelper";
+import {requestValidator} from "../helpers/RequestValidator";
 
 /**
  * This is the main programmatic entry point for the project.
@@ -47,8 +49,8 @@ export default class InsightFacade implements IInsightFacade {
 				this.datasets.push(dataset);
 				return this.datasets.map((each) => each.datasetName);
 			})
-			.catch(() => {
-				return Promise.reject(new InsightError("Dataset file invalid!"));
+			.catch((e) => {
+				return Promise.reject(new InsightError(e));
 			});
 	}
 
@@ -57,8 +59,22 @@ export default class InsightFacade implements IInsightFacade {
 	}
 
 	public performQuery(query: unknown): Promise<InsightResult[]> {
-		return Promise.reject("Not implemented.");
+		// eslint-disable-next-line no-async-promise-executor
+		return new Promise(async (resolve, reject) => {  // Notice the async keyword here
+			let result = requestValidator(query, this.datasets.map((each) => each.datasetName));
+			if (!result.valid) {
+				reject(new InsightError(result.error));  // Use reject instead of returning a rejected promise
+				return;
+			}
+			try {
+				const queryResult = await performQueryHelper(query, this.datasets);  // Await the performQueryHelper function
+				resolve(queryResult);  // Resolve with the result
+			} catch (err) {
+				reject(new InsightError(err as string));  // Reject if there's an error
+			}
+		});
 	}
+
 
 	public listDatasets(): Promise<InsightDataset[]> {
 		return Promise.reject("Not implemented.");

@@ -3,7 +3,7 @@ import {
 	toDisk,
 	fromDisk,
 	removeDisk
-} from "../../src/helpers/diskHelpers";
+} from "../../src/helpers/DiskHelpers";
 import {getContentFromArchives} from "../TestUtil";
 
 describe("test write to file", function() {

@@ -2,7 +2,7 @@ import {
 	Dataset,
 	Course,
 	Section
-} from "./courses";
+} from "./Courses";
 import * as JSZip from "jszip";
 import {getContentFromArchives} from "../../test/TestUtil";
 
@@ -25,6 +25,7 @@ let secProps = ["Avg", "Subject", "Course", "Professor", "Title", "Pass", "Fail"
 // returns Dataset
 // Partially uses code from
 // https://stackoverflow.com/questions/39322964/extracting-zipped-files-using-jszip-in-javascript
+
 export async function parseZip(id: string, dataZip: string): Promise<Dataset> {
 	let buffer = Buffer.from(dataZip, "base64");
 	let dataset = new Dataset(id);
@@ -42,7 +43,12 @@ export async function parseZip(id: string, dataZip: string): Promise<Dataset> {
 		if (data === "") {
 			continue;
 		}
-		let courseObj = JSON.parse(data);
+		let courseObj;
+		try {
+			courseObj = JSON.parse(data);
+		} catch(e) {
+			continue;
+		}
 		// check if result is in courses
 		errorCheck(!("result" in courseObj), "No results in section");
 		// check if results is actually an array first
@@ -61,9 +67,7 @@ export async function parseZip(id: string, dataZip: string): Promise<Dataset> {
 					sec.Subject,
 					sec.Course,
 					sec.Professor,
-					sec.Title,
-					sec.Pass,
-					sec.Fail,
+					sec.Title, sec.Pass, sec.Fail,
 					sec.Audit,
 					sec.id,
 					sec.Year

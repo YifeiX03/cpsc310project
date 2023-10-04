@@ -1,12 +1,17 @@
 import {Dataset, Section} from "./Courses";
 import {QueryResult} from "./QueryTypes";
 import {unionOfQueryResults, intersectionOfQueryResults} from "./SectionHelper";
+import {ResultTooLargeError} from "../controller/IInsightFacade";
 
 export function performQueryHelper(query: any, datasets: Dataset[]): any[]{
 	let option = processOptions(query.OPTIONS);
 	const foundDataset = datasets.find((dataset) => dataset.datasetName === option.datasetName);
 	let fields = option.fields;
 	let middle = queryWhere(query.WHERE, foundDataset as Dataset);
+	let final = sortedAndFilteredQueryResult(option.order === "" ? null : option.order, middle, fields);
+	if (final.length > 5000) {
+		throw new ResultTooLargeError("Too many results!");
+	}
 	return sortedAndFilteredQueryResult(option.order === "" ? null : option.order, middle, fields);
 }
 
