@@ -72,22 +72,24 @@ describe("test request validator", function() {
 			let query  = {
 				WHERE: {
 					AND: [
-						{GT: {
-							sections_avg: 92
-						}},
+						{
+							GT: {
+								sections_avg: 95
+							}
+						},
 						{
 							IS: {
-								sections_dept: "cp*"
+								sections_dept: "math"
 							}
 						}
 					]
 				},
 				OPTIONS: {
 					COLUMNS: [
-						"sections_dept",
-						"sections_avg"
+						"sections_uuid",
+						"sections_title",
 					],
-					ORDER: "sections_avg"
+					ORDER: "sections_uuid"
 				}
 			};
 			// console.log(requestValidator(query, ["sections"]));

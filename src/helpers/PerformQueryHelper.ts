@@ -39,8 +39,13 @@ function sortedAndFilteredQueryResult(order: string | null, queryResult: QueryRe
 
 	for (let section of sectionsCopy) {
 		let obj: any = {};
+		let sfield =  ["dept", "instructor", "id", "title", "uuid"];
 		for (let key of columns) {
-			obj[prefix + key] = (section as any)[key];
+			if (sfield.includes(key)) {
+				obj[prefix + key] = "" + (section as any)[key];
+			} else {
+				obj[prefix + key] = (section as any)[key];
+			}
 		}
 		result.push(obj);
 	}

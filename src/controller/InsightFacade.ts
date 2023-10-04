@@ -4,7 +4,7 @@ import {
 	InsightDatasetKind,
 	InsightError,
 	InsightResult,
-	NotFoundError,
+	NotFoundError, ResultTooLargeError,
 } from "./IInsightFacade";
 
 import {
@@ -70,7 +70,7 @@ export default class InsightFacade implements IInsightFacade {
 				const queryResult = await performQueryHelper(query, this.datasets);  // Await the performQueryHelper function
 				resolve(queryResult);  // Resolve with the result
 			} catch (err) {
-				reject(new InsightError(err as string));  // Reject if there's an error
+				reject(new ResultTooLargeError(err as string));  // Reject if there's an error
 			}
 		});
 	}
