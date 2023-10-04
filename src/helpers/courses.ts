@@ -47,4 +47,3 @@ export class Section {
 		this.year = year;
 	}
 }
-

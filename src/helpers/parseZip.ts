@@ -42,7 +42,12 @@ export async function parseZip(id: string, dataZip: string): Promise<Dataset> {
 		if (data === "") {
 			continue;
 		}
-		let courseObj = JSON.parse(data);
+		let courseObj;
+		try {
+			courseObj = JSON.parse(data);
+		} catch(e) {
+			continue;
+		}
 		// check if result is in courses
 		errorCheck(!("result" in courseObj), "No results in section");
 		// check if results is actually an array first
@@ -57,16 +62,11 @@ export async function parseZip(id: string, dataZip: string): Promise<Dataset> {
 			}
 			if (hasAllKeys) {
 				let section = new Section(
-					sec.Avg,
-					sec.Subject,
-					sec.Course,
-					sec.Professor,
-					sec.Title,
-					sec.Pass,
-					sec.Fail,
-					sec.Audit,
-					sec.id,
-					sec.Year
+					sec.Avg, sec.Subject,
+					sec.Course, sec.Professor,
+					sec.Title, sec.Pass,
+					sec.Fail, sec.Audit,
+					sec.id, sec.Year
 				);
 				course.addSection(section);
 			}

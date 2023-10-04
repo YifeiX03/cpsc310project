@@ -1,4 +1,4 @@
-import {Dataset, Section} from "./Courses";
+import {Dataset, Section} from "./courses";
 import {QueryResult} from "./QueryTypes";
 import {unionOfQueryResults, intersectionOfQueryResults} from "./SectionHelper";
 

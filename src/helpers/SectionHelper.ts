@@ -1,4 +1,4 @@
-import {Section} from "./Courses";
+import {Section} from "./courses";
 import {QueryResult} from "./QueryTypes";
 
 export function areSectionsEqual(section1: Section, section2: Section): boolean {

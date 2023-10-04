@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import {Course, Dataset, Section} from "../../src/helpers/Courses";
+import {Course, Dataset, Section} from "../../src/helpers/courses";
 import {ValidationResult} from "../../src/helpers/ValidationTypes";
 import {requestValidator} from "../../src/helpers/RequestValidator";
 import {expect} from "chai";
