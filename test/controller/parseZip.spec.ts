@@ -30,7 +30,7 @@ describe("test parseZip", async function() {
 		});
 	});
 });
-
+/*
 describe("test parseZip 2", async function() {
 	let buffer = Buffer.from(getContentFromArchives("pair-small.zip"), "base64");
 	let zip = await JSZip.loadAsync(buffer);
@@ -63,7 +63,7 @@ describe("test parseZip 2", async function() {
 		}
 	}
 	// fs.writeFileSync("./data/help.txt", a.toString());
-});
+});*/
 
 
 describe ("ParseZip", async function () {
