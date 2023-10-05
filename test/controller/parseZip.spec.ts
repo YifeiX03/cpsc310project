@@ -37,7 +37,6 @@ describe("test parseZip 2", async function() {
 	let courses: any = zip.folder("courses");
 	// let a = 0;
 	for (const fileName of Object.keys(courses.files)) {
-		// eslint-disable-next-line no-await-in-loop
 		let data = await courses.files[fileName].async("String");
 		let courseObj = JSON.parse(data);
 		let i = 2;
