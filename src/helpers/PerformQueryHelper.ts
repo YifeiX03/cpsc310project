@@ -72,6 +72,14 @@ export function queryWhere(where: any, dataset: Dataset): QueryResult {
 	let keys = Object.keys(where);
 	let key = keys[0];
 
+	if (Object.keys(where).length === 0) {
+		let result = new QueryResult();
+		for (let course of dataset.courses) {
+			result.addSectionList(course.sections);
+		}
+		return result;
+	}
+
 	if (key === "GT" || key === "LT" || key === "EQ") {
 		return queryCmp(key, where[key], dataset);
 	}
@@ -127,9 +135,9 @@ function queryCmp(key: string, cmp: any, dataset: Dataset): QueryResult {
 function filterSectionsByField(dataset: Dataset, comparison: string, fieldName: string,
 	value: number): Section[]{
 	let result: Section[] = [];
-
 	for (let course of dataset.courses) {
 		for (let section of course.sections) {
+			let a = (section as any)[fieldName];
 			if (comparison === "GT" && (section as any)[fieldName] > value) {
 				result.push(section);
 			} else if (comparison === "LT" && (section as any)[fieldName] < value) {

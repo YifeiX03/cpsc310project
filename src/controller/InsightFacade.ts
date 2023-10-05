@@ -59,23 +59,20 @@ export default class InsightFacade implements IInsightFacade {
 	}
 
 	public performQuery(query: unknown): Promise<InsightResult[]> {
-		// eslint-disable-next-line no-async-promise-executor
-		return new Promise(async (resolve, reject) => {  // Notice the async keyword here
+		return new Promise((resolve, reject) => {  // Notice the async keyword here
 			let result = requestValidator(query, this.datasets.map((each) => each.datasetName));
 			if (!result.valid) {
 				reject(new InsightError(result.error));  // Use reject instead of returning a rejected promise
 				return;
 			}
 			try {
-				const queryResult = await performQueryHelper(query, this.datasets);  // Await the performQueryHelper function
+				const queryResult = performQueryHelper(query, this.datasets);  // Await the performQueryHelper function
 				resolve(queryResult);  // Resolve with the result
 			} catch (err) {
 				reject(new ResultTooLargeError(err as string));  // Reject if there's an error
 			}
 		});
 	}
-
-
 	public listDatasets(): Promise<InsightDataset[]> {
 		return Promise.reject("Not implemented.");
 	}

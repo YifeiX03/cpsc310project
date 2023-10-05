@@ -50,24 +50,12 @@ describe("test request validator", function() {
 
 		it("smol test", () => {
 			let query = {
-				WHERE: {
-					AND: [
-						{GT: {
-							sections_avg: 92
-						}},
-						{
-							IS: {
-								sections_dept: "cp*"
-							}
-						}
-					]
-				},
+				WHERE: {},
 				OPTIONS: {
 					COLUMNS: [
-						"sections_dept",
-						"sections_avg"
+						"sections_dept"
 					],
-					ORDER: "sections_avg"
+					ORDER: "sections_dept"
 				}
 			};
 

@@ -1,10 +1,10 @@
 import * as fs from "fs";
 import * as path from "path";
 import {Course, Dataset, Section} from "../../src/helpers/Courses";
-import {ValidationResult} from "../../src/helpers/ValidationTypes";
+import {getContentFromArchives} from "../TestUtil";
+import InsightFacade from "../../src/controller/InsightFacade";
+import {InsightDatasetKind} from "../../src/controller/IInsightFacade";
 import {requestValidator} from "../../src/helpers/RequestValidator";
-import {expect} from "chai";
-import {performQueryHelper} from "../../src/helpers/PerformQueryHelper";
 
 
 export function createDatasetFromFolder(folderPath: string, datasetName: string): Dataset {
@@ -63,37 +63,27 @@ describe("test request validator", function() {
 		let dataset: Dataset;
 
 		before(function() {
+			/*
 			const folderPath = "test/courses";
 			dataset = createDatasetFromFolder(folderPath, "sections");
+			*/
 		});
 
-		it("should handle request ", () => {
-			let datasets = [dataset];
+		it("should handle request ", async () => {
+			let sections = getContentFromArchives("pair.zip");
+			let facade = new InsightFacade();
+			await facade.addDataset("sections", sections, InsightDatasetKind.Sections);
 			let query  = {
-				WHERE: {
-					AND: [
-						{
-							GT: {
-								sections_avg: 95
-							}
-						},
-						{
-							IS: {
-								sections_dept: "math"
-							}
-						}
-					]
-				},
+				WHERE: {},
 				OPTIONS: {
 					COLUMNS: [
-						"sections_uuid",
-						"sections_title",
+						"sections_dept"
 					],
-					ORDER: "sections_uuid"
+					ORDER: "sections_dept"
 				}
 			};
 			// console.log(requestValidator(query, ["sections"]));
-			let res = performQueryHelper(query, datasets);
+			let res = await facade.performQuery(query);
 			console.log(res);
 		});
 
