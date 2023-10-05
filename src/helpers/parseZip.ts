@@ -37,6 +37,7 @@ export async function parseZip(id: string, dataZip: string): Promise<Dataset> {
 
 	for (const fileName of Object.keys(courses.files)) {
 		let course = new Course(fileName.replace("courses/",""));
+		// TODO: no await in loop
 		// eslint-disable-next-line no-await-in-loop
 		let data = await courses.files[fileName].async("String");
 		if (data === "") {
