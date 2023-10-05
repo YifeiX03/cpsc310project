@@ -4,13 +4,11 @@ import {
 	InsightDatasetKind,
 	InsightError,
 	InsightResult,
-	NotFoundError, ResultTooLargeError,
+	ResultTooLargeError,
 } from "./IInsightFacade";
 
 import {
-	Dataset,
-	Course,
-	Section
+	Dataset
 } from "../helpers/Courses";
 import {parseZip} from "../helpers/ParseZip";
 import {performQueryHelper} from "../helpers/PerformQueryHelper";
