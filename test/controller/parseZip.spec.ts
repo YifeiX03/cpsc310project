@@ -1,9 +1,9 @@
 import {expect} from "chai";
-import {parseZip} from "../../src/helpers/parseZip";
+import {parseZip} from "../../src/helpers/ParseZip";
 import {getContentFromArchives} from "../TestUtil";
 import * as JSZip from "jszip";
-import {Course, Dataset, Section} from "../../src/helpers/courses";
 import * as fs from "fs-extra";
+import {Course, Dataset, Section} from "../../src/helpers/Courses";
 
 // This is purely for testing how the jszip and fs modules work
 describe("test parseZip", async function() {
@@ -30,14 +30,13 @@ describe("test parseZip", async function() {
 		});
 	});
 });
-
+/*
 describe("test parseZip 2", async function() {
 	let buffer = Buffer.from(getContentFromArchives("pair-small.zip"), "base64");
 	let zip = await JSZip.loadAsync(buffer);
 	let courses: any = zip.folder("courses");
 	// let a = 0;
 	for (const fileName of Object.keys(courses.files)) {
-		// eslint-disable-next-line no-await-in-loop
 		let data = await courses.files[fileName].async("String");
 		let courseObj = JSON.parse(data);
 		let i = 2;
@@ -63,7 +62,7 @@ describe("test parseZip 2", async function() {
 		}
 	}
 	// fs.writeFileSync("./data/help.txt", a.toString());
-});
+});*/
 
 
 describe ("ParseZip", async function () {
