@@ -40,7 +40,9 @@ export default class InsightFacade implements IInsightFacade {
 		if (datasetIDs.includes(id)) {
 			return Promise.reject(new InsightError("Duplicate Dataset id!"));
 		}
-
+		if (id.includes("_")) {
+			return Promise.reject(new InsightError("invalid dataset ID"));
+		}
 		// Check if the id is an empty string or consists of all spaces.
 		if (!id.trim()) {
 			return Promise.reject(new InsightError("Dataset id cannot be empty or spaces only!"));
@@ -91,8 +93,14 @@ export default class InsightFacade implements IInsightFacade {
 			try {
 				const queryResult = performQueryHelper(query, this.datasets);  // Await the performQueryHelper function
 				resolve(queryResult);  // Resolve with the result
-			} catch (err) {
-				reject(new ResultTooLargeError(err as string));  // Reject if there's an error
+			} catch (err) { // magic, dont touch!!!!!
+				const errorMessage: string = (err as any).message || (err as object).toString();
+
+				if (errorMessage.includes("logic")) {
+					reject(new InsightError(errorMessage));
+				} else {
+					reject(new ResultTooLargeError(errorMessage));
+				}
 			}
 		});
 	}

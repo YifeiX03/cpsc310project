@@ -34,3 +34,20 @@ export function intersectionOfQueryResults(res1: QueryResult, res2: QueryResult)
 	}
 	return intersectionResult;
 }
+
+export function differenceOfQueryResults(res1: QueryResult, res2: QueryResult): QueryResult {
+	const differenceResult = new QueryResult();
+
+	// Convert each section of res2 into a serialized form and add to a Set
+	const res2Set = new Set(res2.getResult().map((section) => JSON.stringify(section)));
+
+	for (const section1 of res1.getResult()) {
+		const serializedSection1 = JSON.stringify(section1);
+		if (!res2Set.has(serializedSection1)) {
+			differenceResult.addSection(section1);
+		}
+	}
+
+	return differenceResult;
+}
+
