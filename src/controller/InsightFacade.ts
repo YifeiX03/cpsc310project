@@ -5,7 +5,10 @@ import {
 	InsightError,
 	InsightResult,
 	ResultTooLargeError,
+	NotFoundError
 } from "./IInsightFacade";
+
+import {fromDisk, removeDisk} from "../helpers/DiskHelpers";
 
 import {
 	Dataset
@@ -27,6 +30,8 @@ export default class InsightFacade implements IInsightFacade {
 		if (this.datasets) {
 			console.log("Successfully initialized datasets");
 		}
+		// TODO: figure out how to load from disk everytime a new InsightFacade is made
+		fromDisk(this);
 	}
 
 	public addDataset(id: string, content: string, kind: InsightDatasetKind): Promise<string[]> {
@@ -51,8 +56,29 @@ export default class InsightFacade implements IInsightFacade {
 			});
 	}
 
-	public removeDataset(id: string): Promise<string> {
-		return Promise.reject("Not implemented.");
+	public async removeDataset(id: string): Promise<string> {
+		let datasetIDs = this.datasets.map((each) => each.datasetName);
+
+		if (!datasetIDs.includes(id)) {
+			return Promise.reject(new NotFoundError("Dataset id not found!"));
+		}
+		// check if id has underscore
+
+		// Check if the id is an empty string or consists of all spaces.
+		if (!id.trim()) {
+			return Promise.reject(new InsightError("Dataset id cannot be empty or spaces only!"));
+		}
+		try {
+			this.datasets.forEach((item, index) => {
+				if (item.datasetName === id) {
+					this.datasets.splice(index, 1);
+				}
+			});
+			removeDisk(id);
+			return Promise.resolve(id);
+		} catch (e) {
+			return Promise.reject(new InsightError());
+		}
 	}
 
 	public performQuery(query: unknown): Promise<InsightResult[]> {
@@ -71,6 +97,19 @@ export default class InsightFacade implements IInsightFacade {
 		});
 	}
 	public listDatasets(): Promise<InsightDataset[]> {
-		return Promise.reject("Not implemented.");
+		let result: InsightDataset[] = [];
+		for (const dataset of this.datasets) {
+			let rows = 0;
+			for (const course of dataset.courses) {
+				rows += course.sections.length;
+			}
+			let insightDataset: InsightDataset = {
+				id: dataset.datasetName,
+				kind: dataset.type,
+				numRows: rows
+			};
+			result.push(insightDataset);
+		}
+		return Promise.resolve(result);
 	}
 }

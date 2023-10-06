@@ -1,9 +1,14 @@
+
+import {InsightDatasetKind} from "../controller/IInsightFacade";
+
 export class Dataset {
 	public datasetName: string;
 	public courses: Course[];
-	constructor(datasetName: string) {
+	public type: InsightDatasetKind;
+	constructor(datasetName: string, type: InsightDatasetKind = InsightDatasetKind.Sections) {
 		this.datasetName = datasetName;
 		this.courses = [];
+		this.type = type;
 	}
 	public addCourse(course: Course): void {
 		this.courses.push(course);
