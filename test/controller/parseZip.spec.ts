@@ -2,8 +2,8 @@ import {expect} from "chai";
 import {parseZip} from "../../src/helpers/ParseZip";
 import {getContentFromArchives} from "../TestUtil";
 import * as JSZip from "jszip";
-import {Course, Dataset, Section} from "../../src/helpers/Courses";
 import * as fs from "fs-extra";
+import {Course, Dataset, Section} from "../../src/helpers/Courses";
 
 // This is purely for testing how the jszip and fs modules work
 describe("test parseZip", async function() {

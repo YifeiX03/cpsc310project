@@ -19,7 +19,7 @@ export function validateOptions(options: object, loadedDatasets: string[]): Vali
 	if (unexpectedKeys.length > 0) {
 		return {valid: false, error: `Unexpected key(s) in options: ${unexpectedKeys.join(", ")}`};
 	}
-	// up to here
+	// up to here!
 	if (!("COLUMNS" in options)) {
 		return {valid: false, error: "OPTIONS does not contain COLUMNS"};
 	}
