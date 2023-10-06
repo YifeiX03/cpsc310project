@@ -8,7 +8,7 @@ import {
 	NotFoundError
 } from "./IInsightFacade";
 
-import {fromDisk, removeDisk} from "../helpers/DiskHelpers";
+import {toDisk, fromDisk, removeDisk} from "../helpers/DiskHelpers";
 
 import {
 	Dataset
@@ -51,6 +51,7 @@ export default class InsightFacade implements IInsightFacade {
 		return parseZip(id, content)
 			.then((dataset) => {
 				this.datasets.push(dataset);
+				toDisk(id, dataset);
 				return this.datasets.map((each) => each.datasetName);
 			})
 			.catch((e) => {
@@ -61,14 +62,17 @@ export default class InsightFacade implements IInsightFacade {
 	public async removeDataset(id: string): Promise<string> {
 		let datasetIDs = this.datasets.map((each) => each.datasetName);
 
-		if (!datasetIDs.includes(id)) {
-			return Promise.reject(new NotFoundError("Dataset id not found!"));
-		}
 		// check if id has underscore
-
+		if (id.includes("_")) {
+			return Promise.reject(new InsightError("invalid dataset ID"));
+		}
 		// Check if the id is an empty string or consists of all spaces.
 		if (!id.trim()) {
 			return Promise.reject(new InsightError("Dataset id cannot be empty or spaces only!"));
+		}
+		// check if dataset with id is present
+		if (!datasetIDs.includes(id)) {
+			return Promise.reject(new NotFoundError("Dataset id not found!"));
 		}
 		try {
 			this.datasets.forEach((item, index) => {

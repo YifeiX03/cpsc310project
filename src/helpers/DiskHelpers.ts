@@ -7,30 +7,48 @@ const persistDir = "./data";
 // Saves input Dataset as a JSON file with name set as dataset name
 // TODO: create the data directory if it doesn't exist
 export function toDisk(id: string, dataset: Dataset): void {
-	const {...object} = dataset;
-	fs.writeFileSync(persistDir + "/" + id + ".json", JSON.stringify(object));
+	try {
+		if (!fs.existsSync(persistDir)) {
+			fs.mkdirSync(persistDir);
+		}
+		const {...object} = dataset;
+		fs.writeFileSync(persistDir + "/" + id + ".json", JSON.stringify(object));
+	} catch (e) {
+		console.error(e);
+	}
 }
 
 // Reads from directory persistDir and loads them into InsightFacade
 // TODO: change to synchronous by changing how we save to disk
 export function fromDisk(insightFacade: InsightFacade): void {
-	let files: string[] = fs.readdirSync(persistDir);
-	for (const fileName of files) {
-		let file = fs.readFileSync(persistDir + "/" + fileName).toString("base64");
-		let datasetObj = JSON.parse(file);
-		insightFacade.datasets.push(datasetFromJSON(datasetObj));
+	try {
+		if (!fs.existsSync(persistDir)) {
+			return;
+		}
+		let files: string[] = fs.readdirSync(persistDir);
+		for (const fileName of files) {
+			let file = fs.readFileSync(persistDir + "/" + fileName, "utf8");
+			let datasetObj = JSON.parse(file);
+			insightFacade.datasets.push(datasetFromJSON(datasetObj));
+		}
+	} catch (e) {
+		console.error(e);
 	}
 }
 
 function datasetFromJSON(input: object): Dataset {
-	if (Object.hasOwn(input, "id")) {
-		let id = (input as any).id;
+	if (Object.hasOwn(input, "datasetName")) {
+		let id = (input as any).datasetName;
 		return Object.assign(new Dataset(id), input);
 	}
-	return new Dataset("Invalid-Dataset");
+	throw new Error("Object did not have datasetName property");
 }
 
 // Finds a saved dataset with given name and deletes it
 export function removeDisk(id: string): void {
-	fs.removeSync(persistDir + "/" + id + ".json");
+	try {
+		fs.removeSync(persistDir + "/" + id + ".json");
+	} catch (e) {
+		console.error(e);
+	}
 }
