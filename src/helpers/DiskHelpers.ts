@@ -5,6 +5,7 @@ import {Dataset} from "./Courses";
 const persistDir = "./data";
 
 // Saves input Dataset as a JSON file with name set as dataset name
+// TODO: create the data directory if it doesn't exist
 export function toDisk(id: string, dataset: Dataset): void {
 	const {...object} = dataset;
 	fs.writeFileSync(persistDir + "/" + id + ".json", JSON.stringify(object));
