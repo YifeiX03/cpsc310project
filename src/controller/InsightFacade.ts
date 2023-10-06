@@ -5,7 +5,10 @@ import {
 	InsightError,
 	InsightResult,
 	ResultTooLargeError,
+	NotFoundError
 } from "./IInsightFacade";
+
+import {fromDisk, removeDisk} from "../helpers/DiskHelpers";
 
 import {
 	Dataset
