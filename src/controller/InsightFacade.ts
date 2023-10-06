@@ -11,9 +11,9 @@ import {
 	Dataset,
 	Course,
 	Section
-} from "../helpers/courses";
-import {fromDisk, removeDisk} from "../helpers/diskHelpers";
-import {parseZip} from "../helpers/parseZip";
+} from "../helpers/Courses";
+import {fromDisk, removeDisk} from "../helpers/DiskHelpers";
+import {parseZip} from "../helpers/ParseZip";
 import {performQueryHelper} from "../helpers/PerformQueryHelper";
 import {requestValidator} from "../helpers/RequestValidator";
 

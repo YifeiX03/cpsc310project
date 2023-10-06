@@ -2,7 +2,7 @@ import {
 	Dataset,
 	Course,
 	Section
-} from "./courses";
+} from "./Courses";
 import * as JSZip from "jszip";
 import {getContentFromArchives} from "../../test/TestUtil";
 
