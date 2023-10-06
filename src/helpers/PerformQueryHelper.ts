@@ -1,6 +1,6 @@
 import {Dataset, Section} from "./Courses";
 import {QueryResult} from "./QueryTypes";
-import {unionOfQueryResults, intersectionOfQueryResults} from "./SectionHelper";
+import {unionOfQueryResults, intersectionOfQueryResults, differenceOfQueryResults} from "./SectionHelper";
 import {ResultTooLargeError} from "../controller/IInsightFacade";
 
 export function performQueryHelper(query: any, datasets: Dataset[]): any[]{
@@ -8,14 +8,16 @@ export function performQueryHelper(query: any, datasets: Dataset[]): any[]{
 	const foundDataset = datasets.find((dataset) => dataset.datasetName === option.datasetName);
 	let fields = option.fields;
 	let middle = queryWhere(query.WHERE, foundDataset as Dataset);
-	let final = sortedAndFilteredQueryResult(option.order === "" ? null : option.order, middle, fields);
+	let final = sortedAndFilteredQueryResult(foundDataset?.datasetName as string, option.order === "" ? null :
+		option.order, middle, fields);
 	if (final.length > 5000) {
 		throw new ResultTooLargeError("Too many results!");
 	}
-	return sortedAndFilteredQueryResult(option.order === "" ? null : option.order, middle, fields);
+	return final;
 }
 
-function sortedAndFilteredQueryResult(order: string | null, queryResult: QueryResult, columns: string[]): any[] {
+function sortedAndFilteredQueryResult(prefix: string, order: string | null, queryResult: QueryResult,
+									  columns: string[]): any[] {
 	let sectionsCopy = [...queryResult.getResult()];
 
 	if (order !== null) {
@@ -34,9 +36,8 @@ function sortedAndFilteredQueryResult(order: string | null, queryResult: QueryRe
 		});
 	}
 
-	const prefix = order ? order.split("_")[0] + "_" : "";
 	const result: any[] = [];
-
+	prefix += "_";
 	for (let section of sectionsCopy) {
 		let obj: any = {};
 		let sfield =  ["dept", "instructor", "id", "title", "uuid"];
@@ -92,12 +93,20 @@ export function queryWhere(where: any, dataset: Dataset): QueryResult {
 		return queryIs(dataset, field, target);
 	}
 
+	if (key === "NOT") {
+		let result = new QueryResult();
+		for (let course of dataset.courses) {
+			result.addSectionList(course.sections);
+		}
+		return differenceOfQueryResults(result, queryWhere(where.NOT, dataset));
+	}
+
 	return queryLogic(key, where[key], dataset);
 }
 
-
 function queryLogic(key: string, logic: any, dataset: Dataset): QueryResult {
 	let results: QueryResult[] = [];
+
 	for (let filter of logic) {
 		let res: QueryResult = queryWhere(filter, dataset);
 		results.push(res);

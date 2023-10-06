@@ -5,6 +5,9 @@ import {ValidationResult} from "../../src/helpers/ValidationTypes";
 import {requestValidator} from "../../src/helpers/RequestValidator";
 import {expect} from "chai";
 import {performQueryHelper} from "../../src/helpers/PerformQueryHelper";
+import {getContentFromArchives} from "../TestUtil";
+import InsightFacade from "../../src/controller/InsightFacade";
+import {InsightDatasetKind} from "../../src/controller/IInsightFacade";
 
 
 export function createDatasetFromFolder(folderPath: string, datasetName: string): Dataset {
@@ -62,22 +65,27 @@ describe("test request validator", function() {
 	describe("general test", function () {
 		let dataset: Dataset;
 
-		before(function() {
-			const folderPath = "test/courses";
-			dataset = createDatasetFromFolder(folderPath, "sections");
-		});
 
-		it("should handle request ", () => {
+		it("should handle request ", async () => {
+			let sections = getContentFromArchives("pair.zip");
+			let facade = new InsightFacade();
+			await facade.addDataset("sections", sections, InsightDatasetKind.Sections);
 			let datasets = [dataset];
 			let query  = {
 				WHERE: {
 					AND: [
-						{GT: {
-							sections_avg: 92
-						}},
+						{
+							NOT: {
+								NOT: {
+									GT: {
+										sections_avg: 90
+									}
+								}
+							}
+						},
 						{
 							IS: {
-								sections_dept: "cp*"
+								sections_dept: "apsc"
 							}
 						}
 					]
@@ -86,12 +94,11 @@ describe("test request validator", function() {
 					COLUMNS: [
 						"sections_dept",
 						"sections_avg"
-					],
-					ORDER: "sections_avg"
+					]
 				}
 			};
 			// console.log(requestValidator(query, ["sections"]));
-			let res = performQueryHelper(query, datasets);
+			let res = await facade.performQuery(query);
 			console.log(res);
 		});
 
