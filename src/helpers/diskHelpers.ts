@@ -1,5 +1,4 @@
 import * as fs from "fs-extra";
-import {parseZip} from "./parseZip";
 import InsightFacade from "../controller/InsightFacade";
 import {Dataset} from "./courses";
 
