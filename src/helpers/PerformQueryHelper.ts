@@ -1,12 +1,17 @@
 import {Dataset, Section} from "./Courses";
 import {QueryResult} from "./QueryTypes";
 import {unionOfQueryResults, intersectionOfQueryResults} from "./SectionHelper";
+import {ResultTooLargeError} from "../controller/IInsightFacade";
 
 export function performQueryHelper(query: any, datasets: Dataset[]): any[]{
 	let option = processOptions(query.OPTIONS);
 	const foundDataset = datasets.find((dataset) => dataset.datasetName === option.datasetName);
 	let fields = option.fields;
 	let middle = queryWhere(query.WHERE, foundDataset as Dataset);
+	let final = sortedAndFilteredQueryResult(option.order === "" ? null : option.order, middle, fields);
+	if (final.length > 5000) {
+		throw new ResultTooLargeError("Too many results!");
+	}
 	return sortedAndFilteredQueryResult(option.order === "" ? null : option.order, middle, fields);
 }
 
@@ -34,8 +39,13 @@ function sortedAndFilteredQueryResult(order: string | null, queryResult: QueryRe
 
 	for (let section of sectionsCopy) {
 		let obj: any = {};
+		let sfield =  ["dept", "instructor", "id", "title", "uuid"];
 		for (let key of columns) {
-			obj[prefix + key] = (section as any)[key];
+			if (sfield.includes(key)) {
+				obj[prefix + key] = "" + (section as any)[key];
+			} else {
+				obj[prefix + key] = (section as any)[key];
+			}
 		}
 		result.push(obj);
 	}
@@ -61,6 +71,14 @@ function processOptions(options: any): any {
 export function queryWhere(where: any, dataset: Dataset): QueryResult {
 	let keys = Object.keys(where);
 	let key = keys[0];
+
+	if (Object.keys(where).length === 0) {
+		let result = new QueryResult();
+		for (let course of dataset.courses) {
+			result.addSectionList(course.sections);
+		}
+		return result;
+	}
 
 	if (key === "GT" || key === "LT" || key === "EQ") {
 		return queryCmp(key, where[key], dataset);
@@ -117,9 +135,9 @@ function queryCmp(key: string, cmp: any, dataset: Dataset): QueryResult {
 function filterSectionsByField(dataset: Dataset, comparison: string, fieldName: string,
 	value: number): Section[]{
 	let result: Section[] = [];
-
 	for (let course of dataset.courses) {
 		for (let section of course.sections) {
+			let a = (section as any)[fieldName];
 			if (comparison === "GT" && (section as any)[fieldName] > value) {
 				result.push(section);
 			} else if (comparison === "LT" && (section as any)[fieldName] < value) {

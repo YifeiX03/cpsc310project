@@ -4,15 +4,12 @@ import {
 	InsightDatasetKind,
 	InsightError,
 	InsightResult,
-	NotFoundError, ResultTooLargeError,
+	ResultTooLargeError,
 } from "./IInsightFacade";
 
 import {
-	Dataset,
-	Course,
-	Section
+	Dataset
 } from "../helpers/Courses";
-import {fromDisk, removeDisk} from "../helpers/DiskHelpers";
 import {parseZip} from "../helpers/ParseZip";
 import {performQueryHelper} from "../helpers/PerformQueryHelper";
 import {requestValidator} from "../helpers/RequestValidator";
@@ -20,7 +17,6 @@ import {requestValidator} from "../helpers/RequestValidator";
 /**
  * This is the main programmatic entry point for the project.
  * Method documentation is in IInsightFacade
- *
  */
 export default class InsightFacade implements IInsightFacade {
 	public datasets: Dataset[];
@@ -32,10 +28,10 @@ export default class InsightFacade implements IInsightFacade {
 			console.log("Successfully initialized datasets");
 		}
 		// TODO: figure out how to load from disk everytime a new InsightFacade is made
-		// fromDisk(this);
+		fromDisk(this);
 	}
 
-	public async addDataset(id: string, content: string, kind: InsightDatasetKind): Promise<string[]> {
+	public addDataset(id: string, content: string, kind: InsightDatasetKind): Promise<string[]> {
 		let datasetIDs = this.datasets.map((each) => each.datasetName);
 
 		if (datasetIDs.includes(id)) {
@@ -83,22 +79,20 @@ export default class InsightFacade implements IInsightFacade {
 	}
 
 	public performQuery(query: unknown): Promise<InsightResult[]> {
-		// eslint-disable-next-line no-async-promise-executor
-		return new Promise(async (resolve, reject) => {  // Notice the async keyword here
+		return new Promise((resolve, reject) => {  // Notice the async keyword here
 			let result = requestValidator(query, this.datasets.map((each) => each.datasetName));
 			if (!result.valid) {
 				reject(new InsightError(result.error));  // Use reject instead of returning a rejected promise
 				return;
 			}
 			try {
-				const queryResult = await performQueryHelper(query, this.datasets);  // Await the performQueryHelper function
+				const queryResult = performQueryHelper(query, this.datasets);  // Await the performQueryHelper function
 				resolve(queryResult);  // Resolve with the result
 			} catch (err) {
 				reject(new ResultTooLargeError(err as string));  // Reject if there's an error
 			}
 		});
 	}
-
 	public listDatasets(): Promise<InsightDataset[]> {
 		let result: InsightDataset[] = [];
 		for (const dataset of this.datasets) {
