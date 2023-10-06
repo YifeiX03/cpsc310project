@@ -1,4 +1,4 @@
-import {Section} from "./courses";
+import {Section} from "./Courses";
 
 export class QueryResult {
 	private sections: Section[];
