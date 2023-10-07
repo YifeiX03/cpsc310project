@@ -30,14 +30,16 @@ export async function parseZip(id: string, dataZip: string): Promise<Dataset> {
 	let buffer = Buffer.from(dataZip, "base64");
 	let dataset = new Dataset(id);
 	let zip = await JSZip.loadAsync(buffer);
-	let courses: any = zip.folder("courses");
-	// check if folder named courses exists
-	errorCheck(courses === null, "No folder named courses found");
+	let hasCourses = false;
 	// check if courses folder is empty, might be redundant
-	errorCheck(Object.keys(courses.files).length === 0, "Nothing found in courses folder");
-	const promises = Object.keys(courses.files).map(async (fileName) => {
+	errorCheck(Object.keys(zip.files).length === 0, "Nothing found in courses folder");
+	const promises = Object.keys(zip.files).map(async (fileName) => {
+		if (!fileName.startsWith("courses/")) {
+			return null;
+		}
+		hasCourses = true;
 		let course = new Course(fileName.replace("courses/", ""));
-		let data = await courses.files[fileName].async("String");
+		let data = await zip.files[fileName].async("string");
 		if (data === "") {
 			return null; // Skipping the file, returning null to filter it out later
 		}
@@ -47,7 +49,6 @@ export async function parseZip(id: string, dataZip: string): Promise<Dataset> {
 		} catch (e) {
 			return null; // Invalid JSON, skipping the file
 		}
-
 		// check if result is in courses
 		errorCheck(!("result" in courseObj), "No results in section");
 		// check if results is actually an array first
