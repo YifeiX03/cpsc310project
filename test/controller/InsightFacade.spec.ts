@@ -225,6 +225,7 @@ describe("InsightFacade", function () {
 	 */
 	describe("PerformQuery", () => {
 		before(function () {
+			clearDisk();
 			console.info(`Before: ${this.test?.parent?.title}`);
 
 			facade = new InsightFacade();
