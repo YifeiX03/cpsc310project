@@ -5,7 +5,7 @@ import {Dataset} from "./Courses";
 const persistDir = "./data";
 
 // Saves input Dataset as a JSON file with name set as dataset name
-// TODO: create the data directory if it doesn't exist
+// creates the data directory if it doesn't exist
 export function toDisk(id: string, dataset: Dataset): void {
 	try {
 		if (!fs.existsSync(persistDir)) {
@@ -19,7 +19,7 @@ export function toDisk(id: string, dataset: Dataset): void {
 }
 
 // Reads from directory persistDir and loads them into InsightFacade
-// TODO: change to synchronous by changing how we save to disk
+// change to synchronous by changing how we save to disk
 export function fromDisk(insightFacade: InsightFacade): void {
 	try {
 		if (!fs.existsSync(persistDir)) {

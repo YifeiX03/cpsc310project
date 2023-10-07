@@ -30,7 +30,6 @@ export default class InsightFacade implements IInsightFacade {
 		if (this.datasets) {
 			console.log("Successfully initialized datasets");
 		}
-		// TODO: figure out how to load from disk everytime a new InsightFacade is made
 		fromDisk(this);
 	}
 
