@@ -60,8 +60,8 @@ export async function parseZip(id: string, dataZip: string): Promise<Dataset> {
 			if (hasAllKeys) {
 				let section = new Section(
 					sec.Avg, sec.Subject, sec.Course, sec.Professor, sec.Title,
-					sec.Pass, sec.Fail, sec.Audit, String(sec.id), Number(sec.Year)
-				);
+					sec.Pass, sec.Fail, sec.Audit, String(sec.id),
+					"Section" in sec && sec.Section === "overall" ? 1900 : Number(sec.Year));
 				course.addSection(section);
 			}
 		}
