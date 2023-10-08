@@ -4,6 +4,7 @@
 // import * as JSZip from "jszip";
 // import * as fs from "fs-extra";
 // import {Course, Dataset, Section} from "../../src/helpers/Courses";
+// import {toDisk} from "../../src/helpers/DiskHelpers";
 //
 // // This is purely for testing how the jszip and fs modules work
 // describe("test parseZip", async function() {
@@ -67,8 +68,7 @@
 //
 // describe ("ParseZip", async function () {
 // 	let dataset = await parseZip("sections", getContentFromArchives("pair-small-2.zip"));
-// 	const {...object} = dataset;
-// 	fs.writeFileSync("./data/test1.json", JSON.stringify(object));
+// 	toDisk("sections", dataset);
 // });
 //
 // describe ("dataset", function () {
