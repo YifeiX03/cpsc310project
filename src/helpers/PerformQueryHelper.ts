@@ -165,6 +165,7 @@ function queryIs(dataset: Dataset, fieldName: string, value: string): QueryResul
 	const isWildcardEnd = value.endsWith("*");
 	const trimmedValue = value.replace(/^\*|\*$/g, ""); // remove asterisks at the start and end
 
+	// the wild card is implemented by chatgpt, by the prompt written by shibo
 	for (let course of dataset.courses) {
 		for (let section of course.sections) {
 			const sectionValue = (section as any)[fieldName];

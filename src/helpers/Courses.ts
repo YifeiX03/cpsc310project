@@ -1,4 +1,7 @@
-
+/*
+ * this file's design is done by shibo and improved by Yifei, and, the implementation of the functions are assisted by copilot
+ * The design means the field, function signatures
+ */
 import {InsightDatasetKind} from "../controller/IInsightFacade";
 
 export class Dataset {
