@@ -76,7 +76,7 @@ function validateAnd(and: any, loadedDatasets: string[], datasetName: string): V
 }
 
 export function validateWhere(where: object, loadedDatasets: string[],
-							  datasetName: string, outerWhere: boolean = false): ValidationResult {
+	datasetName: string, outerWhere: boolean = false): ValidationResult {
 	if (where == null) {
 		return {valid: false, error: "WHERE is null"};
 	}
