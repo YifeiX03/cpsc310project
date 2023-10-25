@@ -1064,11 +1064,19 @@ describe("InsightFacadeRooms", function() {
 	// still need to check for things like if a folder is missing but there are still buildings in the wrong folder
 	// other checks on what makes a room/building/index file invalid, need to look more deeply at the spec
 
+	// ///////////wtitten by shibo///////////
+	let noBuildinHtml: string;
+	// ////////////////////end//////////////
+
 	before(function() {
 		rooms = getContentFromArchives("campus.zip");
 		roomsNoIndex = getContentFromArchives("campus_no_index.zip");
 		roomsNoCampus = getContentFromArchives("campus_no_campus.zip");
 		roomsNoBuildings = getContentFromArchives("campus_no_buildings.zip");
+
+		// ///////////wtitten by shibo///////////
+		noBuildinHtml = getContentFromArchives("campus_no_building_html.zip");
+		// ////////////////////end//////////////
 		clearDisk();
 	});
 	describe("Add/Remove/List DatasetRooms", function() {
@@ -1125,6 +1133,51 @@ describe("InsightFacadeRooms", function() {
 			const result = facade.addDataset("rooms", roomsNoBuildings, InsightDatasetKind.Rooms);
 			return expect(result).to.eventually.be.rejectedWith(InsightError);
 		});
+
+		// ///////////wtitten by shibo///////////
+		it("should successfully add a rooms dataset even one hyperlink links to" +
+		"a building html that does not exist", async function() {
+			await facade.addDataset("rooms", rooms, InsightDatasetKind.Rooms);
+			const result = facade.listDatasets();
+			return expect(result).to.eventually.have.deep.members([
+				{
+					id: "rooms",
+					kind: InsightDatasetKind.Rooms,
+					numRows: 303,
+				}
+			]);
+		});
+
+		it("should successfully add a dataset with only one valid room", async function() {
+			await facade.addDataset("rooms", getContentFromArchives("campus_only_one_room.zip"),
+				InsightDatasetKind.Rooms);
+			const result = facade.listDatasets();
+			return expect(result).to.eventually.have.deep.members([
+				{
+					id: "rooms",
+					kind: InsightDatasetKind.Rooms,
+					numRows: 1,
+				}
+			]);
+		});
+
+		it("should unsuccessfully add a dataset with no valid room", async function() {
+			let ret = facade.addDataset("rooms", getContentFromArchives("campus_no_room.zip"),
+				InsightDatasetKind.Rooms);
+			return expect(ret).to.eventually.be.rejectedWith(InsightError);
+		});
+
+		it("should unsuccessfully add a dataset with invalid folder name", async function() {
+			let ret = facade.addDataset("rooms",
+				getContentFromArchives("campus_invalid_folder.zip"),
+				InsightDatasetKind.Rooms);
+			return expect(ret).to.eventually.be.rejectedWith(InsightError);
+		});
+
+
+		// ////////////////////end//////////////
+
+
 	});
 });
 
@@ -1132,7 +1185,6 @@ describe("InsightFacadeRooms", function() {
  * the structure of the folder test is borrowed from provided project AdditionCalculator,
  * the queries used in text two sets of tests is retrieved and modified from the given examples on the course website
  */
-
 
 describe("folder-test-one", function() {
 	describe("test perform query", function () {
