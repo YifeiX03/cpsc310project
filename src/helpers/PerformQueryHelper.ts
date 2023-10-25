@@ -17,7 +17,7 @@ export function performQueryHelper(query: any, datasets: Dataset[]): any[]{
 }
 
 function sortedAndFilteredQueryResult(prefix: string, order: string | null, queryResult: QueryResult,
-									  columns: string[]): any[] {
+	columns: string[]): any[] {
 	let sectionsCopy = [...queryResult.getResult()];
 
 	if (order !== null) {

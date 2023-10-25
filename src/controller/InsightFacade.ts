@@ -107,6 +107,7 @@ export default class InsightFacade implements IInsightFacade {
 			}
 		});
 	}
+
 	public listDatasets(): Promise<InsightDataset[]> {
 		let result: InsightDataset[] = [];
 		for (const dataset of this.datasets) {

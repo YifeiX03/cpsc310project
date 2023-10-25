@@ -13,6 +13,7 @@ export class Dataset {
 		this.courses = [];
 		this.type = type;
 	}
+
 	public addCourse(course: Course): void {
 		this.courses.push(course);
 	}
@@ -25,6 +26,7 @@ export class Course {
 		this.courseName = courseName;
 		this.sections = [];
 	}
+
 	public addSection(section: Section): void {
 		this.sections.push(section);
 	}
