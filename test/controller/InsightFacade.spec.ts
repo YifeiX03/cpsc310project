@@ -1054,6 +1054,79 @@ describe("InsightFacade", function()  {
 	});
 });
 
+describe("InsightFacadeRooms", function() {
+	let facade: InsightFacade;
+
+	let rooms: string;
+	let roomsNoIndex: string;
+	let roomsNoCampus: string;
+	let roomsNoBuildings: string;
+	// still need to check for things like if a folder is missing but there are still buildings in the wrong folder
+	// other checks on what makes a room/building/index file invalid, need to look more deeply at the spec
+
+	before(function() {
+		rooms = getContentFromArchives("campus.zip");
+		roomsNoIndex = getContentFromArchives("campus_no_index.zip");
+		roomsNoCampus = getContentFromArchives("campus_no_campus.zip");
+		roomsNoBuildings = getContentFromArchives("campus_no_buildings.zip");
+		clearDisk();
+	});
+	describe("Add/Remove/List DatasetRooms", function() {
+		before(function () {
+			console.info(`Before: ${this.test?.parent?.title}`);
+		});
+
+		beforeEach(function () {
+			// This section resets the insightFacade instance
+			// This runs before each test
+			console.info(`BeforeTest: ${this.currentTest?.title}`);
+			facade = new InsightFacade();
+		});
+
+		after(function () {
+			console.info(`After: ${this.test?.parent?.title}`);
+		});
+
+		afterEach(function () {
+			// This section resets the data directory (removing any cached data)
+			// This runs after each test, which should make each test independent of the previous one
+			console.info(`AfterTest: ${this.currentTest?.title}`);
+			clearDisk();
+		});
+		it("should successfully add a rooms dataset", function() {
+			const result = facade.addDataset("rooms", rooms, InsightDatasetKind.Rooms);
+			return expect(result).to.eventually.have.members(["rooms"]);
+		});
+		it("should successfully remove a rooms dataset", async function() {
+			await facade.addDataset("rooms", rooms, InsightDatasetKind.Rooms);
+			const result = facade.removeDataset("rooms");
+			return expect(result).to.eventually.equal("rooms");
+		});
+		it("should successfully list a rooms dataset", async function() {
+			await facade.addDataset("rooms", rooms, InsightDatasetKind.Rooms);
+			const result = facade.listDatasets();
+			return expect(result).to.eventually.have.deep.members([
+				{
+					id: "rooms",
+					kind: InsightDatasetKind.Rooms,
+					numRows: 364,
+				}
+			]);
+		});
+		it("should unsuccessfully add an invalid rooms dataset", function() {
+			const result = facade.addDataset("rooms", roomsNoIndex, InsightDatasetKind.Rooms);
+			return expect(result).to.eventually.be.rejectedWith(InsightError);
+		});
+		it("should unsuccessfully add an invalid rooms dataset", function() {
+			const result = facade.addDataset("rooms", roomsNoCampus, InsightDatasetKind.Rooms);
+			return expect(result).to.eventually.be.rejectedWith(InsightError);
+		});
+		it("should unsuccessfully add an invalid rooms dataset", function() {
+			const result = facade.addDataset("rooms", roomsNoBuildings, InsightDatasetKind.Rooms);
+			return expect(result).to.eventually.be.rejectedWith(InsightError);
+		});
+	});
+});
 
 /*
  * the structure of the folder test is borrowed from provided project AdditionCalculator,
