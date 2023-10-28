@@ -52,9 +52,9 @@ function createDataset(index: any, files: Map<any, any>): Dataset | null{
 	// each element in table has a building, and a link to its local file
 	// the files map has the local path as a key, and the parsed html as its value
 	// TODO: find the table in index
-	let possibleTableEls = findChildren(index, "tr");
+	let table = filterTable(findChildren(index, "tr"));
 	// TODO: iterate through table, creating buildings at each element
-	let buildings = createBuildings(possibleTableEls);
+	let buildings = createBuildings(table);
 	// TODO: follow local path linked at each element to find corresponding file
 	// TODO: find room table at each building file and make rooms for each building
 	return null;
@@ -68,6 +68,7 @@ function createBuildings(table: any[]): object[] {
 			continue;
 		}
 		// TODO: using absolute values here, change might be necessary, and also null checks
+		// TODO: remove absolute values by taking the result of findClass and look for children with certain tags
 		let building = {
 			fullname: findClass(element, "views-field views-field-title")?.childNodes[1].childNodes[0].value,
 			shortname: null,
@@ -80,6 +81,26 @@ function createBuildings(table: any[]): object[] {
 		buildings.push(building);
 	}
 	return buildings;
+}
+
+// TODO: test this when you get home to make sure it works
+function filterTable(table: any[]): any[]{
+	let filteredResults: any[] = [];
+	for (let element of table) {
+		let hasTD = true;
+		for (let child of element.childNodes) {
+			if (!child.tagName) {
+				continue;
+			}
+			if (child.tagName !== "td") {
+				hasTD = false;
+			}
+		}
+		if (hasTD) {
+			filteredResults.push(element);
+		}
+	}
+	return filteredResults;
 }
 
 function findClass(node: any, classVal: string): any {
