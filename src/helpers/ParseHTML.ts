@@ -56,6 +56,7 @@ function createDataset(index: any, files: Map<any, any>): Dataset | null{
 	// TODO: iterate through table, creating buildings at each element
 	let buildings = createBuildings(table);
 	// TODO: follow local path linked at each element to find corresponding file
+	// (remove "./" at the beginning of building.path in order to get the key to corresponding file
 	// TODO: find room table at each building file and make rooms for each building
 	return null;
 }
@@ -64,18 +65,34 @@ function createBuildings(table: any[]): object[] {
 	let buildings: object[] = [];
 	for (let element of table) {
 		// TODO: temp way of skipping past "th"
-		if (element.childNodes[1].nodeName !== "td") {
-			continue;
-		}
+		// if (element.childNodes[1].nodeName !== "td") {
+		// 	continue;
+		// }
 		// TODO: using absolute values here, change might be necessary, and also null checks
 		// TODO: remove absolute values by taking the result of findClass and look for children with certain tags
 		let building = {
-			fullname: findClass(element, "views-field views-field-title")?.childNodes[1].childNodes[0].value,
-			shortname: null,
-			address: null,
-			lat: null,
-			lon: null,
-			path: null
+			fullname:
+				findChild(
+					findChild(
+						findClass(element, "views-field views-field-title"),
+						"a"),
+					"#text")?.value,
+			// TODO: (possibly) clean up whitespace
+			shortname:
+				findChild(
+					findClass(element, "views-field views-field-field-building-code"),
+					"#text")?.value,
+			address:
+				findChild(
+					findClass(element, "views-field views-field-field-building-address"),
+					"#text")?.value,
+			// TODO: implement getting the long and lat from their web service
+			lat: 0,
+			lon: 0,
+			rooms: [],
+			path: findChild(
+				findClass(element, "views-field views-field-nothing"),
+				"a")?.attrs[0]?.value
 		};
 		// TODO: check if any of the values are null
 		buildings.push(building);
@@ -103,7 +120,11 @@ function filterTable(table: any[]): any[]{
 	return filteredResults;
 }
 
+// Might turn this into findByType where you can put in the type of node as well as value
 function findClass(node: any, classVal: string): any {
+	if (node === null) {
+		return null;
+	}
 	for (let i = 0; i < node.childNodes?.length; i++) {
 		let child = node.childNodes[i];
 		if (!child.attrs) {
@@ -121,13 +142,16 @@ function findClass(node: any, classVal: string): any {
 }
 
 // uses code from https://stackoverflow.com/questions/67591100/how-to-parse-with-parse5
-function findChild(node: any, tag: string): any {
+function findChild(node: any, name: string): any {
+	if (node === null) {
+		return null;
+	}
 	for (let i = 0; i < node.childNodes?.length; i++) {
-		if (node.childNodes[i].nodeName === tag) {
+		if (node.childNodes[i].nodeName === name) {
 			return node.childNodes[i];
 		}
 
-		const result = findChild(node.childNodes[i], tag);
+		const result = findChild(node.childNodes[i], name);
 		if (result) {
 			return result;
 		}
