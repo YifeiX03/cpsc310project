@@ -1,10 +1,7 @@
-import {
-	Dataset,
-	Course,
-	Section
-} from "./Courses";
+import {Building, Dataset, Room} from "./Courses";
 import * as JSZip from "jszip";
 import * as Parse5 from "parse5";
+import {InsightDatasetKind} from "../controller/IInsightFacade";
 
 // parses and validates a serialized zip of html files and returns a dataset
 // returns Dataset
@@ -22,8 +19,38 @@ export async function parseHTML(id: string, dataZip: string): Promise<Dataset> {
 	for (let entry of fileMap.entries()) {
 		fileDocMap.set(entry[0], Parse5.parse(entry[1]));
 	}
-	let dataset = createDataset(indexDoc, fileDocMap);
-	return Promise.reject("Not yet fully implemented");
+	let datasetObj = createDataset(indexDoc, fileDocMap);
+	if (datasetObj) {
+		return Promise.resolve(ObjectToDataset(id, datasetObj));
+	}
+	return Promise.reject("Couldn't construct dataset :/");
+}
+
+function ObjectToDataset(id: string, datasetObj: any) {
+	let dataset = new Dataset(id);
+	dataset.type = InsightDatasetKind.Rooms;
+	for (let buildingObj of datasetObj) {
+		let building = new Building(
+			buildingObj.fullname,
+			buildingObj.shortname,
+			buildingObj.address,
+			buildingObj.lat,
+			buildingObj.lon
+		);
+		for (let roomObj of buildingObj.rooms) {
+			let room = new Room(
+				roomObj.number,
+				roomObj.name,
+				roomObj.seats,
+				roomObj.type,
+				roomObj.furniture,
+				roomObj.href
+			);
+			building.rooms.push(room);
+		}
+		dataset.buildings.push(building);
+	}
+	return dataset;
 }
 
 async function getRoomFiles(zip: any): Promise<Map<string, string>> {
@@ -47,7 +74,7 @@ async function getRoomFiles(zip: any): Promise<Map<string, string>> {
 	return fileMap;
 }
 
-function createDataset(index: any, files: Map<any, any>): Dataset | null{
+function createDataset(index: any, files: Map<any, any>): object[] | null{
 	// main idea is to iterate through the table in the index file
 	// each element in table has a building, and a link to its local file
 	// the files map has the local path as a key, and the parsed html as its value
@@ -57,8 +84,9 @@ function createDataset(index: any, files: Map<any, any>): Dataset | null{
 	let buildings = createBuildings(table);
 	// TODO: follow local path linked at each element to find corresponding file
 	// (remove "./" at the beginning of building.path in order to get the key to corresponding file
+	createRoomsForBuildings(buildings, files);
 	// TODO: find room table at each building file and make rooms for each building
-	return null;
+	return buildings;
 }
 
 function createBuildings(table: any[]): object[] {
@@ -94,10 +122,63 @@ function createBuildings(table: any[]): object[] {
 				findClass(element, "views-field views-field-nothing"),
 				"a")?.attrs[0]?.value
 		};
+		building.fullname = trim(building.fullname);
+		building.shortname = trim(building.shortname);
+		building.address = trim(building.address);
 		// TODO: check if any of the values are null
 		buildings.push(building);
 	}
 	return buildings;
+}
+
+function createRoomsForBuildings(buildings: any[], buildingsMap: Map<any,any>) {
+	for (let building of buildings) {
+		let rooms: object[] = [];
+		let path = building.path.replace("./","");
+		let buildingFile = buildingsMap.get(path);
+		let roomsTable = filterTable(findChildren(buildingFile, "tr"));
+		rooms = createRooms(building, roomsTable);
+		building.rooms = rooms;
+	}
+}
+
+function createRooms(building: any, table: any[]): object[] {
+	let rooms: object[] = [];
+	for (let element of table) {
+		let number =
+			findChild(
+				findChild(
+					findClass(element, "views-field views-field-field-room-number"),
+					"a"),
+				"#text")?.value;
+		number = trim(number);
+		let room = {
+			number: number,
+			name: building.shortname?.concat(" ").concat(number),
+			seats:
+				findChild(
+					findClass(element, "views-field views-field-field-room-capacity"),
+					"#text")?.value,
+			type:
+				findChild(
+					findClass(element, "views-field views-field-field-room-type"),
+					"#text")?.value,
+			furniture:
+				findChild(
+					findClass(element, "views-field views-field-field-room-furniture"),
+					"#text")?.value,
+			href:
+				findChild(
+					findClass(element, "views-field views-field-nothing"),
+					"a")?.attrs[0]?.value,
+		};
+		room.name = trim(room.name);
+		room.seats = Number(trim(room.seats));
+		room.type = trim(room.type);
+		room.furniture = trim(room.furniture);
+		rooms.push(room);
+	}
+	return rooms;
 }
 
 // TODO: test this when you get home to make sure it works
@@ -172,6 +253,10 @@ function findChildren(node: any, tag: string): any[] {
 		}
 	}
 	return results;
+}
+
+function trim(input: string) {
+	return input.replace(/(\n)/, "").trim();
 }
 
 function errorCheck (input: boolean, message: string) {
