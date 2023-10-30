@@ -4,7 +4,6 @@ import {
 	Section
 } from "./Courses";
 import * as JSZip from "jszip";
-import {getContentFromArchives} from "../../test/TestUtil";
 
 interface FileSection {
 	Avg: number,

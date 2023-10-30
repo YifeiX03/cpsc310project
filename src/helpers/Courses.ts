@@ -7,10 +7,12 @@ import {InsightDatasetKind} from "../controller/IInsightFacade";
 export class Dataset {
 	public datasetName: string;
 	public courses: Course[];
+	public buildings: Building[];
 	public type: InsightDatasetKind;
 	constructor(datasetName: string, type: InsightDatasetKind = InsightDatasetKind.Sections) {
 		this.datasetName = datasetName;
 		this.courses = [];
+		this.buildings = [];
 		this.type = type;
 	}
 
@@ -55,5 +57,39 @@ export class Section {
 		this.audit = audit;
 		this.uuid = uuid;
 		this.year = year;
+	}
+}
+
+export class Building {
+	public fullname: string;
+	public shortname: string;
+	public address: string;
+	public lat: number;
+	public lon: number;
+	public rooms: Room[];
+	constructor(fullname: string, shortname: string, address: string, lat: number, lon: number) {
+		this.fullname = fullname;
+		this.shortname = shortname;
+		this.address = address;
+		this.lat = lat;
+		this.lon = lon;
+		this.rooms = [];
+	}
+}
+
+export class Room {
+	public number: string;
+	public name: string;
+	public seats: number;
+	public type: string;
+	public furniture: string;
+	public href: string;
+	constructor(number: string, name: string, seats: number, type: string, furniture: string, href: string) {
+		this.number = number;
+		this.name = name;
+		this.seats = seats;
+		this.type = type;
+		this.furniture = furniture;
+		this.href = href;
 	}
 }
