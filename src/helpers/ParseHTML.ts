@@ -2,6 +2,8 @@ import {Building, Dataset, Room} from "./Courses";
 import * as JSZip from "jszip";
 import * as Parse5 from "parse5";
 import {InsightDatasetKind} from "../controller/IInsightFacade";
+import http from "http";
+import {getGeolocationRequest, getGeolocations} from "./HTTPHelpers";
 
 // parses and validates a serialized zip of html files and returns a dataset
 // returns Dataset
@@ -19,7 +21,7 @@ export async function parseHTML(id: string, dataZip: string): Promise<Dataset> {
 	for (let entry of fileMap.entries()) {
 		fileDocMap.set(entry[0], Parse5.parse(entry[1]));
 	}
-	let datasetObj = createDataset(indexDoc, fileDocMap);
+	let datasetObj = await createDataset(indexDoc, fileDocMap);
 	if (datasetObj) {
 		return Promise.resolve(ObjectToDataset(id, datasetObj));
 	}
@@ -74,22 +76,23 @@ async function getRoomFiles(zip: any): Promise<Map<string, string>> {
 	return fileMap;
 }
 
-function createDataset(index: any, files: Map<any, any>): object[] | null{
+async function createDataset(index: any, files: Map<any, any>): Promise<object[] | null>{
 	// main idea is to iterate through the table in the index file
 	// each element in table has a building, and a link to its local file
 	// the files map has the local path as a key, and the parsed html as its value
 	// TODO: find the table in index
 	let table = filterTable(findChildren(index, "tr"));
 	// TODO: iterate through table, creating buildings at each element
-	let buildings = createBuildings(table);
+	let buildings = await createBuildings(table);
 	// TODO: follow local path linked at each element to find corresponding file
 	// (remove "./" at the beginning of building.path in order to get the key to corresponding file
 	createRoomsForBuildings(buildings, files);
+	await getGeolocations(buildings);
 	// TODO: find room table at each building file and make rooms for each building
 	return buildings;
 }
 
-function createBuildings(table: any[]): object[] {
+async function createBuildings(table: any[]): Promise<object[]> {
 	let buildings: object[] = [];
 	for (let element of table) {
 		// TODO: temp way of skipping past "th"
@@ -125,6 +128,7 @@ function createBuildings(table: any[]): object[] {
 		building.fullname = trim(building.fullname);
 		building.shortname = trim(building.shortname);
 		building.address = trim(building.address);
+		// let coords = await getGeolocationRequest(building.address);
 		// TODO: check if any of the values are null
 		buildings.push(building);
 	}
@@ -132,6 +136,7 @@ function createBuildings(table: any[]): object[] {
 }
 
 function createRoomsForBuildings(buildings: any[], buildingsMap: Map<any,any>) {
+	// TODO: might have to check if path from index actually exists
 	for (let building of buildings) {
 		let rooms: object[] = [];
 		let path = building.path.replace("./","");

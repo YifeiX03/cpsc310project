@@ -4,18 +4,17 @@ import {
 	InsightDatasetKind,
 	InsightError,
 	InsightResult,
-	ResultTooLargeError,
-	NotFoundError
+	NotFoundError,
+	ResultTooLargeError
 } from "./IInsightFacade";
 
-import {toDisk, fromDisk, removeDisk} from "../helpers/DiskHelpers";
+import {fromDisk, removeDisk, toDisk} from "../helpers/DiskHelpers";
 
-import {
-	Dataset
-} from "../helpers/Courses";
+import {Dataset} from "../helpers/Courses";
 import {parseZip} from "../helpers/ParseZip";
 import {performQueryHelper} from "../helpers/PerformQueryHelper";
 import {requestValidator} from "../helpers/RequestValidator";
+import {parseHTML} from "../helpers/ParseHTML";
 
 /**
  * This is the main programmatic entry point for the project.
@@ -46,17 +45,29 @@ export default class InsightFacade implements IInsightFacade {
 		if (!id.trim()) {
 			return Promise.reject(new InsightError("Dataset id cannot be empty or spaces only!"));
 		}
-
-		return parseZip(id, content)
-			.then((dataset) => {
-				dataset.type = kind;
-				this.datasets.push(dataset);
-				toDisk(id, dataset);
-				return this.datasets.map((each) => each.datasetName);
-			})
-			.catch((e) => {
-				return Promise.reject(new InsightError(e));
-			});
+		if (kind === InsightDatasetKind.Sections) {
+			return parseZip(id, content)
+				.then((dataset) => {
+					this.datasets.push(dataset);
+					toDisk(id, dataset);
+					return this.datasets.map((each) => each.datasetName);
+				})
+				.catch((e) => {
+					return Promise.reject(new InsightError(e));
+				});
+		}
+		if (kind === InsightDatasetKind.Rooms) {
+			return parseHTML(id, content)
+				.then((dataset) => {
+					this.datasets.push(dataset);
+					toDisk(id, dataset);
+					return this.datasets.map((each) => each.datasetName);
+				})
+				.catch((e) => {
+					return Promise.reject(new InsightError(e));
+				});
+		}
+		return Promise.reject(new InsightError("kind is neither sections nor rooms"));
 	}
 
 	public async removeDataset(id: string): Promise<string> {
@@ -112,10 +123,7 @@ export default class InsightFacade implements IInsightFacade {
 	public listDatasets(): Promise<InsightDataset[]> {
 		let result: InsightDataset[] = [];
 		for (const dataset of this.datasets) {
-			let rows = 0;
-			for (const course of dataset.courses) {
-				rows += course.sections.length;
-			}
+			let rows = dataset.getRows();
 			let insightDataset: InsightDataset = {
 				id: dataset.datasetName,
 				kind: dataset.type,
