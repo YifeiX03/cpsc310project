@@ -19,6 +19,21 @@ export class Dataset {
 	public addCourse(course: Course): void {
 		this.courses.push(course);
 	}
+
+	public getRows(): number {
+		let rows = 0;
+		if (this.type === InsightDatasetKind.Sections) {
+			for (const course of this.courses) {
+				rows += course.sections.length;
+			}
+		}
+		if (this.type === InsightDatasetKind.Rooms) {
+			for (const building of this.buildings) {
+				rows += building.rooms.length;
+			}
+		}
+		return rows;
+	}
 }
 
 export class Course {
