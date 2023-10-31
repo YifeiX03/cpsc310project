@@ -1,0 +1,26 @@
+{
+	"title": "Keys in COLUMNS must be in GROUP or APPLY when TRANSFORMATIONS is present",
+	"input": {
+		"WHERE": {},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_title",
+				"sections_avg"
+			]
+		},
+		"TRANSFORMATIONS": {
+			"GROUP": [
+				"sections_title"
+			],
+			"APPLY": [
+				{
+					"aaa": {
+						"AVG": "sections_title"
+					}
+				}
+			]
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

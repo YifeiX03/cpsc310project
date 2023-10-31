@@ -1,0 +1,20 @@
+{
+	"title": "praise spez",
+	"input": {
+		"WHERE": {},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_title"
+			]
+		},
+		"TRANSFORMATIONS": {
+			"GROUP": [
+				"sections_title"
+			],
+			"APPLY": []
+		},
+		"praise spez": {}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

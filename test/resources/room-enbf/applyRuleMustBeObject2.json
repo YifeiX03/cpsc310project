@@ -1,0 +1,33 @@
+{
+	"title": "Apply rule must be object 2",
+	"input": {
+		"WHERE": {},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_title",
+				"aaa"
+			],
+			"ORDER": {
+				"dir": "DOWN",
+				"keys": [
+					"aaa"
+				]
+			}
+		},
+		"TRANSFORMATIONS": {
+			"GROUP": [
+				"sections_title"
+			],
+			"APPLY": [
+				{
+					"aaa": {
+						"AVG": "sections_avg"
+					}
+				},
+				1
+			]
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

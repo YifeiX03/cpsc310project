@@ -1,0 +1,14 @@
+{
+	"title": "TRANSFORMATIONS not well typed 2",
+	"input": {
+		"WHERE": {},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_title"
+			]
+		},
+		"TRANSFORMATIONS": 1
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

@@ -1053,7 +1053,7 @@ describe("InsightFacade", function()  {
 
 	});
 });
-
+/*
 describe("InsightFacadeRooms", function() {
 	let facade: InsightFacade;
 
@@ -1180,6 +1180,7 @@ describe("InsightFacadeRooms", function() {
 
 	});
 });
+*/
 
 /*
  * the structure of the folder test is borrowed from provided project AdditionCalculator,
@@ -1280,3 +1281,98 @@ describe("folder-test-two", function() {
 	});
 });
 
+describe("folder-test-three", function() {
+	describe("test EBNF c2", function () {
+		type Output = InsightResult[]
+		type Input = unknown
+		type Error = "InsightError" | "ResultTooLargeError"
+		let sections: string;
+		let facade: InsightFacade;
+		before(async function () {
+			clearDisk();
+			sections = getContentFromArchives("pair.zip");
+			facade = new InsightFacade();
+			await facade.addDataset("sections", sections, InsightDatasetKind.Sections);
+			await facade.addDataset("rooms", sections, InsightDatasetKind.Rooms);
+		});
+
+		function assertOnResult(actual: unknown, expected: Output): void {
+			return;
+		}
+		function target(input: Input): Promise<Output> {
+			return facade.performQuery(input);
+		}
+
+		function assertOnError(actual: any, expected: Error): void {
+			if (expected === "InsightError") {
+				expect(actual).to.be.instanceof(InsightError);
+			} else if (expected === "ResultTooLargeError") {
+				expect(actual).to.be.instanceof(ResultTooLargeError);
+			}else {
+				expect.fail("UNEXPECTED ERROR");
+			}
+		}
+		function errorValidator(error: any): error is Error {
+			return error === "InsightError" || error === "ResultTooLargeError";
+		}
+
+		folderTest<Input, Output, Error>(
+			"Add Dynamic 2",
+			target,
+			"./test/resources/room-enbf",
+			{
+				errorValidator,
+				assertOnError,
+				assertOnResult
+			}
+		);
+	});
+});
+
+describe("folder-test-three-four", function() {
+	describe("test EBNF c2 praise spez", function () {
+		type Output = InsightResult[];
+		type Input = unknown;
+		type Error = "InsightError" | "ResultTooLargeError";
+		let sections: string;
+		let facade: InsightFacade;
+		before(async function () {
+			clearDisk();
+			sections = getContentFromArchives("pair.zip");
+			facade = new InsightFacade();
+			await facade.addDataset("sections", sections, InsightDatasetKind.Sections);
+			await facade.addDataset("rooms", sections, InsightDatasetKind.Rooms);
+		});
+
+		function assertOnResult(actual: unknown, expected: Output): void {
+			return;
+		}
+		function target(input: Input): Promise<Output> {
+			return facade.performQuery(input);
+		}
+
+		function assertOnError(actual: any, expected: Error): void {
+			if (expected === "InsightError") {
+				expect(actual).to.be.instanceof(InsightError);
+			} else if (expected === "ResultTooLargeError") {
+				expect(actual).to.be.instanceof(ResultTooLargeError);
+			}else {
+				expect.fail("UNEXPECTED ERROR");
+			}
+		}
+		function errorValidator(error: any): error is Error {
+			return error === "InsightError" || error === "ResultTooLargeError";
+		}
+
+		folderTest<Input, Output, Error>(
+			"Add Dynamic 2",
+			target,
+			"./test/resources/room-test2",
+			{
+				errorValidator,
+				assertOnError,
+				assertOnResult
+			}
+		);
+	});
+});

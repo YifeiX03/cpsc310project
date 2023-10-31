@@ -1,7 +1,7 @@
 import {Section} from "./Courses";
 // this class is designed by shibo and implemented by chatgpt with the promot written by shibo
 export class QueryResult {
-	private sections: Section[];
+	public sections: Section[];
 	constructor() {
 		this.sections = [];
 	}

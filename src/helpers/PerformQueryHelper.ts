@@ -2,25 +2,34 @@ import {Dataset, Section} from "./Courses";
 import {QueryResult} from "./QueryTypes";
 import {unionOfQueryResults, intersectionOfQueryResults, differenceOfQueryResults} from "./SectionHelper";
 import {ResultTooLargeError} from "../controller/IInsightFacade";
+import {
+	roomSfields,
+	sfields
+} from "./ValidationTypes";
+import {queryTransformations} from "./TransformationsQueryHelper";
+import {extractDatasetName} from "./DatasetHelper";
 
 export function performQueryHelper(query: any, datasets: Dataset[]): any[]{
-	let option = processOptions(query.OPTIONS);
+	let option = processOptions(query);
 	const foundDataset = datasets.find((dataset) => dataset.datasetName === option.datasetName);
 	let fields = option.fields;
 	let middle = queryWhere(query.WHERE, foundDataset as Dataset);
-	let final = sortedAndFilteredQueryResult(foundDataset?.datasetName as string, option.order === "" ? null :
-		option.order, middle, fields);
+	let notFinalYet: object[] = [];
+	if ("TRANSFORMATIONS" in query) {
+		notFinalYet = queryTransformations(query.TRANSFORMATIONS, middle);
+	}
+	let final = sortedAndFilteredQueryResult(foundDataset?.datasetName as string,
+		query.OPTIONS.ORDER, notFinalYet.length === 0 ? [...middle.getResult()] : notFinalYet, fields, option.fields2);
 	if (final.length > 5000) {
 		throw new ResultTooLargeError("Too many results!");
 	}
 	return final;
 }
 
-function sortedAndFilteredQueryResult(prefix: string, order: string | null, queryResult: QueryResult,
-	columns: string[]): any[] {
-	let sectionsCopy = [...queryResult.getResult()];
-
-	if (order !== null) {
+/*
+function sortedAndFilteredQueryResult(prefix: string, order: any, sectionsCopy: any[],
+	columns: string[], fields2: []): any[] {
+	if (order !== undefined && typeof order !== "object") {
 		let newOrder = order.split("_")[1] as string;
 		sectionsCopy.sort((a, b) => {
 			const aValue = (a as any)[newOrder];
@@ -34,37 +43,134 @@ function sortedAndFilteredQueryResult(prefix: string, order: string | null, quer
 			}
 			return 0;
 		});
+	} else if (order !== undefined && typeof order === "object") {
+		sectionsCopy.sort((a, b) => {
+			for (let key of order.keys) {
+				let newKey = key;
+				// Split the key only if it contains "_"
+				if (key.includes("_")) {
+					newKey = key.split("_")[1];
+				}
+				const aValue = (a as any)[newKey];
+				const bValue = (b as any)[newKey];
+
+				// Compare values based on direction
+				if (aValue !== bValue) {
+					if (order.dir === "UP") {
+						return aValue < bValue ? -1 : 1;
+					} else {
+						return aValue > bValue ? -1 : 1;
+					}
+				}
+			}
+			return 0;
+		});
 	}
 
 	const result: any[] = [];
-	prefix += "_";
 	for (let section of sectionsCopy) {
 		let obj: any = {};
-		let sfield =  ["dept", "instructor", "id", "title", "uuid"];
-		for (let key of columns) {
-			if (sfield.includes(key)) {
-				obj[prefix + key] = "" + (section as any)[key];
+		for (let key of fields2) {
+			let fragment = (key as string).split("_");
+			if (sfields.has(key) || roomSfields.has(key)) {
+				obj[key] = "" + (section as any)[fragment.length === 2 ? fragment[1] : fragment[0]];
 			} else {
-				obj[prefix + key] = (section as any)[key];
+				obj[key] = (section as any)[fragment.length === 2 ? fragment[1] : fragment[0]];
 			}
+		}
+		result.push(obj);
+	}
+
+	return result;
+}
+
+ */
+
+
+function sortByString(sectionsCopy: any[], order: string): any[] {
+	const curtis = order.split("_");
+	let newOrder: string;
+	if (curtis.length === 1) {
+		newOrder = curtis[0];
+	} else {
+		newOrder = curtis[1];
+	}
+	return sectionsCopy.sort((a, b) => compareValues(a[newOrder], b[newOrder]));
+}
+
+function sortByObject(sectionsCopy: any[], order: {keys: string[], dir: string}): any[] {
+	return sectionsCopy.sort((a, b) => {
+		for (let key of order.keys) {
+			const newKey = key.includes("_") ? key.split("_")[1] : key;
+			const compareResult = compareValues(a[newKey], b[newKey], order.dir);
+			if (compareResult !== 0) {
+				return compareResult;
+			}
+		}
+		return 0;
+	});
+}
+
+function compareValues(aValue: any, bValue: any, dir: string = "UP"): number {
+	if (aValue > bValue) {
+		return dir === "UP" ? 1 : -1;
+	}
+	if (aValue < bValue) {
+		return dir === "UP" ? -1 : 1;
+	}
+	return 0;
+}
+
+function transformAndFormatData(sectionsCopy: any[], fields2: string[]): any[] {
+	const result: any[] = [];
+	for (let section of sectionsCopy) {
+		let obj: any = {};
+		for (let key of fields2) {
+			let fragment = key.split("_");
+			const sectionKey = fragment.length === 2 ? fragment[1] : fragment[0];
+			obj[key] = (sfields.has(key) || roomSfields.has(key)) ?
+				String(section[sectionKey]) :
+				section[sectionKey];
 		}
 		result.push(obj);
 	}
 	return result;
 }
 
+
+function sortedAndFilteredQueryResult(
+	prefix: string,
+	order: any,
+	sectionsCopy: any[],
+	columns: string[],
+	fields2: string[]
+): any[] {
+	if (order !== undefined) {
+		if (typeof order !== "object") {
+			sectionsCopy = sortByString(sectionsCopy, order);
+		} else {
+			sectionsCopy = sortByObject(sectionsCopy, order);
+		}
+	}
+
+	return transformAndFormatData(sectionsCopy, fields2);
+}
+
+
 function processOptions(options: any): any {
-	let res: {datasetName: string; fields: string[]; order: string} = {datasetName: "", fields: [], order: ""};
-	let columns = options.COLUMNS;
+	let res: {datasetName: string; fields: string[]; fields2: string[];
+		order: string} = {datasetName: "", fields: [], fields2:[], order: ""};
+	let columns = options.OPTIONS.COLUMNS;
+	res.datasetName = extractDatasetName(options) as string;
 	for (let column of columns) {
 		let fragment = column.split("_") as string[];
-		res.fields.push(fragment[1]);
-		res.datasetName = fragment[0];
-	}
-	if ("ORDER" in options) {
-		res.order = options.ORDER;
-	} else {
-		res.order = "";
+		if (fragment.length === 2) {
+			res.fields.push(fragment[1]);
+			res.fields2.push(column);
+		} else {
+			res.fields.push(fragment[0]);
+			res.fields2.push(fragment[0]);
+		}
 	}
 	return res;
 }
@@ -187,5 +293,3 @@ function queryIs(dataset: Dataset, fieldName: string, value: string): QueryResul
 	qres.addSectionList(result);
 	return qres;
 }
-
-

@@ -1,104 +1,95 @@
-import * as fs from "fs";
-import * as path from "path";
 import {Course, Dataset, Section} from "../../src/helpers/Courses";
-import {ValidationResult} from "../../src/helpers/ValidationTypes";
 import {requestValidator} from "../../src/helpers/RequestValidator";
-import {expect} from "chai";
 import {performQueryHelper} from "../../src/helpers/PerformQueryHelper";
-import {getContentFromArchives} from "../TestUtil";
+import {clearDisk, getContentFromArchives} from "../TestUtil";
 import InsightFacade from "../../src/controller/InsightFacade";
 import {InsightDatasetKind} from "../../src/controller/IInsightFacade";
 
-
-export function createDatasetFromFolder(folderPath: string, datasetName: string): Dataset {
-	const dataset = new Dataset(datasetName);
-
-	// Read all files in the directory
-	const files = fs.readdirSync(folderPath);
-
-	for (const file of files) {
-		const filePath = path.join(folderPath, file);
-		const fileContent = fs.readFileSync(filePath, "utf-8");
-
-		// Parse JSON content
-		let jsonData;
-		try {
-			jsonData = JSON.parse(fileContent);
-		} catch (error) {
-			console.error(`Failed to parse content of ${file} as JSON. Skipping this file.`);
-			continue; // Skip to the next file if the current one isn't a valid JSON
-		}
-		const result = jsonData.result || [];
-
-		const courseName = path.basename(file); // No extension removal needed
-
-		// Extracting department from the filename
-		const deptMatch = courseName.match(/[A-Za-z]+/);
-		const dept = (deptMatch && deptMatch[0].toLowerCase()) || "unknown";
-
-		const course = new Course(courseName);
-
-		for (const entry of result) {
-			// Create a new Section instance for each entry in the result array using the mapped properties
-			const section = new Section(
-				entry.Avg,
-				dept,
-				entry.Course,          // Using "id" for "uuid"
-				entry.Professor,   // Mapping "Professor" to "instructor"
-				entry.Title,       // Title remains "Title"
-				entry.Pass,        // Pass remains "Pass"
-				entry.Fail,        // Fail remains "Fail"
-				entry.Audit,       // Audit remains "Audit"
-				entry.id,
-				entry.Year         // Year remains "Year"
-			);
-			course.addSection(section);
-		}
-
-		dataset.addCourse(course);
-	}
-
-	return dataset;
-}
-
 describe("test request validator", function() {
 	describe("general test", function () {
+		clearDisk();
 		let dataset: Dataset;
-
-
 		it("should handle request ", async () => {
 			let sections = getContentFromArchives("pair.zip");
 			let facade = new InsightFacade();
 			await facade.addDataset("sections", sections, InsightDatasetKind.Sections);
-			let datasets = [dataset];
-			let query  = {
-				WHERE: {
-					AND: [
+			let a = await facade.listDatasets();
+			let query = {
+				WHERE: {},
+				OPTIONS: {
+					COLUMNS: [
+						"sections_title",
+						"overallAvg",
+						"aaa"
+					],
+					ORDER: "overallAvg"
+				},
+				TRANSFORMATIONS: {
+					GROUP: [
+						"sections_title"
+					],
+					APPLY: [
 						{
-							NOT: {
-								NOT: {
-									GT: {
-										sections_avg: 90
-									}
-								}
+							overallAvg: {
+								AVG: "sections_avg"
 							}
 						},
 						{
-							IS: {
-								sections_dept: "apsc"
+							aaa: {
+								MAX: "sections_avg"
 							}
 						}
 					]
-				},
+				}
+			};
+			let res = performQueryHelper(query,  facade.datasets);
+			console.log(res);
+		});
+
+	});
+});
+
+describe("test request validator 2", function() {
+	describe("general test 2", function () {
+		clearDisk();
+		let dataset: Dataset;
+		it("should handle request 2", async () => {
+			let sections = getContentFromArchives("pair.zip");
+			let facade = new InsightFacade();
+			await facade.addDataset("sections", sections, InsightDatasetKind.Sections);
+			let query = {
+				WHERE: {},
 				OPTIONS: {
 					COLUMNS: [
-						"sections_dept",
-						"sections_avg"
+						"sections_title",
+						"aaa"
+					],
+					ORDER: {
+						dir: "DOWN",
+						keys: [
+							"aaa"
+						]
+					}
+				},
+				TRANSFORMATIONS: {
+					GROUP: [
+						"sections_title"
+					],
+					APPLY: [
+						{
+							aaa: {
+								AVG: "sections_avg"
+							}
+						},
+						{
+							aaa: {
+								AVG: "sections_avg"
+							}
+						}
 					]
 				}
 			};
-			// console.log(requestValidator(query, ["sections"]));
-			let res = await facade.performQuery(query);
+			let res = requestValidator(query, facade.datasets);
 			console.log(res);
 		});
 
