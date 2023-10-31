@@ -1,0 +1,22 @@
+{
+	"title": "Invalid ORDER direction",
+	"input": {
+		"WHERE": {},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_title"
+			],
+			"ORDER": {
+				"dir": 1
+			}
+		},
+		"TRANSFORMATIONS": {
+			"GROUP": [
+				"sections_title"
+			],
+			"APPLY": []
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

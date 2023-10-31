@@ -1,0 +1,14 @@
+{
+	"title": "TRANSFORMATIONS missing GROUP 2",
+	"input": {
+		"WHERE": {},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_title"
+			]
+		},
+		"TRANSFORMATIONS": {}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

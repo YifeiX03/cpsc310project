@@ -1,0 +1,23 @@
+{
+	"title": "ORDER keys must be a non-empty array",
+	"input": {
+		"WHERE": {},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_title"
+			],
+			"ORDER": {
+				"dir": "DOWN",
+				"keys": []
+			}
+		},
+		"TRANSFORMATIONS": {
+			"GROUP": [
+				"sections_title"
+			],
+			"APPLY": []
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

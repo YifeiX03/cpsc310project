@@ -1,0 +1,25 @@
+{
+	"title": "Invalid key type in AVG",
+	"input": {
+		"WHERE": {},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_title"
+			]
+		},
+		"TRANSFORMATIONS": {
+			"GROUP": [
+				"sections_title"
+			],
+			"APPLY": [
+				{
+					"aaa": {
+						"AVG": "sections_title"
+					}
+				}
+			]
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

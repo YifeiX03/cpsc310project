@@ -1,0 +1,22 @@
+{
+	"title": "Invalid ORDER type",
+	"input": {
+		"WHERE": {},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_title",
+				"overallAvg",
+				"aaa"
+			],
+			"ORDER": 1
+		},
+		"TRANSFORMATIONS": {
+			"GROUP": [
+				"sections_title"
+			],
+			"APPLY": []
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

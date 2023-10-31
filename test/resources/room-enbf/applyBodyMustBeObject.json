@@ -1,0 +1,23 @@
+{
+	"title": "Apply body must be object",
+	"input": {
+		"WHERE": {},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_title"
+			]
+		},
+		"TRANSFORMATIONS": {
+			"GROUP": [
+				"sections_title"
+			],
+			"APPLY": [
+				{
+					"aaa": "aaa"
+				}
+			]
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

@@ -1,0 +1,22 @@
+{
+	"title": "Invalid key overallAvg in COLUMNS",
+	"input": {
+		"WHERE": {},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_title",
+				"overallAvg",
+				"aaa"
+			],
+			"ORDER": "overallAvg"
+		},
+		"TRANSFORMATIONS": {
+			"GROUP": [
+				"sections_title"
+			],
+			"APPLY": []
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}
