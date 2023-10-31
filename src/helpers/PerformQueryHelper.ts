@@ -1,25 +1,52 @@
 import {Dataset, Section} from "./Courses";
 import {QueryResult} from "./QueryTypes";
-import {unionOfQueryResults, intersectionOfQueryResults, differenceOfQueryResults} from "./SectionHelper";
-import {ResultTooLargeError} from "../controller/IInsightFacade";
-import {
-	roomSfields,
-	sfields
-} from "./ValidationTypes";
+import {differenceOfQueryResults, intersectionOfQueryResults, unionOfQueryResults} from "./SectionHelper";
+import {InsightDatasetKind, ResultTooLargeError} from "../controller/IInsightFacade";
+import {roomSfields, sfields} from "./ValidationTypes";
 import {queryTransformations} from "./TransformationsQueryHelper";
 import {extractDatasetName} from "./DatasetHelper";
 
+export function datasetToArray(dataset: Dataset, res: QueryResult) {
+	for (let building of dataset.buildings) {
+		for (let room of building.rooms) {
+			let roomObj = {
+				fullname: building.fullname,
+				shortname: building.shortname,
+				number: room.number,
+				name: room.name,
+				address: building.address,
+				lat: building.lat,
+				lon: building.lon,
+				seats: room.seats,
+				type: room.type,
+				furniture: room.furniture,
+				href: room.href
+			};
+			res.addElement(roomObj);
+		}
+	}
+	return res;
+}
 export function performQueryHelper(query: any, datasets: Dataset[]): any[]{
 	let option = processOptions(query);
 	const foundDataset = datasets.find((dataset) => dataset.datasetName === option.datasetName);
 	let fields = option.fields;
-	let middle = queryWhere(query.WHERE, foundDataset as Dataset);
+	let result = new QueryResult();
+	if (foundDataset?.type === InsightDatasetKind.Sections) {
+		for (let course of (foundDataset as Dataset).courses) {
+			result.addElementList(course.sections);
+		}
+	} else {
+		datasetToArray(foundDataset as Dataset, result);
+	}
+	let middle = queryWhere(query.WHERE, result);
 	let notFinalYet: object[] = [];
 	if ("TRANSFORMATIONS" in query) {
 		notFinalYet = queryTransformations(query.TRANSFORMATIONS, middle);
 	}
 	let final = sortedAndFilteredQueryResult(foundDataset?.datasetName as string,
-		query.OPTIONS.ORDER, notFinalYet.length === 0 ? [...middle.getResult()] : notFinalYet, fields, option.fields2);
+		query.OPTIONS.ORDER, notFinalYet.length === 0 ? [...middle.getElements()] :
+			notFinalYet, fields, option.fields2);
 	if (final.length > 5000) {
 		throw new ResultTooLargeError("Too many results!");
 	}
@@ -174,47 +201,35 @@ function processOptions(options: any): any {
 	}
 	return res;
 }
-
-export function queryWhere(where: any, dataset: Dataset): QueryResult {
+export function queryWhere(where: any, myres: QueryResult): QueryResult {
 	let keys = Object.keys(where);
 	let key = keys[0];
 
 	if (Object.keys(where).length === 0) {
-		let result = new QueryResult();
-		for (let course of dataset.courses) {
-			result.addSectionList(course.sections);
-		}
-		return result;
+		return myres;
 	}
-
 	if (key === "GT" || key === "LT" || key === "EQ") {
-		return queryCmp(key, where[key], dataset);
+		return queryCmp(key, where[key], myres);
 	}
-
 	if (key === "IS") {
 		let cmp = where["IS"];
 		let cmpKeys = Object.keys(cmp);
 		let field = cmpKeys[0].split("_")[1];
 		let target = cmp[cmpKeys[0]] as string;
-		return queryIs(dataset, field, target);
+		return queryIs(myres, field, target);
 	}
-
 	if (key === "NOT") {
 		let result = new QueryResult();
-		for (let course of dataset.courses) {
-			result.addSectionList(course.sections);
-		}
-		return differenceOfQueryResults(result, queryWhere(where.NOT, dataset));
+		result.addElementList(myres.getElements());
+		return differenceOfQueryResults(result, queryWhere(where.NOT, myres));
 	}
-
-	return queryLogic(key, where[key], dataset);
+	return queryLogic(key, where[key], myres);
 }
-
-function queryLogic(key: string, logic: any, dataset: Dataset): QueryResult {
+function queryLogic(key: string, logic: any, myres: QueryResult): QueryResult {
 	let results: QueryResult[] = [];
 
 	for (let filter of logic) {
-		let res: QueryResult = queryWhere(filter, dataset);
+		let res: QueryResult = queryWhere(filter, myres);
 		results.push(res);
 	}
 	if (results.length === 0) {
@@ -232,64 +247,54 @@ function queryLogic(key: string, logic: any, dataset: Dataset): QueryResult {
 		}
 		return res;
 	}
-
 }
-
-function queryCmp(key: string, cmp: any, dataset: Dataset): QueryResult {
+function queryCmp(key: string, cmp: any, myres: QueryResult): QueryResult {
 	// Retrieve the keys of the cmp object
 	let fieldKeys = Object.keys(cmp);
 	let field = fieldKeys[0].split("_")[1];
 	let target = cmp[fieldKeys[0]] as number;
 
-	let res: Section[] = filterSectionsByField(dataset, key, field, target);
+	let res: Section[] = filterSectionsByField(myres, key, field, target);
 	let qres = new QueryResult();
-	qres.addSectionList(res);
+	qres.addElementList(res);
 	return qres;
 }
 
-function filterSectionsByField(dataset: Dataset, comparison: string, fieldName: string,
+function filterSectionsByField(myres: QueryResult, comparison: string, fieldName: string,
 	value: number): Section[]{
 	let result: Section[] = [];
-	for (let course of dataset.courses) {
-		for (let section of course.sections) {
-			let a = (section as any)[fieldName];
-			if (comparison === "GT" && (section as any)[fieldName] > value) {
-				result.push(section);
-			} else if (comparison === "LT" && (section as any)[fieldName] < value) {
-				result.push(section);
-			} else if (comparison === "EQ" && (section as any)[fieldName] === value) {
-				result.push(section);
-			}
+	for (let section of myres.getElements()) {
+		let a = (section as any)[fieldName];
+		if (comparison === "GT" && (section as any)[fieldName] > value) {
+			result.push(section);
+		} else if (comparison === "LT" && (section as any)[fieldName] < value) {
+			result.push(section);
+		} else if (comparison === "EQ" && (section as any)[fieldName] === value) {
+			result.push(section);
 		}
 	}
 	return result;
 }
-
-function queryIs(dataset: Dataset, fieldName: string, value: string): QueryResult {
-	let result: Section[] = [];
+function queryIs(myres: QueryResult, fieldName: string, value: string): QueryResult {
+	let result: any[] = [];
 	const isWildcardStart = value.startsWith("*");
 	const isWildcardEnd = value.endsWith("*");
 	const trimmedValue = value.replace(/^\*|\*$/g, ""); // remove asterisks at the start and end
-
 	// the wild card is implemented by chatgpt, by the prompt written by shibo
-	for (let course of dataset.courses) {
-		for (let section of course.sections) {
-			const sectionValue = (section as any)[fieldName];
-
-			// Check based on wildcard conditions
-			if (isWildcardStart && isWildcardEnd && sectionValue.includes(trimmedValue)) {
-				result.push(section);
-			} else if (isWildcardStart && sectionValue.endsWith(trimmedValue)) {
-				result.push(section);
-			} else if (isWildcardEnd && sectionValue.startsWith(trimmedValue)) {
-				result.push(section);
-			} else if (!isWildcardStart && !isWildcardEnd && sectionValue === value) {
-				result.push(section);
-			}
+	for (let section of myres.getElements()) {
+		const sectionValue = (section as any)[fieldName];
+		// Check based on wildcard conditions
+		if (isWildcardStart && isWildcardEnd && sectionValue.includes(trimmedValue)) {
+			result.push(section);
+		} else if (isWildcardStart && sectionValue.endsWith(trimmedValue)) {
+			result.push(section);
+		} else if (isWildcardEnd && sectionValue.startsWith(trimmedValue)) {
+			result.push(section);
+		} else if (!isWildcardStart && !isWildcardEnd && sectionValue === value) {
+			result.push(section);
 		}
 	}
-
 	let qres = new QueryResult();
-	qres.addSectionList(result);
+	qres.addElementList(result);
 	return qres;
 }

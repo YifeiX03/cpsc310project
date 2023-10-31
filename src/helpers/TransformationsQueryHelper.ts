@@ -40,7 +40,7 @@ function handleApply(apply: any, groups: QueryResult[], groupColumns: string[]):
 					resultObj[outerKey] = sumOfProperty(group, property);
 					break;
 			}
-			const firstSection = group.getResult()[0] as any;
+			const firstSection = group.getElements()[0] as any;
 
 			for (let mycol of groupColumns) {
 				let umy = mycol.split("_")[1];
@@ -57,36 +57,36 @@ function handleApply(apply: any, groups: QueryResult[], groupColumns: string[]):
 // Returns the maximum value of the specified property across all sections in the QueryResult
 function maxOfProperty(queryResult: QueryResult, property: string): number {
 	const actualProperty = property.split("_")[1];
-	return Math.max(...queryResult.getResult().map((section) => (section as any)[actualProperty]));
+	return Math.max(...queryResult.getElements().map((section) => (section as any)[actualProperty]));
 }
 
 // Returns the minimum value of the specified property across all sections in the QueryResult
 function minOfProperty(queryResult: QueryResult, property: string): number {
 	const actualProperty = property.split("_")[1];
-	return Math.min(...queryResult.getResult().map((section) => (section as any)[actualProperty]));
+	return Math.min(...queryResult.getElements().map((section) => (section as any)[actualProperty]));
 }
 
 // Returns the average value of the specified property across all sections in the QueryResult
 function avgOfProperty(queryResult: QueryResult, property: string): number {
 	const actualProperty = property.split("_")[1];
-	const sections = queryResult.getResult();
+	const sections = queryResult.getElements();
 	const total = sections.reduce((sum, section) => sum + (section as any)[actualProperty], 0);
 	return total / sections.length;
 }
 
 // Returns the count of sections in the QueryResult
 function countSections(queryResult: QueryResult): number {
-	return queryResult.getResult().length;
+	return queryResult.getElements().length;
 }
 
 // Returns the sum of the values of the specified property across all sections in the QueryResult
 function sumOfProperty(queryResult: QueryResult, property: string): number {
 	const actualProperty = property.split("_")[1];
-	return queryResult.getResult().reduce((sum, section) => sum + (section as any)[actualProperty], 0);
+	return queryResult.getElements().reduce((sum, section) => sum + (section as any)[actualProperty], 0);
 }
 
 function groupQueryResultsByProperties(queryResult: QueryResult, properties: string[]): QueryResult[] {
-	const sections = queryResult.getResult();
+	const sections = queryResult.getElements();
 
 	// A map to group sections by the unique key generated based on properties' values
 	const groupedMap: Map<string, Section[]> = new Map();
@@ -113,7 +113,7 @@ function groupQueryResultsByProperties(queryResult: QueryResult, properties: str
 	// Convert each group in the map to a QueryResult instance
 	const groupedQueryResults: QueryResult[] = [...groupedMap.values()].map((sectionList) => {
 		const result = new QueryResult();
-		result.addSectionList(sectionList);
+		result.addElementList(sectionList);
 		return result;
 	});
 

@@ -1287,13 +1287,15 @@ describe("folder-test-three", function() {
 		type Input = unknown
 		type Error = "InsightError" | "ResultTooLargeError"
 		let sections: string;
+		let rooms: string;
 		let facade: InsightFacade;
 		before(async function () {
 			clearDisk();
 			sections = getContentFromArchives("pair.zip");
+			rooms = getContentFromArchives("campus.zip");
 			facade = new InsightFacade();
 			await facade.addDataset("sections", sections, InsightDatasetKind.Sections);
-			await facade.addDataset("rooms", sections, InsightDatasetKind.Rooms);
+			await facade.addDataset("rooms", rooms, InsightDatasetKind.Rooms);
 		});
 
 		function assertOnResult(actual: unknown, expected: Output): void {
@@ -1331,6 +1333,7 @@ describe("folder-test-three", function() {
 
 describe("folder-test-three-four", function() {
 	describe("test EBNF c2 praise spez", function () {
+		clearDisk();
 		type Output = InsightResult[];
 		type Input = unknown;
 		type Error = "InsightError" | "ResultTooLargeError";
@@ -1341,7 +1344,7 @@ describe("folder-test-three-four", function() {
 			sections = getContentFromArchives("pair.zip");
 			facade = new InsightFacade();
 			await facade.addDataset("sections", sections, InsightDatasetKind.Sections);
-			await facade.addDataset("rooms", sections, InsightDatasetKind.Rooms);
+			// await facade.addDataset("rooms", sections, InsightDatasetKind.Rooms);
 		});
 
 		function assertOnResult(actual: unknown, expected: Output): void {

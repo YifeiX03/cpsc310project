@@ -10,39 +10,45 @@ describe("test request validator", function() {
 		clearDisk();
 		let dataset: Dataset;
 		it("should handle request ", async () => {
-			let sections = getContentFromArchives("pair.zip");
+			let sections = getContentFromArchives("campus.zip");
 			let facade = new InsightFacade();
-			await facade.addDataset("sections", sections, InsightDatasetKind.Sections);
+			await facade.addDataset("rooms", sections, InsightDatasetKind.Rooms);
 			let a = await facade.listDatasets();
 			let query = {
-				WHERE: {},
+				WHERE: {
+					NOT: {
+						NOT: {
+							AND: [{
+								IS: {
+									rooms_furniture: "*Tables*"
+								}
+							}, {
+								GT: {
+									rooms_seats: 300
+								}
+							}]
+						}}},
 				OPTIONS: {
 					COLUMNS: [
-						"sections_title",
-						"overallAvg",
-						"aaa"
+						"rooms_shortname",
+						"maxSeats"
 					],
-					ORDER: "overallAvg"
+					ORDER: {
+						dir: "DOWN",
+						keys: ["maxSeats"]
+					}
 				},
 				TRANSFORMATIONS: {
-					GROUP: [
-						"sections_title"
-					],
-					APPLY: [
-						{
-							overallAvg: {
-								AVG: "sections_avg"
-							}
-						},
-						{
-							aaa: {
-								MAX: "sections_avg"
-							}
+					GROUP: ["rooms_shortname"],
+					APPLY: [{
+						maxSeats: {
+							MAX: "rooms_seats"
 						}
-					]
+					}]
 				}
 			};
 			let res = performQueryHelper(query,  facade.datasets);
+			// let res = requestValidator(query,  facade.datasets);
 			console.log(res);
 		});
 
