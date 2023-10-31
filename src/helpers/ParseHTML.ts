@@ -111,8 +111,8 @@ async function createBuildings(table: any[]): Promise<object[]> {
 				findChild(
 					findClass(element, "views-field views-field-field-building-address"),
 					"#text")?.value,
-			lat: 0,
-			lon: 0,
+			lat: null,
+			lon: null,
 			rooms: [],
 			path: findChild(
 				findClass(element, "views-field views-field-nothing"),

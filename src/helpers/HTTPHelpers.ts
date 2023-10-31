@@ -4,6 +4,9 @@ let teamURL = "http://cs310.students.cs.ubc.ca:11316/api/v1/project_team142/";
 export async function getGeolocations(buildings: any[]) {
 	let requests: any[] = [];
 	for (let building of buildings) {
+		if (building.address === null) {
+			continue;
+		}
 		requests.push(getGeolocationRequest(building.address));
 	}
 	let responses = await Promise.all(requests);
