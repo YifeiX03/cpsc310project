@@ -1053,7 +1053,7 @@ describe("InsightFacade", function()  {
 
 	});
 });
-/*
+
 describe("InsightFacadeRooms", function() {
 	let facade: InsightFacade;
 
@@ -1110,8 +1110,27 @@ describe("InsightFacadeRooms", function() {
 			const result = facade.removeDataset("rooms");
 			return expect(result).to.eventually.equal("rooms");
 		});
+		// it("should successfully persist the removal of a rooms dataset", async function() {
+		// 	await facade.addDataset("rooms", rooms, InsightDatasetKind.Rooms);
+		// 	await facade.removeDataset("rooms");
+		// 	facade = new InsightFacade();
+		// 	const result = facade.addDataset("rooms", rooms, InsightDatasetKind.Rooms);
+		// 	return expect(result).to.eventually.have.members(["rooms"]);
+		// });
 		it("should successfully list a rooms dataset", async function() {
 			await facade.addDataset("rooms", rooms, InsightDatasetKind.Rooms);
+			const result = facade.listDatasets();
+			return expect(result).to.eventually.have.deep.members([
+				{
+					id: "rooms",
+					kind: InsightDatasetKind.Rooms,
+					numRows: 364,
+				}
+			]);
+		});
+		it("should successfully persist a rooms dataset", async function() {
+			await facade.addDataset("rooms", rooms, InsightDatasetKind.Rooms);
+			facade = new InsightFacade();
 			const result = facade.listDatasets();
 			return expect(result).to.eventually.have.deep.members([
 				{
@@ -1180,7 +1199,7 @@ describe("InsightFacadeRooms", function() {
 
 	});
 });
-*/
+
 
 /*
  * the structure of the folder test is borrowed from provided project AdditionCalculator,
