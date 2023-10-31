@@ -1156,7 +1156,7 @@ describe("InsightFacadeRooms", function() {
 		// ///////////wtitten by shibo///////////
 		it("should successfully add a rooms dataset even one hyperlink links to" +
 		"a building html that does not exist", async function() {
-			await facade.addDataset("rooms", rooms, InsightDatasetKind.Rooms);
+			await facade.addDataset("rooms", noBuildinHtml, InsightDatasetKind.Rooms);
 			const result = facade.listDatasets();
 			return expect(result).to.eventually.have.deep.members([
 				{
