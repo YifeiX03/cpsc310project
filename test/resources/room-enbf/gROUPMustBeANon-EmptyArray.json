@@ -1,0 +1,17 @@
+{
+	"title": "GROUP must be a non-empty array",
+	"input": {
+		"WHERE": {},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_title",
+				"overallAvg"
+			]
+		},
+		"TRANSFORMATIONS": {
+			"GROUP": 1
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

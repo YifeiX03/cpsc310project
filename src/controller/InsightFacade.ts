@@ -100,13 +100,13 @@ export default class InsightFacade implements IInsightFacade {
 
 	public performQuery(query: unknown): Promise<InsightResult[]> {
 		return new Promise((resolve, reject) => {  // Notice the async keyword here
-			let result = requestValidator(query, this.datasets.map((each) => each.datasetName));
+			let result = requestValidator(query, this.datasets);
 			if (!result.valid) {
 				reject(new InsightError(result.error));  // Use reject instead of returning a rejected promise
 				return;
 			}
 			try {
-				const queryResult = performQueryHelper(query, this.datasets);  // Await the performQueryHelper function
+				const queryResult = performQueryHelper(query, this.datasets);  // TODO Await the performQueryHelper function
 				resolve(queryResult);  // Resolve with the result
 			} catch (err) { // magic, dont touch!!!!!
 				const errorMessage: string = (err as any).message || (err as object).toString();
