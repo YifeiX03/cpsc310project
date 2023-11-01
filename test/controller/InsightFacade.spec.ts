@@ -1452,3 +1452,51 @@ describe("room test", function() {
 		);
 	});
 });
+
+describe("room test single", function() {
+	describe("room test single", function () {
+		type Output = InsightResult[]
+		type Input = unknown
+		type Error = "InsightError" | "ResultTooLargeError"
+		let rooms: string;
+		let facade: InsightFacade;
+		before(async function () {
+			clearDisk();
+			rooms = getContentFromArchives("campus.zip");
+			facade = new InsightFacade();
+			await facade.addDataset("rooms", rooms, InsightDatasetKind.Rooms);
+		});
+
+		function assertOnResult(actual: unknown, expected: Output): void {
+			expect(actual).have.deep.members(expected);
+			expect((actual as unknown[]).length).to.equal(expected.length);
+		}
+		function target(input: Input): Promise<Output> {
+			return facade.performQuery(input);
+		}
+
+		function assertOnError(actual: any, expected: Error): void {
+			if (expected === "InsightError") {
+				expect(actual).to.be.instanceof(InsightError);
+			} else if (expected === "ResultTooLargeError") {
+				expect(actual).to.be.instanceof(ResultTooLargeError);
+			}else {
+				expect.fail("UNEXPECTED ERROR");
+			}
+		}
+		function errorValidator(error: any): error is Error {
+			return error === "InsightError" || error === "ResultTooLargeError";
+		}
+
+		folderTest<Input, Output, Error>(
+			"Single test all columns",
+			target,
+			"./test/resources/room-test-single",
+			{
+				errorValidator,
+				assertOnError,
+				assertOnResult
+			}
+		);
+	});
+});
