@@ -10,41 +10,32 @@ describe("test request validator", function() {
 		clearDisk();
 		let dataset: Dataset;
 		it("should handle request ", async () => {
-			let sections = getContentFromArchives("campus.zip");
+			let sections = getContentFromArchives("pair.zip");
 			let facade = new InsightFacade();
-			await facade.addDataset("rooms", sections, InsightDatasetKind.Rooms);
+			await facade.addDataset("sections", sections, InsightDatasetKind.Sections);
 			let a = await facade.listDatasets();
 			let query = {
 				WHERE: {
-					NOT: {
-						NOT: {
-							AND: [{
-								IS: {
-									rooms_furniture: "*Tables*"
-								}
-							}, {
-								GT: {
-									rooms_seats: 300
-								}
-							}]
-						}}},
+					AND: [
+						{
+							IS: {
+								rooms_furniture: "*Tables*"
+							}
+						},
+						{
+							GT: {
+								rooms_seats: 300
+							}
+						}
+					]
+				},
 				OPTIONS: {
 					COLUMNS: [
-						"rooms_shortname",
-						"maxSeats"
-					],
-					ORDER: {
-						dir: "DOWN",
-						keys: ["maxSeats"]
-					}
-				},
-				TRANSFORMATIONS: {
-					GROUP: ["rooms_shortname"],
-					APPLY: [{
-						maxSeats: {
-							MAX: "rooms_seats"
-						}
-					}]
+						"rooms_lat",
+						"rooms_lon",
+						"rooms_seats",
+						"rooms_shortname"
+					]
 				}
 			};
 			let res = performQueryHelper(query,  facade.datasets);
@@ -67,32 +58,14 @@ describe("test request validator 2", function() {
 				WHERE: {},
 				OPTIONS: {
 					COLUMNS: [
-						"sections_title",
-						"aaa"
-					],
-					ORDER: {
-						dir: "DOWN",
-						keys: [
-							"aaa"
-						]
-					}
+						"sections_title"
+					]
 				},
 				TRANSFORMATIONS: {
 					GROUP: [
 						"sections_title"
 					],
-					APPLY: [
-						{
-							aaa: {
-								AVG: "sections_avg"
-							}
-						},
-						{
-							aaa: {
-								AVG: "sections_avg"
-							}
-						}
-					]
+					APPLY: []
 				}
 			};
 			let res = requestValidator(query, facade.datasets);

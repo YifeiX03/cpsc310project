@@ -162,7 +162,7 @@ function createRooms(building: any, table: any[]): object[] {
 		number = trim(number);
 		let room = {
 			number: number,
-			name: building.shortname?.concat(" ").concat(number),
+			name: building.shortname?.concat("_").concat(number),
 			seats:
 				findChild(
 					findClass(element, "views-field views-field-field-room-capacity"),

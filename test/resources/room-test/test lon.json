@@ -1,0 +1,54 @@
+{
+	"title": "example should work",
+	"input": {
+		"WHERE": {
+			"AND": [
+				{
+					"IS": {
+						"rooms_furniture": "*Tables*"
+					}
+				},
+				{
+					"GT": {
+						"rooms_seats": 300
+					}
+				}
+			]
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"rooms_lat",
+				"rooms_lon",
+				"rooms_seats",
+				"rooms_shortname"
+			]
+		}
+	},
+	"errorExpected": false,
+	"expected": [
+		{
+			"rooms_lat": 49.2661,
+			"rooms_lon": -123.25165,
+			"rooms_seats": 375,
+			"rooms_shortname": "HEBB"
+		},
+		{
+			"rooms_lat": 49.26236,
+			"rooms_lon": -123.24494,
+			"rooms_seats": 350,
+			"rooms_shortname": "LSC"
+		},
+		{
+			"rooms_lat": 49.26236,
+			"rooms_lon": -123.24494,
+			"rooms_seats": 350,
+			"rooms_shortname": "LSC"
+		},
+		{
+			"rooms_lat": 49.26047,
+			"rooms_lon": -123.24467,
+			"rooms_seats": 442,
+			"rooms_shortname": "OSBO"
+		}
+	]
+}
