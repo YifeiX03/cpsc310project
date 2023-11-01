@@ -15,25 +15,26 @@ describe("test request validator", function() {
 			await facade.addDataset("sections", sections, InsightDatasetKind.Sections);
 			let a = await facade.listDatasets();
 			let query = {
-				WHERE: {},
-				OPTIONS: {
-					COLUMNS: [
-						"sections_title",
-						"sections_dept",
-						"overallAvg"
-					]
-				},
-				TRANSFORMATIONS: {
-					GROUP: [
-						"sections_title",
-						"sections_dept"
-					],
-					APPLY: [
+				WHERE: {
+					AND: [
 						{
-							overallAvg: {
-								AVG: "sections_avg"
+							IS: {
+								rooms_furniture: "*Tables*"
+							}
+						},
+						{
+							GT: {
+								rooms_seats: 300
 							}
 						}
+					]
+				},
+				OPTIONS: {
+					COLUMNS: [
+						"rooms_lat",
+						"rooms_lon",
+						"rooms_seats",
+						"rooms_shortname"
 					]
 				}
 			};

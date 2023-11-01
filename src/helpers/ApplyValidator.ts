@@ -71,7 +71,12 @@ export function validateApplyValue(applyValue: any, datasetName: string, dataset
 		return {valid: false, error: `The first part of the value '${keyValue}' should be equal to the datasetName`};
 	}
 
-	const keyValidation = validateKeys(datasets, datasetName, secondPart, "mkey");
+	let keyValidation;
+	if (applyKey === "COUNT") {
+		keyValidation = validateKeys(datasets, datasetName, secondPart, "both");
+	} else {
+		keyValidation = validateKeys(datasets, datasetName, secondPart, "mkey");
+	}
 	if (!keyValidation) {
 		return {valid: false, error: "Invalid key in the apply value"};
 	}
