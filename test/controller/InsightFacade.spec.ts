@@ -1299,7 +1299,7 @@ describe("folder-test-two", function() {
 		);
 	});
 });
-
+// praise spez
 describe("folder-test-three", function() {
 	describe("test EBNF c2", function () {
 		type Output = InsightResult[]
@@ -1318,7 +1318,9 @@ describe("folder-test-three", function() {
 		});
 
 		function assertOnResult(actual: unknown, expected: Output): void {
-			return;
+			expect(actual).have.deep.members(expected);
+			// add length assert
+			expect((actual as unknown[]).length).to.equal(expected.length);
 		}
 		function target(input: Input): Promise<Output> {
 			return facade.performQuery(input);

@@ -34,19 +34,17 @@ function handleApply(apply: any, groups: QueryResult[], groupColumns: string[]):
 					resultObj[outerKey] = avgOfProperty(group, property);
 					break;
 				case "COUNT":
-					resultObj[outerKey] = countSections(group);
+					resultObj[outerKey] = countSections(group, property);
 					break;
 				case "SUM":
 					resultObj[outerKey] = sumOfProperty(group, property);
 					break;
 			}
-			const firstSection = group.getElements()[0] as any;
-
-			for (let mycol of groupColumns) {
-				let umy = mycol.split("_")[1];
-				resultObj[umy] = firstSection[umy];
-			}
-
+		}
+		const firstSection = group.getElements()[0] as any;
+		for (let mycol of groupColumns) {
+			let umy = mycol.split("_")[1];
+			resultObj[umy] = firstSection[umy];
 		}
 
 		results.push(resultObj);
@@ -67,22 +65,68 @@ function minOfProperty(queryResult: QueryResult, property: string): number {
 }
 
 // Returns the average value of the specified property across all sections in the QueryResult
+import Decimal from "decimal.js";
+
 function avgOfProperty(queryResult: QueryResult, property: string): number {
 	const actualProperty = property.split("_")[1];
 	const sections = queryResult.getElements();
-	const total = sections.reduce((sum, section) => sum + (section as any)[actualProperty], 0);
-	return total / sections.length;
+
+	// Initialize a new Decimal for the total
+	let total = new Decimal(0);
+
+	// Sum up all the values as Decimal
+	sections.forEach((section) => {
+		const value = new Decimal((section as any)[actualProperty]);
+		total = total.add(value);
+	});
+
+	// Calculate the average
+	const average = total.toNumber() / sections.length;
+
+	// Round the average to two decimal places and convert it back to a number
+	const result = Number(average.toFixed(2));
+
+	return result;
 }
 
+
 // Returns the count of sections in the QueryResult
-function countSections(queryResult: QueryResult): number {
-	return queryResult.getElements().length;
+function countSections(queryResult: QueryResult, property: string): number {
+	const actualProperty = property.split("_")[1];
+	const sections = queryResult.getElements();
+
+	// Use a Set to store unique values
+	const uniqueValues = new Set();
+
+	// Iterate through the sections and add property values to the Set
+	sections.forEach((section) => {
+		const value = (section as any)[actualProperty];
+		uniqueValues.add(value);
+	});
+
+	// The size of the Set represents the count of unique values
+	return uniqueValues.size;
 }
+
 
 // Returns the sum of the values of the specified property across all sections in the QueryResult
 function sumOfProperty(queryResult: QueryResult, property: string): number {
 	const actualProperty = property.split("_")[1];
-	return queryResult.getElements().reduce((sum, section) => sum + (section as any)[actualProperty], 0);
+	const sections = queryResult.getElements();
+
+	// Initialize a new Decimal for the total
+	let total = new Decimal(0);
+
+	// Sum up all the values as Decimal
+	sections.forEach((section) => {
+		const value = new Decimal((section as any)[actualProperty]);
+		total = total.add(value);
+	});
+
+	// Round the total to two decimal places and convert it back to a number
+	const result = Number(total.toFixed(2));
+
+	return result;
 }
 
 function groupQueryResultsByProperties(queryResult: QueryResult, properties: string[]): QueryResult[] {
