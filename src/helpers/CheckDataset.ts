@@ -19,7 +19,9 @@ function checkBuilding(building: Building): boolean {
 	if (
 		building.fullname !== null &&
 		building.shortname !== null &&
-		building.address !== null
+		building.address !== null &&
+		building.lat !== null &&
+		building.lon !== null
 	) {
 		return true;
 	}
