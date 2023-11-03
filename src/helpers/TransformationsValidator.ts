@@ -2,6 +2,7 @@ import {Dataset} from "./Courses";
 import {ValidationResult} from "./ValidationTypes";
 import {validateApply} from "./ApplyValidator";
 import {validateGroup} from "./GroupyValidator";
+// note: whole file is generated and refactored by Chat-GPT with the prompts from shibo (with code-level detail)
 
 export function validateTransformations(transformations: any, datasetName: string,
 	datasets: Dataset[]): ValidationResult {

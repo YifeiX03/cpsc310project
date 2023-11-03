@@ -1,5 +1,6 @@
 import {Section} from "./Courses";
 import {QueryResult} from "./QueryTypes";
+// note: this whole file is generated and refactored by Chat-GPT with the prompts from shibo (with code-level detail)
 
 export function queryTransformations(trans: any, result: QueryResult): object[] {
 	let groupColumns = trans.GROUP;
