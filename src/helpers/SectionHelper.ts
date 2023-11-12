@@ -26,8 +26,6 @@ export function areObjectsEqual(section1: any, section2: any): boolean {
 			section1.furniture === section2.furniture &&
 			section1.href === section2.href;
 	}
-
-	return false;
 }
 
 export function unionOfQueryResults(res1: QueryResult, res2: QueryResult): QueryResult {

@@ -1,5 +1,6 @@
 import {Section} from "./Courses";
 // this class is designed by shibo and implemented by chatgpt with the promot written by shibo
+// c2 refactoring is done by shibo
 export class QueryResult {
 	public elements: any[];
 	constructor() {
