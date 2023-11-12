@@ -45,27 +45,31 @@ export default class InsightFacade implements IInsightFacade {
 		if (!id.trim()) {
 			return Promise.reject(new InsightError("Dataset id cannot be empty or spaces only!"));
 		}
-		if (kind === InsightDatasetKind.Sections) {
-			return parseZip(id, content)
-				.then((dataset) => {
-					this.datasets.push(dataset);
-					toDisk(id, dataset);
-					return this.datasets.map((each) => each.datasetName);
-				})
-				.catch((e) => {
-					return Promise.reject(new InsightError(e));
-				});
-		}
-		if (kind === InsightDatasetKind.Rooms) {
-			return parseHTML(id, content)
-				.then((dataset) => {
-					this.datasets.push(dataset);
-					toDisk(id, dataset);
-					return this.datasets.map((each) => each.datasetName);
-				})
-				.catch((e) => {
-					return Promise.reject(new InsightError(e));
-				});
+		try {
+			if (kind === InsightDatasetKind.Sections) {
+				return parseZip(id, content)
+					.then((dataset) => {
+						this.datasets.push(dataset);
+						toDisk(id, dataset);
+						return this.datasets.map((each) => each.datasetName);
+					})
+					.catch((e) => {
+						return Promise.reject(new InsightError(e));
+					});
+			}
+			if (kind === InsightDatasetKind.Rooms) {
+				return parseHTML(id, content)
+					.then((dataset) => {
+						this.datasets.push(dataset);
+						toDisk(id, dataset);
+						return this.datasets.map((each) => each.datasetName);
+					})
+					.catch((e) => {
+						return Promise.reject(new InsightError(e));
+					});
+			}
+		} catch (e) {
+			return Promise.reject(new InsightError("Dataset could not be added"));
 		}
 		return Promise.reject(new InsightError("kind is neither sections nor rooms"));
 	}
