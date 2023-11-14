@@ -18,7 +18,7 @@ export async function putDataset(req: Request, res: Response) {
 			res.status(400).json({error: "Facade is null"});
 		}
 	} catch (err) {
-		res.status(400).json({error: err});
+		res.status(400).json({error: (err as any).message});
 	}
 }
 
@@ -33,11 +33,11 @@ export async function deleteDataset(req: Request, res: Response) {
 		}
 	} catch (err) {
 		if (err instanceof InsightError) {
-			res.status(400).json({error: err});
+			res.status(400).json({error: (err as any).message});
 		} else if (err instanceof NotFoundError) {
-			res.status(404).json({error: err});
+			res.status(404).json({error: (err as any).message});
 		} else {
-			res.status(400).json({error: err});
+			res.status(400).json({error: (err as any).message});
 		}
 	}
 }
@@ -45,14 +45,14 @@ export async function deleteDataset(req: Request, res: Response) {
 export async function postQuery(req: Request, res: Response) {
 	try {
 		checkFacade();
-		let result = await facade?.performQuery(JSON.stringify(req.body));
+		let result = await facade?.performQuery(JSON.parse(req.body));
 		if (result !== null) {
 			res.status(200).json({result: result});
 		} else {
 			res.status(400).json({error: "Facade is null"});
 		}
 	} catch (err) {
-		res.status(400).json({error: err});
+		res.status(400).json({error: (err as any).message});
 	}
 }
 
@@ -66,7 +66,7 @@ export async function getDatasets(req: Request, res: Response) {
 			res.status(400).json({error: "Facade is null"});
 		}
 	} catch (err) {
-		res.status(400).json({error: err});
+		res.status(400).json({error: (err as any).message});
 	}
 }
 

@@ -63,6 +63,7 @@ export default class Server {
 			} else {
 				this.server.close(() => {
 					console.info("Server::stop() - server closed");
+					this.server = undefined;
 					resolve();
 				});
 			}
