@@ -12,6 +12,7 @@ describe("Facade D3", function () {
 	let facade: InsightFacade;
 	let server: Server;
 	let sections: Buffer;
+	let rooms: Buffer;
 	let serverUrl = "localhost:4321";
 
 	before(function () {
@@ -19,13 +20,13 @@ describe("Facade D3", function () {
 		facade = new InsightFacade();
 		server = new Server(4321);
 		sections = fs.readFileSync("test/resources/archives/pair.zip");
+		rooms = fs.readFileSync("test/resources/archives/campus.zip");
 		server.start();
 		// TODO: start server here once and handle errors properly
 	});
 
 	after(function () {
 		// TODO: stop server here once!
-
 		server.stop();
 	});
 
@@ -40,15 +41,57 @@ describe("Facade D3", function () {
 
 	// Sample on how to format PUT requests
 
-	it("PUT test for courses dataset", function () {
+	it("PUT test for courses dataset", async function () {
 		try {
-			return request(serverUrl)
+			return await request(serverUrl)
 				.put("/dataset/sections/sections")
 				.send(sections)
 				.set("Content-Type", "application/x-zip-compressed")
 				.then(function (res: Response) {
 					// some logging here please!
 					expect(res.status).to.be.equal(200);
+				})
+				.catch(function (err) {
+					// some logging here please!
+					console.log(err);
+					expect.fail();
+				});
+		} catch (err) {
+			// console.log(err);
+			// and some more logging here!
+		}
+	});
+
+	it("PUT test for rooms dataset", async function () {
+		try {
+			return await request(serverUrl)
+				.put("/dataset/rooms/rooms")
+				.send(rooms)
+				.set("Content-Type", "application/x-zip-compressed")
+				.then(function (res: Response) {
+					// some logging here please!
+					expect(res.status).to.be.equal(200);
+				})
+				.catch(function (err) {
+					// some logging here please!
+					console.log(err);
+					expect.fail();
+				});
+		} catch (err) {
+			// console.log(err);
+			// and some more logging here!
+		}
+	});
+
+	it("PUT test for incorrect kind", async function () {
+		try {
+			return await request(serverUrl)
+				.put("/dataset/sections/bruh")
+				.send(sections)
+				.set("Content-Type", "application/x-zip-compressed")
+				.then(function (res: Response) {
+					// some logging here please!
+					expect(res.status).to.be.equal(400);
 				})
 				.catch(function (err) {
 					// some logging here please!
@@ -77,7 +120,7 @@ describe("Facade D3", function () {
 					expect.fail();
 				});
 
-			return request(serverUrl)
+			return await request(serverUrl)
 				.put("/dataset/sections/sections")
 				.send(sections)
 				.set("Content-Type", "application/x-zip-compressed")
@@ -111,7 +154,7 @@ describe("Facade D3", function () {
 				console.log(err);
 				expect.fail();
 			});
-		return request(serverUrl)
+		return await request(serverUrl)
 			.delete("/dataset/sections")
 			.then(function (res: Response) {
 				// some logging here please!
@@ -125,7 +168,7 @@ describe("Facade D3", function () {
 	});
 
 	it("DELETE should return 404 properly", async function() {
-		return request(serverUrl)
+		return await request(serverUrl)
 			.delete("/dataset/sections")
 			.then(function (res: Response) {
 				// some logging here please!
@@ -140,7 +183,7 @@ describe("Facade D3", function () {
 	});
 
 	it("DELETE should return 400 properly", async function() {
-		return request(serverUrl)
+		return await request(serverUrl)
 			.delete("/dataset/my_sections")
 			.then(function (res: Response) {
 				// some logging here please!
@@ -184,9 +227,9 @@ describe("Facade D3", function () {
 			}
 		};
 
-		return request(serverUrl)
+		return await request(serverUrl)
 			.post("/query")
-			.send(JSON.stringify(req))
+			.send(req)
 			.then(function (res: Response) {
 				// some logging here please!
 				console.log(res.body);
@@ -234,7 +277,7 @@ describe("Facade D3", function () {
 
 		return request(serverUrl)
 			.post("/query")
-			.send(JSON.stringify(req))
+			.send(req)
 			.then(function (res: Response) {
 				// some logging here please!
 				console.log(res.body);
@@ -265,7 +308,7 @@ describe("Facade D3", function () {
 
 		return request(serverUrl)
 			.post("/query")
-			.send(JSON.stringify(req))
+			.send(req)
 			.then(function (res: Response) {
 				// some logging here please!
 				console.log(res.body);
