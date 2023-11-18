@@ -45,7 +45,7 @@ export async function deleteDataset(req: Request, res: Response) {
 export async function postQuery(req: Request, res: Response) {
 	try {
 		checkFacade();
-		let result = await facade?.performQuery(JSON.parse(req.body));
+		let result = await facade?.performQuery(req.body);
 		if (result !== null) {
 			res.status(200).json({result: result});
 		} else {
