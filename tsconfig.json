@@ -8,6 +8,11 @@
 		"sourceMap": true,
 		"typeRoots": [
 			"./node_modules/@types"
+		],
+		"jsx": "react",
+		"lib": [
+			"dom",
+			"es2022"
 		]
 	},
 	"include": [
