@@ -9,7 +9,11 @@
 		"typeRoots": [
 			"./node_modules/@types"
 		],
-		"jsx": "react"
+		"jsx": "react",
+		"lib": [
+			"dom",
+			"es2022"
+		]
 	},
 	"include": [
 		"src/**/*.ts",

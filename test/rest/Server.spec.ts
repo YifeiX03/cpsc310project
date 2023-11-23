@@ -18,7 +18,7 @@ describe("start server", function () {
 		clearDisk();
 		facade = new InsightFacade();
 		server = new Server(4321);
-		sections = fs.readFileSync("test/resources/archives/pair.zip");
+		sections = fs.readFileSync("test/resources/archives/pair_frontend.zip");
 		rooms = fs.readFileSync("test/resources/archives/campus.zip");
 		server.start();
 		try {
