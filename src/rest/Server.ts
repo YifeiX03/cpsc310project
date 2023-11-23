@@ -2,6 +2,7 @@ import express, {Application, Request, Response} from "express";
 import * as http from "http";
 import cors from "cors";
 import {deleteDataset, getDatasets, postQuery, putDataset} from "../helpers/ServerHelpers";
+import CompareCourses from "../../frontend/cs310-project-frontend/src/CompareCourses";
 
 export default class Server {
 	private readonly port: number;
