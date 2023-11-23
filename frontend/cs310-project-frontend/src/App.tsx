@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from "./Home";
 import About from "./About";
 import CompareSections from "./CompareSections";
+import CompareCourses from "./CompareCourses";
 
 const Redirect = () => {
 	React.useEffect(() => {
