@@ -1,10 +1,19 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from "./Home";
 import About from "./About";
-import CompareCourses from "./CompareCourses";
+import CompareSections from "./CompareSections";
+
+const Redirect = () => {
+	React.useEffect(() => {
+		window.location.href = 'https://www.youtube.com/watch?v=SVnF3x44rvU';
+	}, []);
+	return null;
+};
+
 
 function App() {
 	return (
@@ -12,7 +21,13 @@ function App() {
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/about" element={<About />} />
-				{/* add more routes here */}
+				<Route path="/compareSections" element={<CompareSections />} />
+				<Route
+					path="/awsome_stuff"
+					element={
+						<Redirect />
+					}
+				/>
 				<Route path="/compareCourses" element={<CompareCourses />} />
 			</Routes>
 		</BrowserRouter>
