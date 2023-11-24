@@ -2,7 +2,6 @@
 
 We recorded our videos separately
 
-## [User Story] Highest Grade Courses in Department
-
-https://youtu.be/72KEzJIueLY
+## User Story
+https://www.youtube.com/watch?v=kHMk99XWZIo
 
