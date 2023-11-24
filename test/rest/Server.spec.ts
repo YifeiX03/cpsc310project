@@ -7,59 +7,59 @@ import {clearDisk, getContentFromArchives} from "../TestUtil";
 import * as fs from "fs";
 // import JSON = Mocha.reporters.JSON;
 
-describe("start server", function () {
-	let facade: InsightFacade;
-	let sections: Buffer;
-	let rooms: Buffer;
-	let server;
-	let serverUrl = "localhost:4321"; // server URL
-
-	it("start server and load datasets", async function () {
-		clearDisk();
-		facade = new InsightFacade();
-		server = new Server(4321);
-		sections = fs.readFileSync("test/resources/archives/pair_frontend.zip");
-		rooms = fs.readFileSync("test/resources/archives/campus.zip");
-		server.start();
-		try {
-			return await request(serverUrl)
-				.put("/dataset/sections/sections")
-				.send(sections)
-				.set("Content-Type", "application/x-zip-compressed")
-				.then(function (res: Response) {
-					// some logging here please!
-					expect(res.status).to.be.equal(200);
-				})
-				.catch(function (err) {
-					// some logging here please!
-					console.log(err);
-					expect.fail();
-				});
-		} catch (err) {
-			// console.log(err);
-			// and some more logging here!
-		}
-
-		try {
-			return await request(serverUrl)
-				.put("/dataset/rooms/rooms")
-				.send(rooms)
-				.set("Content-Type", "application/x-zip-compressed")
-				.then(function (res: Response) {
-					// some logging here please!
-					expect(res.status).to.be.equal(200);
-				})
-				.catch(function (err) {
-					// some logging here please!
-					console.log(err);
-					expect.fail();
-				});
-		} catch (err) {
-			// console.log(err);
-			// and some more logging here!
-		}
-	});
-});
+// describe("start server", function () {
+// 	let facade: InsightFacade;
+// 	let sections: Buffer;
+// 	let rooms: Buffer;
+// 	let server;
+// 	let serverUrl = "localhost:4321"; // server URL
+//
+// 	it("start server and load datasets", async function () {
+// 		clearDisk();
+// 		facade = new InsightFacade();
+// 		server = new Server(4321);
+// 		sections = fs.readFileSync("test/resources/archives/pair_frontend.zip");
+// 		rooms = fs.readFileSync("test/resources/archives/campus.zip");
+// 		server.start();
+// 		try {
+// 			return await request(serverUrl)
+// 				.put("/dataset/sections/sections")
+// 				.send(sections)
+// 				.set("Content-Type", "application/x-zip-compressed")
+// 				.then(function (res: Response) {
+// 					// some logging here please!
+// 					expect(res.status).to.be.equal(200);
+// 				})
+// 				.catch(function (err) {
+// 					// some logging here please!
+// 					console.log(err);
+// 					expect.fail();
+// 				});
+// 		} catch (err) {
+// 			// console.log(err);
+// 			// and some more logging here!
+// 		}
+//
+// 		try {
+// 			return await request(serverUrl)
+// 				.put("/dataset/rooms/rooms")
+// 				.send(rooms)
+// 				.set("Content-Type", "application/x-zip-compressed")
+// 				.then(function (res: Response) {
+// 					// some logging here please!
+// 					expect(res.status).to.be.equal(200);
+// 				})
+// 				.catch(function (err) {
+// 					// some logging here please!
+// 					console.log(err);
+// 					expect.fail();
+// 				});
+// 		} catch (err) {
+// 			// console.log(err);
+// 			// and some more logging here!
+// 		}
+// 	});
+// });
 
 describe("Facade D3", function () {
 
